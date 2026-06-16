@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Christopher Goulet — Infrastructure, Architecture & Community</title>
-<meta name="description" content="Systems architect, infrastructure builder, and community organizer from Windsor, Vermont — relocating to Sherbrooke, Québec.">
+<meta name="description" content="Systems architect, infrastructure builder, community organizer, and scouting founder from Windsor, Vermont.">
 <style>
 @font-face {
   font-family: 'Inter';
@@ -30,6 +30,7 @@
   --amber: #fbbf24;
   --purple: #c084fc;
   --red: #f87171;
+  --orange: #fb923c;
   --radius: 12px;
   --radius-sm: 8px;
   --max-w: 1200px;
@@ -325,7 +326,7 @@ nav .contact-btn:hover { opacity: 0.85; color: #000 !important; }
 .domain-card.arch::before { background: var(--indigo); }
 .domain-card.comm::before { background: var(--amber); }
 .domain-card.priv::before { background: var(--purple); }
-.domain-card.qc::before { background: var(--red); }
+.domain-card.qc::before { background: var(--orange); }
 
 .domain-card:hover {
   border-color: var(--text3);
@@ -404,6 +405,77 @@ nav .contact-btn:hover { opacity: 0.85; color: #000 !important; }
   position: absolute;
   left: 0;
   color: var(--accent);
+}
+
+/* Projects section */
+.projects { padding: 100px 0; }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.project-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  transition: all 0.25s;
+}
+
+.project-card:hover {
+  border-color: var(--text3);
+  transform: translateY(-2px);
+}
+
+.project-card .icon {
+  width: 44px;
+  height: 44px;
+  background: var(--card);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.project-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.project-card .role {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.project-card .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.project-card .tags span {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  background: var(--card);
+  border-radius: 4px;
+  color: var(--text2);
 }
 
 /* Consulting */
@@ -630,6 +702,7 @@ section { scroll-margin-top: 72px; }
   }
 
   .domain-grid { grid-template-columns: repeat(2, 1fr); }
+  .projects-grid { grid-template-columns: 1fr; }
   .consulting-grid { grid-template-columns: repeat(2, 1fr); }
   .about-grid { grid-template-columns: 1fr; gap: 32px; }
   .archive-grid { grid-template-columns: repeat(2, 1fr); }
@@ -669,6 +742,7 @@ section { scroll-margin-top: 72px; }
     <button class="nav-toggle" onclick="document.querySelector('nav .links').classList.toggle('open')" aria-label="Toggle menu">☰</button>
     <div class="links">
       <a href="#domains">Domains</a>
+      <a href="#projects">Projects</a>
       <a href="#consulting">Consulting</a>
       <a href="#about">About</a>
       <a href="#archive">Archive</a>
@@ -682,14 +756,14 @@ section { scroll-margin-top: 72px; }
     <div class="grid">
       <div>
         <h1>Infrastructure,<br>Architecture &amp;<br><span>Community</span></h1>
-        <p>I build systems — technical, organizational, and cultural — that are resilient, sovereign, and built to last. From distributed AI inference clusters to cooperative governance models, I work at the intersection of infrastructure and human systems.</p>
+        <p>I build systems — technical, organizational, and cultural — that are resilient, sovereign, and built to last. From distributed AI inference clusters to cooperative governance models to community scouting troops, I work at the intersection of infrastructure and human systems.</p>
         <div class="btns">
           <a href="mailto:me@christophergoulet.com" class="btn-primary">Work with me</a>
           <a href="#domains" class="btn-secondary">Explore domains →</a>
         </div>
       </div>
       <div class="sidebar">
-        <h3>Currently</h3>
+        <h3>Projects</h3>
         <div class="item">
           <div class="icon">🏗️</div>
           <div>
@@ -698,17 +772,17 @@ section { scroll-margin-top: 72px; }
           </div>
         </div>
         <div class="item">
-          <div class="icon">🏠</div>
+          <div class="icon">🌲</div>
           <div>
-            <div class="label">Relocating to Sherbrooke</div>
-            <div class="desc">Québec permanent residency, colocating infrastructure in Eastern Townships</div>
+            <div class="label">161st Catamounts</div>
+            <div class="desc">Founder &amp; Scoutmaster — community scouting troop chartered under Outdoor Service Guides</div>
           </div>
         </div>
         <div class="item">
-          <div class="icon">🤝</div>
+          <div class="icon">🍪</div>
           <div>
-            <div class="label">Community Organizing</div>
-            <div class="desc">Windsor Selectboard, cooperative tech, Vermont mutual aid</div>
+            <div class="label">Covered Bridge Cooperative</div>
+            <div class="desc">Led the conversion of a 30-year family bakery to a 100% worker-owned cooperative</div>
           </div>
         </div>
       </div>
@@ -729,18 +803,18 @@ section { scroll-margin-top: 72px; }
       <div class="domain-card coop" data-detail="d1">
         <h3>🤝 Cooperative Systems</h3>
         <div class="tags">
-          <span>Platform co-ops</span>
           <span>Worker ownership</span>
-          <span>Digital democracy</span>
+          <span>Small business</span>
+          <span>Democratic governance</span>
         </div>
-        <p class="preview">Technology designed to be owned by the people who use it — not the people who sell it.</p>
+        <p class="preview">Technology and organizational design for businesses owned by the people who run them — not the people who sell them.</p>
         <div class="detail" id="d1">
-          <p>I design and build technology for cooperative ownership models: platform cooperatives, multi-stakeholder governance, and democratic decision-making systems that actually work at scale.</p>
+          <p>I design and build technology for cooperative ownership models: platform cooperatives, multi-stakeholder governance, and democratic decision-making systems that actually work at scale. I've done it — I led the conversion of my family's 30-year cookie bakery into a 100% worker-owned cooperative and tripled revenue in three years.</p>
           <ul>
-            <li>Cooperative governance design for digital platforms</li>
+            <li>Cooperative governance design for family businesses transitioning to worker ownership</li>
             <li>Open-source tooling for worker-owned enterprises</li>
-            <li>Transition strategies from platform capitalism to cooperative models</li>
-            <li>Democratic decision-making systems for technical organizations</li>
+            <li>Transition strategies from sole proprietorship to cooperative models</li>
+            <li>Democratic decision-making systems for small organizations</li>
           </ul>
         </div>
       </div>
@@ -750,7 +824,7 @@ section { scroll-margin-top: 72px; }
         <h3>🏗️ Software Architecture</h3>
         <div class="tags">
           <span>Distributed systems</span>
-          <span>Infrastructure</span>
+          <span>DevOps</span>
           <span>Security</span>
         </div>
         <p class="preview">Resilient, sovereign infrastructure that doesn't phone home — from single-node to cluster.</p>
@@ -770,16 +844,17 @@ section { scroll-margin-top: 72px; }
         <h3>🌱 Community Leadership</h3>
         <div class="tags">
           <span>Local government</span>
+          <span>Scouting</span>
           <span>Mutual aid</span>
-          <span>Organizing</span>
         </div>
-        <p class="preview">Running for local office, building mutual aid networks, and designing community systems that last.</p>
+        <p class="preview">Serving my community across multiple fronts — municipal governance, youth development, and crisis response.</p>
         <div class="detail" id="d3">
-          <p>I bring an infrastructure mindset to community organizing: design systems that don't require a hero to keep running. I ran for Windsor Selectboard, built mutual aid networks during the pandemic, and co-founded Windsor Live.</p>
+          <p>I bring an infrastructure mindset to community organizing: design systems that don't require a hero to keep running. I served on the Windsor, Vermont Selectboard from the beginning of the COVID-19 pandemic through the worst of it — 2.5 years of crisis governance at the municipal level, making decisions about public health, emergency response, and community resilience when the playbook didn't exist. I also founded the 161st Catamounts, a community scouting troop chartered under Outdoor Service Guides, and co-founded Windsor Live, a community cultural venue.</p>
           <ul>
-            <li>Running for local office and municipal governance</li>
-            <li>Mutual aid network design and facilitation</li>
-            <li>Community event programming and venue operation</li>
+            <li>2.5 years on Windsor Selectboard — COVID crisis governance from day one</li>
+            <li>Founded the 161st Catamounts (Outdoor Service Guides) — community scouting, democratic governance, de-escalation-first philosophy</li>
+            <li>Mutual aid network design and facilitation during the pandemic</li>
+            <li>Community event programming and venue operation (Windsor Live)</li>
             <li>Emergency preparedness and resilience planning</li>
           </ul>
         </div>
@@ -790,38 +865,102 @@ section { scroll-margin-top: 72px; }
         <h3>🔒 Privacy &amp; Open Source</h3>
         <div class="tags">
           <span>Data sovereignty</span>
-          <span>AGPL</span>
           <span>Self-hosting</span>
+          <span>Community tech</span>
         </div>
         <p class="preview">The best technology is the kind you can own — no dependencies, no phone-home, no rent-seeking.</p>
         <div class="detail" id="d4">
-          <p>Every project I build is either fully self-hosted or designed to be. My multi-agent system (The House) and distributed inference cluster (Phonon) are expressions of a single philosophy: infrastructure that serves its operator, not the other way around.</p>
+          <p>Every project I build is either fully self-hosted or designed to be. My multi-agent system (The House) and distributed inference cluster (Phonon) are expressions of a single philosophy: infrastructure that serves its operator, not the other way around. I believe technology should be a tool for liberation, not a tether.</p>
           <ul>
             <li>AGPL-licensed open-source infrastructure projects</li>
-            <li>Data sovereignty architecture (sub-5ms query routing, no cloud dependencies)</li>
+            <li>Data sovereignty architecture (no cloud dependencies)</li>
             <li>Private AI deployment on consumer hardware</li>
             <li>Zero-trust security models for small-scale operators</li>
           </ul>
         </div>
       </div>
 
-      <!-- Québec & Canadian Heritage -->
+      <!-- Franco-American Heritage -->
       <div class="domain-card qc" data-detail="d5">
-        <h3>🍁 Québec &amp; Canadian Heritage</h3>
+        <h3>⚜️ Franco-American Heritage</h3>
         <div class="tags">
-          <span>Québec studies</span>
-          <span>Sovereignty</span>
-          <span>Cultural tech</span>
+          <span>Found Canadian</span>
+          <span>Bill C-3</span>
+          <span>Diaspora</span>
         </div>
-        <p class="preview">Applying infrastructure thinking to Québec's cultural and political sovereignty — because sovereignty isn't just political, it's technical.</p>
+        <p class="preview">One of the first "found Canadians" — navigating diaspora reconnection, citizenship restoration, and cultural reclamation.</p>
         <div class="detail" id="d5">
-          <p>I'm in the process of relocating to Sherbrooke, Québec and bringing my practice with me. I believe Québec's tradition of sovereignty and collective ownership is a natural fit for cooperative technology infrastructure, and I'm building bridges between the two worlds.</p>
+          <p>I was among the first #5,000 people to have Canadian citizenship restored under the Bjorkquist decision and Bill C-3 — the law that finally ended Canada's sexist citizenship laws that stripped Franco-American women of their nationality when they married Americans. My great-grandfather Wilfrid Goulet came from Québec during the Grande Hémorragie, the great French Canadian exodus to New England. I'm bilingual (French/English) and bicultural, and I help other Franco-Americans navigate the same reconnection journey.</p>
           <ul>
-            <li>Québec cultural and political sovereignty research</li>
-            <li>Francophone technology infrastructure projects</li>
-            <li>Cross-border technology cooperation (Vermont-Québec)</li>
-            <li>Chinook Jargon and Inuktitut language preservation technology</li>
+            <li>Bill C-3 / Bjorkquist citizenship pathway guidance</li>
+            <li>Franco-American diaspora reconnection consulting</li>
+            <li>Bilingual and bicultural community building</li>
+            <li>Language preservation technology (Inuktitut, French)</li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="projects" id="projects">
+  <div class="container">
+    <div class="section-header">
+      <div class="label">What I'm building</div>
+      <h2>Active projects</h2>
+      <p>Each of these represents years of work, not weeks. They're the systems and organizations I'm stewarding into the future.</p>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="icon">🍪</div>
+        <h3>Covered Bridge Cooperative</h3>
+        <div class="role">Chief of Community · Board Director</div>
+        <p>My family's 30-year-old cookie bakery — I led the conversion to 100% worker ownership and tripled revenue in three years. Four worker-owners, four flagship recipes (Classic Hermits, Gingersnaps, Maple Shortbread, Classic Shortbread), zero unpronounceable ingredients. A proof case that Main Street businesses can be owned by the people who run them, not the people who sell them.</p>
+        <div class="tags">
+          <span>Worker cooperative</span>
+          <span>Windsor, VT</span>
+          <span>Family business</span>
+          <span>Revenue 3x</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="icon">🌲</div>
+        <h3>161st Catamounts</h3>
+        <div class="role">Chief Tiguidou · Founder &amp; Scoutmaster</div>
+        <p>Community scouting troop chartered under Outdoor Service Guides (OSG). All-adult, community defense-oriented, democratic governance — explicitly not a militia. Core training in de-escalation, wilderness first response, emergency communications, and community resilience. Based in Windsor, operating throughout the Upper Connecticut River Valley.</p>
+        <div class="tags">
+          <span>Scouting</span>
+          <span>Community defense</span>
+          <span>Outdoor Service Guides</span>
+          <span>De-escalation</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="icon">🏗️</div>
+        <h3>Phonon</h3>
+        <div class="role">Creator &amp; Lead Architect</div>
+        <p>Private distributed inference cluster — turn spare Android phones into a secure, private AI cluster. No cloud dependency, no data leakage. MIT-licensed, designed for data sovereignty. The project that proves you don't need a data center to run your own AI infrastructure.</p>
+        <div class="tags">
+          <span>Distributed systems</span>
+          <span>Edge AI</span>
+          <span>MIT</span>
+          <span>phononai.org</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="icon">🏛️</div>
+        <h3>The House</h3>
+        <div class="role">Architect &amp; Steward</div>
+        <p>Multi-agent system for generational sovereignty. A self-maintaining infrastructure stack — agents that observe, document, and improve the systems they run on. Built to enable one Franco-Canadian nonbinary builder in Vermont to operate at the scale of many while protecting time for his four-year-old daughter.</p>
+        <div class="tags">
+          <span>Agent systems</span>
+          <span>Self-hosting</span>
+          <span>Generational sovereignty</span>
+          <span>Ragamuffin</span>
         </div>
       </div>
     </div>
@@ -833,7 +972,7 @@ section { scroll-margin-top: 72px; }
     <div class="section-header">
       <div class="label">How I can help</div>
       <h2>Consulting &amp; collaboration</h2>
-      <p>Engagements range from a single security review to full-stack architecture and implementation. Everything is priced transparently, and I don't take work I don't believe in.</p>
+      <p>Engagements range from a single operations review to full-stack architecture and implementation. Everything is priced transparently, and I don't take work I don't believe in.</p>
     </div>
 
     <div class="consulting-grid">
@@ -858,9 +997,9 @@ section { scroll-margin-top: 72px; }
         <p>Architecture-level security review, threat modeling, and hardening. I find the things that automated scanners miss — the logic errors, the design assumptions, the dead code.</p>
       </div>
       <div class="consult-card">
-        <div class="icon">📜</div>
-        <h3>Québec Cultural Consulting</h3>
-        <p>Technology strategy for Québec sovereignty and cultural preservation. Cross-border cooperation, francophone infrastructure, and language preservation technology.</p>
+        <div class="icon">🏛️</div>
+        <h3>Municipal &amp; Civic Technology</h3>
+        <p>Technology strategy for local government and community organizations. 2.5 years on a selectboard through a pandemic taught me what small governments actually need — and it's not enterprise software.</p>
       </div>
       <div class="consult-card">
         <div class="icon">🎧</div>
@@ -884,15 +1023,15 @@ section { scroll-margin-top: 72px; }
 
     <div class="about-grid">
       <div class="about-text">
-        <p>I'm a systems architect, infrastructure builder, and community organizer from Windsor, Vermont — relocating to Sherbrooke, Québec. I've spent my career at the intersection of technology and human systems: everything from designing distributed inference clusters to running for local office to building cooperative automation pipelines.</p>
+        <p>I'm a systems architect, infrastructure builder, and community organizer from Windsor, Vermont. I've spent my career at the intersection of technology and human systems: everything from designing distributed inference clusters to serving on the Windsor Selectboard through a global pandemic to founding a community scouting troop to converting my family's 30-year-old cookie bakery into a worker-owned cooperative.</p>
         <p>I believe the best technology is the kind you can own — no dependencies, no phone-home, no rent-seeking. <strong>The House</strong> (my multi-agent system) and <strong>Phonon</strong> (my private inference cluster) are expressions of that philosophy: infrastructure that serves its operator, not the other way around.</p>
-        <p>When I'm not building, I'm playing music, researching Québec sovereignty, learning Inuktitut, or planning my next move in the great Vermont-to-Québec pipeline.</p>
+        <p>When I'm not building, I'm playing music, running the 161st Catamounts, researching Franco-American diaspora reconnection, working on Covered Bridge operations, or spending time with my family.</p>
       </div>
       <div class="about-contact">
         <a href="mailto:me@christophergoulet.com">✉️ EMAIL me@christophergoulet.com</a>
         <a href="https://github.com/big-cookie" target="_blank">🐙 GITHUB big-cookie</a>
         <a href="https://www.linkedin.com/in/christopher-goulet-9a441760/" target="_blank">💼 LinkedIn</a>
-        <a href="#">📍 Windsor, VT → Sherbrooke, QC</a>
+        <a href="#">📍 Windsor, Vermont</a>
       </div>
     </div>
   </div>
@@ -908,6 +1047,13 @@ section { scroll-margin-top: 72px; }
 
     <div class="archive-grid">
       <div class="archive-item">
+        <h4>Selectboard — COVID Era</h4>
+        <div class="meta">2020 — 2022</div>
+        <p>2.5 years on the Windsor, Vermont Selectboard starting at the onset of COVID-19. Crisis governance, emergency response, public health decisions, and municipal process under unprecedented pressure.</p>
+        <a href="https://christophergoulet.com/2024/02/zero-to-candidate-what-I-learned-running-for-selectboard/" target="_blank">Read the essay →</a>
+      </div>
+
+      <div class="archive-item">
         <h4>Windsor Live</h4>
         <div class="meta">2017 — Present</div>
         <p>Community venue, event space, and cultural hub in downtown Windsor, Vermont. Live music, art shows, and community gatherings.</p>
@@ -915,10 +1061,10 @@ section { scroll-margin-top: 72px; }
       </div>
 
       <div class="archive-item">
-        <h4>Selectboard Campaign</h4>
-        <div class="meta">2024</div>
-        <p>Campaign for Windsor Selectboard. Platform: fiscal responsibility, infrastructure investment, community resilience, and transparent governance.</p>
-        <a href="https://christophergoulet.com/2024/02/zero-to-candidate-what-I-learned-running-for-selectboard/" target="_blank">Read the essay →</a>
+        <h4>Whatdothlife</h4>
+        <div class="meta">2015 — Present</div>
+        <p>Vermont-based music and arts collective; founding member who navigated it through 501(c)(3) status. Nonprofit formation from scratch: governance, compliance, community programming.</p>
+        <a href="https://christophergoulet.com/2024/02/zero-to-candidate-what-I-learned-running-for-selectboard/" target="_blank">Read →</a>
       </div>
 
       <div class="archive-item">
@@ -952,14 +1098,14 @@ section { scroll-margin-top: 72px; }
       <div class="archive-item">
         <h4>Podcast appearances</h4>
         <div class="meta">2022 — Present</div>
-        <p>Guest appearances on podcasts discussing technology, community organizing, cooperative economics, and Québec sovereignty.</p>
+        <p>Guest appearances on podcasts discussing technology, community organizing, cooperative economics, and Franco-American diaspora.</p>
         <a href="https://christophergoulet.com/podcast/" target="_blank">Listen →</a>
       </div>
 
       <div class="archive-item">
         <h4>Music projects</h4>
         <div class="meta">2012 — Present</div>
-        <p>Original music, studio recording, and live performance. Electronic, ambient, and experimental. Selected releases and session work.</p>
+        <p>Original music, studio recording, and live performance. Electronic, ambient, and experimental. The Pilgrims, The Jobz, and more — toured across New England.</p>
         <a href="https://soundcloud.com/uprootx" target="_blank">Listen on SoundCloud →</a>
       </div>
 
@@ -978,17 +1124,10 @@ section { scroll-margin-top: 72px; }
       </div>
 
       <div class="archive-item">
-        <h4>Systems Administrator</h4>
-        <div class="meta">2010 — Present</div>
-        <p>Systems administration, network engineering, and DevOps across multiple organizations. Linux, BSD, network infrastructure, and security.</p>
+        <h4>Hanover Stringed Instruments</h4>
+        <div class="meta">5 Years</div>
+        <p>General Manager — full P&L, purchasing, repair scheduling, live sound production, sales strategy, team leadership, strategic planning, and lutherie.</p>
         <a href="https://www.linkedin.com/in/christopher-goulet-9a441760/" target="_blank">LinkedIn →</a>
-      </div>
-
-      <div class="archive-item">
-        <h4>The Phonon Project</h4>
-        <div class="meta">2026</div>
-        <p>Private distributed inference cluster. Turn your spare Android phones into a private, secure AI cluster. No cloud dependency, no data leakage.</p>
-        <a href="https://phononai.org" target="_blank">phononai.org →</a>
       </div>
     </div>
 
