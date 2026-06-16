@@ -11,21 +11,29 @@ The Tech page demonstrates depth and shows off the cool stuff. It serves two aud
 
 ## Aesthetic Direction
 
-**Solarpunk retro-futurism.** This is the key design constraint for the tech page.
+**Solarpunk retro-futurism, executed through the visual language of the early web.** This is the key design constraint for the tech page.
 
-**What solarpunk retro-futurism means here:**
-- Warm, optimistic, organic-meets-technical
-- Copper and teal as accent colors — not clinical blue-white tech, not hypergreen cyberpunk
-- Think: a well-maintained server room lit by afternoon sun through leaves. The terminal aesthetic but with warmth. Brass and patina, not chrome and neon.
-- The scanline overlay from the current design system works well here (CRT/terminal heritage)
-- The mesh canvas (node graph) works here — but the connection lines should be copper-colored, not cold blue
-- Typography: the existing Fraunces/mono/sans triad fits. The serif gives warmth to otherwise cold technical content
-- Buttons and interactive elements: copper (#c87a3f or similar) instead of amber. Teal (#3fa8a8 or similar) for secondary accents
+**What this means:**
+- The copper/teal solarpunk palette stays — the sincerity and optimism are what make this work
+- But the visual execution channels Geocities, Angelfire, the web of 1996–2003
+- Page counter at the bottom of the page. Not a joke — a real page counter rendered in classic style (e.g., the "digit" counter GIFs or a CSS version of the same)
+- A web ring. Links to the other four subdomains in classic web-ring format: "← christophergoulet.com → biz → tech → canada → civic" with a small graphic. This replaces the standard footer link list
+- Marquees? Maybe one, used sparingly, for something that genuinely benefits from motion (e.g., the terminal boot output)
+- Solid background colors in table cells or panel headers (Geocities-era layout principle)
+- Star or sparkle dividers between sections instead of thin horizontal rules
+- Under construction GIF icon. Not ironic — sincere. "This site is always under construction" is the exact right philosophy for a solarpunk builder
+- A guestbook or "sign my guestbook" link (could be a Cal.com booking redirect framed as a guestbook)
+- The "made with" footer badge: "Made with ☕ and 🍪 in Windsor, VT" or similar
+- Construction / terminal aesthetic: semi-transparent scanlines, monospace-heavy, but with the copper warmth bleeding through
 
-**Counter-examples of what this is NOT:**
-- Not cyberpunk (dark, dystopian, hacker green on black)
-- Not corporate tech (clean, blue, Salesforce-ish)
-- Not minimal/scandi (white space, restrained, cold)
+**Key principle:** This is NOT parody. It is not ironic 90s nostalgia. It is an earnest expression of the web's original vision — personal, handmade, expressive, non-commercial — filtered through a modern solarpunk lens. The sincerity is what makes it work. If it feels like a joke, it's wrong.
+
+**What this is NOT:**
+- Not skeuomorphic (no beveled buttons trying to look like Windows 95)
+- Not ironic (no Comic Sans, no "you've got mail" popups)
+- Not retro-bait (no Matrix green-on-black hacker aesthetic)
+- Not corporate tech (no clean blue Salesforces)
+- Not straight-laced minimal (no heydonworks restraint here)
 
 **Color palette (draft — iterate):**
 - Background: `#0a0b0d` (existing dark is fine — the warmth comes from the accents, not the background)
