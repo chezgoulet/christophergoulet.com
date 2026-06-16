@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christopher Goulet — Small Business Technology Consulting</title>
+<meta name="description" content="Small business technology that works — and that you own. Infrastructure, private AI, and cooperative technology for New England businesses.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,0..100&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ───── RESET ───── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ───── ROOT ───── */
+:root{
+  --bg:#0a0b0d;
+  --bg-grad:#0c0e11;
+  --panel:#101316;
+  --panel-2:#14181c;
+  --line:#22272d;
+  --line-2:#2c333a;
+  --text:#e6e8ea;
+  --text-2:#9aa1a9;
+  --text-3:#646b73;
+  --amber:#e8b14f;
+  --amber-dim:#b88a3c;
+  --sage:#6cc49a;
+  --red:#e0716a;
+  --radius:10px;
+  --radius-sm:6px;
+  --max-w:1140px;
+}
+
+/* ───── BASE ───── */
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  position:relative;
+  overflow-x:hidden;
+}
+body::after{
+  content:'';
+  position:fixed;
+  top:0;left:0;width:100%;height:100%;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,.02) 2px,rgba(255,255,255,.02) 4px);
+  pointer-events:none;z-index:9999;
+}
+::selection{background:rgba(232,177,79,.3);color:#fff}
+
+/* ───── TYPOGRAPHY ───── */
+h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:600}
+.mono{font-family:'IBM Plex Mono',monospace}
+.mono-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;font-weight:500;
+  text-transform:uppercase;letter-spacing:.06em;
+  color:var(--text-3);
+}
+.mono-meta{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;color:var(--text-2);
+}
+
+/* ───── SCROLL REVEAL ───── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ───── STATUS DOT ───── */
+.dot{
+  display:inline-block;width:8px;height:8px;
+  border-radius:50%;background:var(--sage);
+  animation:pulse-dot 2s ease-in-out infinite;
+  margin-right:6px;vertical-align:middle;
+}
+@keyframes pulse-dot{
+  0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(108,196,154,.5)}
+  50%{opacity:.6;box-shadow:0 0 0 6px rgba(108,196,154,0)}
+}
+
+/* ───── WRAP ───── */
+.wrap{max-width:var(--max-w);margin:0 auto;padding:0 24px}
+
+/* ───── NAV ───── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(10,11,13,.88);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+  height:56px;
+}
+nav .wrap{
+  display:flex;align-items:center;justify-content:space-between;height:56px;
+}
+nav .brand{
+  font-family:'Fraunces',serif;font-weight:600;font-size:18px;
+  color:var(--text);text-decoration:none;letter-spacing:-.3px;
+}
+nav .brand:hover{color:var(--amber)}
+nav .links{display:flex;align-items:center;gap:20px}
+nav .links a{
+  color:var(--text-2);text-decoration:none;
+  font-size:13px;font-weight:500;transition:color .2s;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+nav .links a:hover{color:var(--text)}
+nav .cta-link{
+  display:inline-flex;align-items:center;
+  padding:6px 16px;background:var(--amber);color:#0a0b0d!important;
+  border-radius:var(--radius-sm);font-weight:600;font-size:12px;
+  transition:opacity .2s;
+}
+nav .cta-link:hover{opacity:.85;color:#0a0b0d!important}
+.nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:22px;cursor:pointer;padding:4px}
+
+/* ───── HERO ───── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding-top:56px;position:relative;overflow:hidden;
+}
+.hero .grid{
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:48px;align-items:center;width:100%;padding:80px 0;
+}
+
+/* Boot */
+.boot{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;color:var(--text-3);
+  margin-bottom:20px;line-height:1.8;
+}
+.boot span{display:block}
+.boot .ok{color:var(--sage)}
+.boot .amber{color:var(--amber)}
+
+.hero h1{
+  font-size:clamp(34px,4.2vw,52px);
+  font-weight:600;line-height:1.12;letter-spacing:-.8px;
+  margin-bottom:16px;
+}
+.hero h1 em{
+  font-style:normal;
+  background:linear-gradient(135deg,var(--amber),var(--amber-dim));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+.lede{
+  font-size:16px;color:var(--text-2);
+  max-width:520px;margin-bottom:28px;line-height:1.7;
+}
+
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+
+.btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:11px 26px;border-radius:var(--radius-sm);
+  font-size:14px;font-weight:600;text-decoration:none;
+  transition:all .25s;font-family:'IBM Plex Sans',sans-serif;
+}
+.btn-primary{
+  background:var(--amber);color:#0a0b0d;
+  box-shadow:0 2px 12px rgba(232,177,79,.25);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(232,177,79,.35)}
+.btn-ghost{
+  background:transparent;color:var(--text);
+  border:1px solid var(--line);border-color:var(--line-2);
+}
+.btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
+
+/* Hero Panel */
+.hero-panel{
+  background:var(--panel);
+  border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;position:relative;
+}
+.hp-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 16px;border-bottom:1px solid var(--line);
+  font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-3);
+  text-transform:uppercase;letter-spacing:.04em;
+}
+.hp-bar .dot-wrap{display:flex;align-items:center}
+.hp-bar .dot{width:6px;height:6px}
+
+.hp-mesh{position:relative;aspect-ratio:16/10;background:var(--bg-grad)}
+#mesh{display:block;width:100%;height:100%}
+
+.hp-stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;border-top:1px solid var(--line);
+}
+.hp-stat{
+  padding:14px 16px;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.hp-stat:nth-child(2n){border-right:none}
+.hp-stat:nth-last-child(-n+2){border-bottom:none}
+.hp-stat .num{
+  font-family:'Fraunces',serif;
+  font-size:clamp(22px,2.8vw,30px);
+  font-weight:600;color:var(--amber);line-height:1;
+}
+.hp-stat .num .s{color:var(--sage)}
+.hp-stat .label{
+  font-size:11px;color:var(--text-3);margin-top:2px;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+
+.hp-foot{
+  padding:10px 16px;
+  display:flex;align-items:center;justify-content:space-between;
+  font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-3);
+}
+
+/* ───── SECTION ───── */
+.sec{padding:100px 0}
+
+.sec-head{margin-bottom:48px}
+.sec-head .idx{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--amber);margin-bottom:6px;position:relative;display:inline-block;
+}
+.sec-head .idx::after{
+  content:'';position:absolute;bottom:-4px;left:0;
+  width:40px;height:2px;background:var(--amber);
+}
+.sec-head h2{
+  font-size:clamp(26px,3.2vw,38px);
+  font-weight:600;letter-spacing:-.6px;margin-top:12px;
+  max-width:620px;
+}
+
+/* ───── PAIN GRID ───── */
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.pain{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius);padding:24px;
+  transition:border-color .25s,transform .25s;
+}
+.pain:hover{border-color:var(--amber-dim);transform:translateY(-2px)}
+.pain-q{
+  font-family:'Fraunces',serif;font-weight:500;
+  font-size:17px;color:var(--text);margin-bottom:10px;
+  line-height:1.4;
+}
+.pain p{font-size:14px;color:var(--text-2);line-height:1.6}
+
+/* ───── PROOF ───── */
+.proof{
+  background:var(--panel);
+  border:1px solid var(--amber-dim);
+  border-radius:var(--radius);
+  padding:32px;
+}
+.proof-tag{
+  display:inline-flex;align-items:center;
+  font-family:'IBM Plex Mono',monospace;font-size:10px;
+  text-transform:uppercase;letter-spacing:.08em;
+  background:rgba(232,177,79,.12);color:var(--amber);
+  padding:4px 10px;border-radius:4px;margin-bottom:14px;
+}
+.proof-body{
+  display:grid;grid-template-columns:1.4fr 1fr;
+  gap:32px;align-items:start;
+}
+.proof-body h3{
+  font-size:clamp(18px,2.2vw,24px);
+  font-weight:600;line-height:1.3;
+  color:var(--text);margin-bottom:10px;
+}
+.proof-body p{font-size:14px;color:var(--text-2);line-height:1.7}
+.proof-stats{
+  display:flex;flex-direction:column;gap:12px;
+  padding:16px;background:rgba(10,11,13,.4);
+  border-radius:var(--radius-sm);
+}
+.proof-stat{text-align:center}
+.proof-stat .num{
+  font-family:'Fraunces',serif;font-size:28px;font-weight:600;
+  color:var(--amber);line-height:1;
+}
+.proof-stat .label{font-size:12px;color:var(--text-3);margin-top:2px}
+
+/* ───── SERVICES ───── */
+.serve-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.serve{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius);padding:28px 24px;
+  position:relative;transition:border-color .25s,transform .25s;
+}
+.serve::before{
+  content:'';position:absolute;top:0;left:24px;right:24px;
+  height:2px;background:var(--amber);
+  border-radius:0 0 2px 2px;
+}
+.serve:hover{border-color:var(--amber-dim);transform:translateY(-2px)}
+.serve .no{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;color:var(--text-3);margin-bottom:10px;
+}
+.serve h3{
+  font-family:'Fraunces',serif;
+  font-size:17px;font-weight:600;margin-bottom:8px;
+  color:var(--text);
+}
+.serve p{font-size:13px;color:var(--text-2);line-height:1.6}
+
+/* ───── BOOK ───── */
+.book-sec{padding:60px 0 100px}
+.book-panel{
+  background:var(--panel);border:1px solid var(--amber-dim);
+  border-radius:var(--radius);overflow:hidden;
+}
+.book-bar{
+  display:flex;align-items:center;
+  padding:14px 20px;
+  border-bottom:1px solid rgba(184,138,60,.2);
+}
+.book-bar .bar-dots{display:flex;gap:6px}
+.book-bar .bar-dots span{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--text-3);
+}
+.book-bar .bar-dots span:nth-child(1){background:var(--red)}
+.book-bar .bar-dots span:nth-child(2){background:var(--amber)}
+.book-bar .bar-dots span:nth-child(3){background:var(--sage)}
+.book-body{padding:36px 32px;text-align:center}
+.book-body .fr{
+  font-family:'Fraunces',serif;
+  font-size:clamp(22px,2.8vw,32px);font-weight:600;
+  color:var(--amber);margin-bottom:12px;
+}
+.book-body p{font-size:15px;color:var(--text-2);margin-bottom:24px}
+.book-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
+.book-actions .btn-primary{padding:12px 30px}
+.book-actions .btn-ghost{padding:12px 24px}
+.book-note{font-size:12px;color:var(--text-3)}
+
+/* ───── FOOTER ───── */
+footer{
+  border-top:1px solid var(--line);padding:40px 0;
+  text-align:center;
+}
+footer .links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:14px}
+footer .links a{
+  color:var(--text-3);text-decoration:none;
+  font-size:12px;font-family:'IBM Plex Mono',monospace;
+  transition:color .2s;
+}
+footer .links a:hover{color:var(--amber)}
+footer p{font-size:11px;color:var(--text-3);font-family:'IBM Plex Mono',monospace}
+
+/* ───── SEARCH / FILTER ───── */
+.search-box{display:none}
+.filter-bar{display:none}
+
+/* ───── SCROLL MARGIN ───── */
+section{scroll-margin-top:72px}
+
+/* ───── SVG ICONS INLINE HELPER ───── */
+.icon-svg{display:inline-block;width:1em;height:1em;fill:currentColor;vertical-align:middle}
+
+/* ───── RESPONSIVE ───── */
+@media(max-width:980px){
+  .hero .grid{grid-template-columns:1fr;gap:36px;padding:60px 0}
+  .hero-panel{max-width:480px}
+  .pain-grid{grid-template-columns:1fr}
+  .serve-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:900px){
+  .hero .grid{grid-template-columns:1fr;gap:36px;padding:60px 0}
+  .proof-body{grid-template-columns:1fr;gap:20px}
+  .serve-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:620px){
+  nav .links{display:none}
+  nav .links.open{
+    display:flex;flex-direction:column;
+    position:absolute;top:56px;left:0;right:0;
+    background:var(--bg);border-bottom:1px solid var(--line);
+    padding:16px 24px;gap:12px;
+  }
+  .nav-toggle{display:block}
+  .hero h1{font-size:28px}
+  .lede{font-size:15px}
+  .pain-grid{grid-template-columns:1fr}
+  .serve-grid{grid-template-columns:1fr}
+  .hp-stats{grid-template-columns:1fr 1fr}
+  .sec{padding:60px 0}
+  .wrap{padding:0 16px}
+  .book-body{padding:28px 20px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1!important;transform:none!important}
+  .dot{animation:none!important}
+  *,*::before,*::after{transition-duration:0s!important;animation-duration:0s!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ───── SVG DEFS ───── -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <symbol id="g-shop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+      <polyline points="9,22 9,12 15,12 15,22"/>
+    </symbol>
+    <symbol id="g-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+    </symbol>
+    <symbol id="g-ai" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="16 3 21 3 21 8"/>
+      <line x1="4" y1="20" x2="21" y2="3"/>
+      <polyline points="21 16 21 21 16 21"/>
+      <line x1="15" y1="15" x2="21" y2="21"/>
+      <line x1="4" y1="4" x2="9" y2="9"/>
+    </symbol>
+    <symbol id="g-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      <path d="M9 12l2 2 4-4"/>
+    </symbol>
+    <symbol id="g-coop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+      <circle cx="9" cy="7" r="4"/>
+      <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+      <path d="M16 3.13a4 4 0 010 7.75"/>
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+      <polyline points="22,6 12,13 2,6"/>
+    </symbol>
+    <symbol id="i-git" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="18" cy="18" r="3"/>
+      <circle cx="6" cy="6" r="3"/>
+      <path d="M13 6h3a2 2 0 012 2v7"/>
+      <line x1="6" y1="9" x2="6" y2="21"/>
+    </symbol>
+    <symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/>
+      <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+      <circle cx="12" cy="10" r="3"/>
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12"/>
+      <polyline points="12 5 19 12 12 19"/>
+    </symbol>
+    <symbol id="g-mesh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M2 12h20"/>
+      <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ───── NAV ───── -->
+<nav>
+  <div class="wrap">
+    <a href="https://christophergoulet.com" class="brand">C.GOULET</a>
+    <button class="nav-toggle" onclick="document.querySelector('nav .links').classList.toggle('open')" aria-label="Toggle menu">☰</button>
+    <div class="links">
+      <a href="#how">How I help</a>
+      <a href="#proof">Proven</a>
+      <a href="#services">Services</a>
+      <a href="#book" class="cta-link">Book a call</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ───── HERO ───── -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <div class="boot" id="boot">
+          <span>> boot sequence initiated...</span>
+          <span>> mDNS service discovery active</span>
+          <span>> ed25519 key pair generated</span>
+          <span class="amber">> health-aware routing engaged</span>
+          <span class="ok">> all nodes nominal</span>
+        </div>
+        <h1>Small business technology <em>that works</em> — and that you own.</h1>
+        <p class="lede">I help small businesses, family businesses, and nonprofits across New England get technology that stays out of the way — and keep ownership where it belongs: with you. I've done this for my own family's business and I can do it for yours.</p>
+        <div class="actions">
+          <a href="#book" class="btn btn-primary">Book a free call</a>
+          <a href="#how" class="btn btn-ghost">See how I help</a>
+        </div>
+      </div>
+      <div>
+        <div class="hero-panel">
+          <div class="hp-bar">
+            <span>// HOW I HELP</span>
+            <span class="dot-wrap"><span class="dot"></span>AVAILABLE</span>
+          </div>
+          <div class="hp-mesh">
+            <canvas id="mesh"></canvas>
+          </div>
+          <div class="hp-stats">
+            <div class="hp-stat">
+              <div class="num">3<span class="s">×</span></div>
+              <div class="label">grew our bakery</div>
+            </div>
+            <div class="hp-stat">
+              <div class="num">100<span class="s">%</span></div>
+              <div class="label">worker-owned</div>
+            </div>
+            <div class="hp-stat">
+              <div class="num">15<span class="s">+</span></div>
+              <div class="label">yrs helping</div>
+            </div>
+            <div class="hp-stat">
+              <div class="num">2</div>
+              <div class="label">EN·FR</div>
+            </div>
+          </div>
+          <div class="hp-foot">
+            <span>WINDSOR·VT</span>
+            <span id="utc-clock">--:--:--</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── HOW I HELP ───── -->
+<section class="sec" id="how">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="idx">01 — HOW I HELP</div>
+      <h2>It shouldn't be this hard to run your business</h2>
+    </div>
+    <div class="pain-grid">
+      <div class="pain reveal">
+        <div class="pain-q">"My systems keep breaking and no one can fix them."</div>
+        <p>I build simple, stable, documented setups that don't need a hero to keep running. When something breaks, you know exactly who to call — and how to fix it yourself.</p>
+      </div>
+      <div class="pain reveal">
+        <div class="pain-q">"I'm drowning in monthly subscriptions."</div>
+        <p>The SaaS tax is real. I help you move to owned tools — self-hosted infrastructure you control, with predictable costs and no surprise price hikes.</p>
+      </div>
+      <div class="pain reveal">
+        <div class="pain-q">"I want to pass this on — not sell to a stranger."</div>
+        <p>Your life's work shouldn't end in a fire sale. I design worker ownership paths so your business can outlive you, controlled by the people who built it.</p>
+      </div>
+      <div class="pain reveal">
+        <div class="pain-q">"The big software treats me like a corporation."</div>
+        <p>Enterprise software is built for enterprises. I give you right-sized technology that matches what you actually need, with nothing you don't.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── PROOF ───── -->
+<section class="sec" id="proof">
+  <div class="wrap">
+    <div class="proof reveal">
+      <div class="proof-tag">I'VE DONE THIS MYSELF</div>
+      <div class="proof-body">
+        <div>
+          <h3>I turned my family's cookie bakery into a worker-owned business — and tripled its revenue.</h3>
+          <p>Covered Bridge is a 30-year Vermont bakery that makes the best hermits, gingersnaps, maple shortbread, and classic shortbread you've ever had. I led the conversion to 100% worker-ownership — four owners, four recipes, zero unpronounceable ingredients. In three years, we tripled revenue. This isn't theory. This is what I do.</p>
+        </div>
+        <div class="proof-stats">
+          <div class="proof-stat">
+            <div class="num">100%</div>
+            <div class="label">Worker-owned</div>
+          </div>
+          <div class="proof-stat">
+            <div class="num">3×</div>
+            <div class="label">in 3 yrs</div>
+          </div>
+          <div class="proof-stat">
+            <div class="num">30 yrs</div>
+            <div class="label">Legacy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── SERVICES ───── -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="idx">02 — SERVICES</div>
+      <h2>What I deliver</h2>
+    </div>
+    <div class="serve-grid">
+      <div class="serve reveal">
+        <div class="no">001</div>
+        <h3><svg class="icon-svg" style="width:18px;height:18px;margin-right:4px"><use href="#g-gear"/></svg> Infrastructure &amp; DevOps</h3>
+        <p>Design, deployment, and hardening of production infrastructure. Docker Compose to TrueNAS, Traefik to Authentik — stacks one person can operate.</p>
+      </div>
+      <div class="serve reveal">
+        <div class="no">002</div>
+        <h3><svg class="icon-svg" style="width:18px;height:18px;margin-right:4px"><use href="#g-ai"/></svg> Private AI Infrastructure</h3>
+        <p>On-premise LLM inference, model distribution, and cluster management. Keep your data on your hardware — no cloud dependency, no data leakage.</p>
+      </div>
+      <div class="serve reveal">
+        <div class="no">003</div>
+        <h3><svg class="icon-svg" style="width:18px;height:18px;margin-right:4px"><use href="#g-shield"/></svg> Security &amp; Resilience</h3>
+        <p>Architecture-level security review, threat modeling, and hardening. I find what scanners miss — the logic errors, design assumptions, and dead code.</p>
+      </div>
+      <div class="serve reveal">
+        <div class="no">004</div>
+        <h3><svg class="icon-svg" style="width:18px;height:18px;margin-right:4px"><use href="#g-coop"/></svg> Cooperative Technology</h3>
+        <p>Platform co-op design and implementation. Transition from extractive technology models to member-owned, democratically governed systems.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── BOOK ───── -->
+<section class="book-sec" id="book">
+  <div class="wrap">
+    <div class="book-panel reveal">
+      <div class="book-bar">
+        <span class="bar-dots"><span></span><span></span><span></span></span>
+      </div>
+      <div class="book-body">
+        <div class="fr">The first call is free.</div>
+        <p>Tell me what you're trying to build, keep, or pass on.</p>
+        <div class="book-actions">
+          <a href="mailto:me@christophergoulet.com?subject=Free%20consultation%20request" class="btn btn-primary">Book a free call</a>
+          <a href="mailto:me@christophergoulet.com" class="btn btn-ghost">Or email me</a>
+        </div>
+        <div class="book-note">Windsor, Vermont · Serving all of New England</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── FOOTER ───── -->
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="https://christophergoulet.com">main</a>
+      <a href="https://biz.christophergoulet.com">biz</a>
+      <a href="https://tech.christophergoulet.com">tech</a>
+      <a href="https://canada.christophergoulet.com">canada</a>
+      <a href="https://civic.christophergoulet.com">civic</a>
+    </div>
+    <p>Windsor, Vermont · © 2026 Christopher Goulet</p>
+  </div>
+</footer>
+
+<script>
+// ───── MESH CANVAS ─────
+(function(){
+  const c = document.getElementById('mesh');
+  if(!c) return;
+  const ctx = c.getContext('2d');
+  function resize(){
+    const r = c.parentElement.getBoundingClientRect();
+    c.width = r.width;
+    c.height = r.height;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  let nodes = [];
+  const NODE_COUNT = 18;
+  const CONN_DIST = 120;
+
+  function initNodes(){
+    nodes = [];
+    for(let i=0;i<NODE_COUNT;i++){
+      nodes.push({
+        x: Math.random() * c.width,
+        y: Math.random() * c.height,
+        vx: (Math.random()-0.5)*0.4,
+        vy: (Math.random()-0.5)*0.4,
+      });
+    }
+  }
+  initNodes();
+
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+
+    // connections
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const dx = nodes[i].x - nodes[j].x;
+        const dy = nodes[i].y - nodes[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if(dist < CONN_DIST){
+          const alpha = 1 - dist/CONN_DIST;
+          ctx.strokeStyle = 'rgba(232,177,79,'+(alpha*0.25)+')';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // nodes
+    for(const n of nodes){
+      ctx.fillStyle = 'rgba(232,177,79,0.6)';
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, 2.5, 0, Math.PI*2);
+      ctx.fill();
+    }
+
+    // animate
+    for(const n of nodes){
+      n.x += n.vx;
+      n.y += n.vy;
+      if(n.x < 0 || n.x > c.width) n.vx *= -1;
+      if(n.y < 0 || n.y > c.height) n.vy *= -1;
+      n.x = Math.max(0, Math.min(c.width, n.x));
+      n.y = Math.max(0, Math.min(c.height, n.y));
+    }
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+
+  window.addEventListener('resize', ()=>{
+    resize();
+    initNodes();
+  });
+})();
+
+// ───── UTC CLOCK ─────
+(function(){
+  const el = document.getElementById('utc-clock');
+  if(!el) return;
+  function tick(){
+    const d = new Date();
+    el.textContent = d.toUTCString().split(' ')[4] + ' UTC';
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+
+// ───── SCROLL REVEAL ─────
+(function(){
+  const els = document.querySelectorAll('.reveal');
+  if(!els.length) return;
+  const observer = new IntersectionObserver((entries)=>{
+    for(const e of entries){
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    }
+  },{threshold:0.1});
+  for(const el of els) observer.observe(el);
+})();
+</script>
+
+</body>
+</html>

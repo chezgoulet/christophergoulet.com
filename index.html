@@ -4,55 +4,66 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Christopher Goulet — Infrastructure, Architecture & Community</title>
-<meta name="description" content="Systems architect, infrastructure builder, community organizer, and scouting founder from Windsor, Vermont.">
+<meta name="description" content="Christopher Goulet — I help people build things they actually own. Business infrastructure. Diaspora reconnection. Sovereign technology. Community resilience.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-@font-face {
-  font-family: 'Inter';
-  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-  font-display: swap;
-}
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #08090a;
-  --bg2: #0e1012;
-  --bg3: #141619;
-  --card: #1a1c20;
-  --card-hover: #212328;
-  --border: #2a2c30;
+  --bg: #0a0b0d;
+  --bg2: #0e1014;
+  --bg3: #14171c;
+  --card: #191c22;
+  --card-hover: #1f2228;
+  --border: #282b30;
   --text: #e2e4e8;
-  --text2: #9a9ca0;
-  --text3: #6a6c70;
-  --accent: #5a9eff;
-  --green: #4ade80;
-  --indigo: #818cf8;
-  --amber: #fbbf24;
-  --purple: #c084fc;
-  --red: #f87171;
-  --orange: #fb923c;
-  --radius: 12px;
+  --text2: #9a9ca2;
+  --text3: #686a70;
+  --amber: #e8b14f;
+  --amber-dim: rgba(232,177,79,0.12);
+  --amber-glow: rgba(232,177,79,0.08);
+  --amber-rgb: 232,177,79;
+  --radius: 14px;
   --radius-sm: 8px;
-  --max-w: 1200px;
+  --max-w: 1120px;
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Navigation */
+/* ── Scanline overlay ── */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.03) 2px,
+    rgba(0,0,0,0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── Navigation ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 100;
-  background: rgba(8,9,10,0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(10,11,13,0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
 }
 
@@ -63,68 +74,51 @@ nav .inner {
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
-  height: 56px;
+  height: 60px;
 }
 
-nav .logo {
+nav .brand {
+  font-family: 'Fraunces', serif;
   font-weight: 700;
-  font-size: 18px;
-  color: var(--text);
+  font-size: 20px;
+  color: var(--amber);
   text-decoration: none;
-  letter-spacing: -0.5px;
+  letter-spacing: 0.5px;
 }
 
-nav .logo:hover { color: var(--accent); }
+nav .brand:hover { opacity: 0.85; }
 
-nav .links { display: flex; align-items: center; gap: 24px; }
+nav .links { display: flex; align-items: center; gap: 20px; }
 
-nav .links a {
-  color: var(--text2);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
-nav .links a:hover { color: var(--text); }
-
-nav .contact-btn {
+nav .book-btn {
   display: inline-flex;
   align-items: center;
-  padding: 6px 16px;
-  background: var(--accent);
-  color: #000 !important;
+  gap: 8px;
+  padding: 8px 20px;
+  background: var(--amber);
+  color: #0a0b0d !important;
   border-radius: 6px;
+  font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 600;
   font-size: 13px;
-  transition: opacity 0.2s;
-}
-
-nav .contact-btn:hover { opacity: 0.85; color: #000 !important; }
-
-.nav-toggle {
-  display: none;
-  background: none;
+  text-decoration: none;
+  transition: all 0.2s;
   border: none;
-  color: var(--text);
-  font-size: 24px;
   cursor: pointer;
-  padding: 4px;
 }
 
-/* Main */
-.container {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 24px;
+nav .book-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(var(--amber-rgb),0.25);
 }
 
-/* Hero */
+/* ── Hero ── */
 .hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: 56px;
+  padding-top: 60px;
   position: relative;
   overflow: hidden;
 }
@@ -132,1037 +126,636 @@ nav .contact-btn:hover { opacity: 0.85; color: #000 !important; }
 .hero::before {
   content: '';
   position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(90,158,255,0.03) 0%, transparent 70%);
+  top: -40%;
+  left: -10%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(var(--amber-rgb),0.04) 0%, transparent 70%);
   pointer-events: none;
 }
 
-.hero .grid {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 60px;
-  align-items: center;
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  right: -15%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(var(--amber-rgb),0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero .inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
   width: 100%;
-  padding: 80px 0;
+  text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1 {
-  font-size: clamp(40px, 5vw, 64px);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -1.5px;
-  margin-bottom: 20px;
-}
-
-.hero h1 span {
-  background: linear-gradient(135deg, var(--accent), var(--green));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero p {
-  font-size: 18px;
-  color: var(--text2);
-  max-width: 540px;
-  margin-bottom: 32px;
-  line-height: 1.7;
-}
-
-.hero .btns { display: flex; gap: 12px; flex-wrap: wrap; }
-
-.hero .btn-primary {
-  display: inline-flex;
-  align-items: center;
-  padding: 12px 28px;
-  background: var(--accent);
-  color: #000;
-  border-radius: 8px;
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 3.8vw, 48px);
   font-weight: 600;
-  font-size: 15px;
-  text-decoration: none;
-  transition: all 0.2s;
-}
-
-.hero .btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(90,158,255,0.3);
-}
-
-.hero .btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  padding: 12px 28px;
-  background: var(--card);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
   color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  font-weight: 500;
-  font-size: 15px;
-  text-decoration: none;
-  transition: all 0.2s;
-}
-
-.hero .btn-secondary:hover {
-  border-color: var(--text3);
-  background: var(--card-hover);
-}
-
-.hero .sidebar {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 28px;
-}
-
-.hero .sidebar h3 {
-  font-size: 13px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--text3);
   margin-bottom: 16px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.hero .sidebar .item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
+.hero h1 .highlight {
+  color: var(--amber);
 }
 
-.hero .sidebar .item:last-child { border-bottom: none; }
-
-.hero .sidebar .item .icon {
-  width: 32px;
-  height: 32px;
-  background: var(--card);
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  flex-shrink: 0;
-}
-
-.hero .sidebar .item .label {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text);
-}
-
-.hero .sidebar .item .desc {
-  font-size: 12px;
-  color: var(--text3);
-  margin-top: 2px;
-}
-
-/* Section headers */
-.section-header {
-  margin-bottom: 40px;
-}
-
-.section-header .label {
-  font-size: 13px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--accent);
-  margin-bottom: 8px;
-}
-
-.section-header h2 {
-  font-size: clamp(28px, 3.5vw, 40px);
-  font-weight: 700;
-  letter-spacing: -1px;
-  max-width: 600px;
-}
-
-.section-header p {
+.hero .subtitle {
+  font-size: clamp(14px, 1.2vw, 17px);
   color: var(--text2);
-  font-size: 16px;
-  margin-top: 12px;
-  max-width: 500px;
+  max-width: 620px;
+  margin: 0 auto 64px;
+  line-height: 1.7;
+  font-weight: 400;
 }
 
-/* Domain cards */
-.domains { padding: 100px 0; }
+/* ── Doors Grid ── */
+.doors-section {
+  padding: 0 0 100px;
+  position: relative;
+}
 
-.domain-grid {
+.doors-section .inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.doors-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
-.domain-grid .full-row {
-  grid-column: 1 / -1;
-}
-
-.domain-card {
+.door {
   background: var(--bg2);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 28px;
-  cursor: pointer;
-  transition: all 0.25s;
+  padding: 32px;
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
-.domain-card::before {
+.door::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 3px;
+  background: var(--amber);
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
 }
 
-.domain-card.coop::before { background: var(--green); }
-.domain-card.arch::before { background: var(--indigo); }
-.domain-card.comm::before { background: var(--amber); }
-.domain-card.priv::before { background: var(--purple); }
-.domain-card.qc::before { background: var(--orange); }
-
-.domain-card:hover {
-  border-color: var(--text3);
-  background: var(--card-hover);
-  transform: translateY(-2px);
-}
-
-.domain-card h3 {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.domain-card .tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 12px;
-}
-
-.domain-card .tags span {
-  font-size: 11px;
-  font-weight: 500;
-  padding: 2px 8px;
+.door:hover {
+  border-color: rgba(var(--amber-rgb),0.3);
   background: var(--card);
-  border-radius: 4px;
-  color: var(--text2);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
 }
 
-.domain-card .preview {
-  font-size: 14px;
-  color: var(--text3);
-  line-height: 1.5;
-}
-
-.domain-card .detail {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, margin 0.3s ease, opacity 0.3s ease;
-  opacity: 0;
-  margin-top: 0;
-}
-
-.domain-card.open .detail {
-  max-height: 800px;
+.door:hover::before {
   opacity: 1;
-  margin-top: 16px;
 }
 
-.domain-card .detail p {
-  font-size: 14px;
-  color: var(--text2);
-  line-height: 1.7;
-  margin-bottom: 12px;
-}
-
-.domain-card .detail ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.domain-card .detail ul li {
-  font-size: 13px;
-  color: var(--text3);
-  padding-left: 16px;
-  position: relative;
-}
-
-.domain-card .detail ul li::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: var(--accent);
-}
-
-/* Projects section */
-.projects { padding: 100px 0; }
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-}
-
-.project-card {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 28px;
-  transition: all 0.25s;
-}
-
-.project-card:hover {
-  border-color: var(--text3);
-  transform: translateY(-2px);
-}
-
-.project-card .icon {
-  width: 44px;
-  height: 44px;
-  background: var(--card);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
+.door-icon {
+  width: 48px;
+  height: 48px;
   margin-bottom: 16px;
+  color: var(--amber);
 }
 
-.project-card h3 {
-  font-size: 18px;
+.door-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.door h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
   font-weight: 600;
-  margin-bottom: 8px;
+  color: var(--text);
+  margin-bottom: 6px;
 }
 
-.project-card .role {
+.door .door-label {
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
+  color: var(--amber);
   text-transform: uppercase;
-  letter-spacing: 0.8px;
-  color: var(--accent);
+  letter-spacing: 1px;
   margin-bottom: 10px;
 }
 
-.project-card p {
-  font-size: 14px;
-  color: var(--text2);
-  line-height: 1.7;
-  margin-bottom: 12px;
-}
-
-.project-card .tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.project-card .tags span {
-  font-size: 11px;
-  font-weight: 500;
-  padding: 2px 8px;
-  background: var(--card);
-  border-radius: 4px;
-  color: var(--text2);
-}
-
-/* Consulting */
-.consulting { padding: 100px 0; }
-
-.consulting-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.consult-card {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 28px;
-  transition: all 0.25s;
-}
-
-.consult-card:hover {
-  border-color: var(--text3);
-  transform: translateY(-2px);
-}
-
-.consult-card .icon {
-  width: 40px;
-  height: 40px;
-  background: var(--card);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  margin-bottom: 16px;
-}
-
-.consult-card h3 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.consult-card p {
+.door p {
   font-size: 14px;
   color: var(--text2);
   line-height: 1.6;
+  margin-bottom: 20px;
 }
 
-.consult-cta {
-  text-align: center;
-  margin-top: 40px;
+.door .door-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--amber);
+  text-decoration: none;
+  transition: gap 0.2s;
 }
 
-.consult-cta a {
+.door .door-link:hover {
+  gap: 10px;
+}
+
+.door .door-link svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+/* ── Booking Section ── */
+.booking {
+  padding: 80px 0 100px;
+}
+
+.booking .inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.book-panel {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.book-panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 80% 50%, rgba(var(--amber-rgb),0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.book-panel .book-content {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.book-panel .book-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--amber);
+  margin-bottom: 8px;
+}
+
+.book-panel h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(24px, 2.5vw, 32px);
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.book-panel p {
+  font-size: 15px;
+  color: var(--text2);
+  max-width: 480px;
+  line-height: 1.6;
+}
+
+.book-panel .book-cta {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.book-panel .book-cta a {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 14px 32px;
-  background: var(--accent);
-  color: #000;
-  border-radius: 8px;
+  background: var(--amber);
+  color: #0a0b0d;
+  border-radius: var(--radius-sm);
+  font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 14px;
   text-decoration: none;
   transition: all 0.2s;
 }
 
-.consult-cta a:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(90,158,255,0.3);
+.book-panel .book-cta a:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(var(--amber-rgb),0.3);
 }
 
-/* About */
-.about { padding: 100px 0; }
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 60px;
+.book-panel .book-cta a svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
 }
 
-.about-text p {
-  font-size: 16px;
-  color: var(--text2);
-  line-height: 1.8;
-  margin-bottom: 16px;
+/* ── Status bar ── */
+.status-bar {
+  padding: 0 0 60px;
 }
 
-.about-text p:last-child { margin-bottom: 0; }
-
-.about-contact {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.about-contact a {
+.status-bar .inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 16px;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  color: var(--text);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  transition: all 0.2s;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
 }
 
-.about-contact a:hover {
-  border-color: var(--accent);
-  background: var(--card);
-}
-
-/* Archive */
-.archive { padding: 100px 0; }
-
-.archive-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.archive-item {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 20px;
-  transition: all 0.2s;
-}
-
-.archive-item:hover {
-  border-color: var(--text3);
-  transform: translateY(-1px);
-}
-
-.archive-item h4 {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.archive-item .meta {
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 12px;
   color: var(--text3);
-  margin-bottom: 8px;
 }
 
-.archive-item p {
-  font-size: 13px;
-  color: var(--text2);
-  line-height: 1.5;
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  animation: pulse-dot 2s ease-in-out infinite;
 }
 
-.archive-item a {
-  color: var(--accent);
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 500;
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(74,222,128,0.5); }
+  50% { opacity: 0.6; box-shadow: 0 0 0 6px rgba(74,222,128,0); }
 }
 
-.archive-item a:hover { text-decoration: underline; }
-
-.archive-links {
-  display: flex;
-  gap: 24px;
-  justify-content: center;
-  margin-top: 40px;
+.utc-clock {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--text3);
 }
 
-.archive-links a {
-  color: var(--text2);
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.2s;
-}
-
-.archive-links a:hover { color: var(--accent); }
-
-/* Footer */
+/* ── Footer ── */
 footer {
   border-top: 1px solid var(--border);
-  padding: 40px 0;
-  text-align: center;
+  padding: 48px 0;
 }
 
 footer .inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
-}
-
-footer .links {
-  display: flex;
   gap: 20px;
 }
 
-footer .links a {
+footer .footer-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+footer .footer-links a {
   color: var(--text3);
   text-decoration: none;
+  font-family: 'IBM Plex Sans', sans-serif;
   font-size: 13px;
   transition: color 0.2s;
 }
 
-footer .links a:hover { color: var(--text); }
+footer .footer-links a:hover { color: var(--amber); }
 
 footer p {
+  font-family: 'IBM Plex Sans', sans-serif;
   font-size: 12px;
   color: var(--text3);
+  text-align: center;
+  line-height: 1.6;
 }
 
-/* Section spacing */
-section { scroll-margin-top: 72px; }
+footer p .sep {
+  margin: 0 8px;
+  color: var(--border);
+}
 
-/* Mobile */
-@media (max-width: 900px) {
-  .hero .grid {
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .doors-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
-    padding: 60px 0;
   }
-
-  .domain-grid { grid-template-columns: repeat(2, 1fr); }
-  .projects-grid { grid-template-columns: 1fr; }
-  .consulting-grid { grid-template-columns: repeat(2, 1fr); }
-  .about-grid { grid-template-columns: 1fr; gap: 32px; }
-  .archive-grid { grid-template-columns: repeat(2, 1fr); }
+  .book-panel {
+    flex-direction: column;
+    text-align: center;
+    padding: 36px 28px;
+  }
+  .book-panel p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero h1 {
+    font-size: clamp(24px, 5vw, 34px);
+  }
 }
 
-@media (max-width: 640px) {
-  nav .links { display: none; }
-  nav .links.open {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 56px;
-    left: 0;
-    right: 0;
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 24px;
-    gap: 12px;
+@media (max-width: 600px) {
+  nav .inner {
+    padding: 0 16px;
+    height: 54px;
   }
-  .nav-toggle { display: block; }
-
-  .domain-grid { grid-template-columns: 1fr; }
-  .consulting-grid { grid-template-columns: 1fr; }
-  .archive-grid { grid-template-columns: 1fr; }
-
-  .hero h1 { font-size: 32px; }
-  .hero p { font-size: 16px; }
-  .container { padding: 0 16px; }
+  nav .brand {
+    font-size: 18px;
+  }
+  nav .book-btn {
+    padding: 6px 14px;
+    font-size: 12px;
+  }
+  .hero .inner,
+  .doors-section .inner,
+  .booking .inner,
+  .status-bar .inner,
+  footer .inner {
+    padding: 0 16px;
+  }
+  .door {
+    padding: 24px;
+  }
+  .book-panel {
+    padding: 28px 20px;
+  }
+  .book-panel .book-cta a {
+    width: 100%;
+    justify-content: center;
+  }
 }
 </style>
 </head>
 <body>
 
+<!-- SVG Defs -->
+<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <defs>
+    <!-- g-shop: shop/store icon → biz -->
+    <g id="g-shop">
+      <rect x="4" y="8" width="16" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M4 8L6 4h12l2 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <rect x="8" y="14" width="8" height="8" rx="1" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="8" y1="18" x2="16" y2="18" stroke="currentColor" stroke-width="1.2"/>
+    </g>
+
+    <!-- g-mesh: mesh/network icon → tech -->
+    <g id="g-mesh">
+      <circle cx="12" cy="6" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="5" cy="20" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="19" cy="20" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="12" y1="6" x2="5" y2="20" stroke="currentColor" stroke-width="1.3"/>
+      <line x1="12" y1="6" x2="19" y2="20" stroke="currentColor" stroke-width="1.3"/>
+      <line x1="5" y1="20" x2="19" y2="20" stroke="currentColor" stroke-width="1.3" stroke-dasharray="2 2"/>
+    </g>
+
+    <!-- g-herit: heritage/roots icon → canada -->
+    <g id="g-herit">
+      <path d="M12 2C9 2 6 6 6 10c0 4 6 12 6 12s6-8 6-12c0-4-3-8-6-8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <circle cx="12" cy="9" r="2.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <path d="M10 16c0 0 1 0.5 2 0.5s2 -0.5 2 -0.5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+    </g>
+
+    <!-- g-comm: community/people icon → civic -->
+    <g id="g-comm">
+      <circle cx="8" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="16" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="12" cy="17" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="8" y1="8" x2="12" y2="17" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 2"/>
+      <line x1="16" y1="8" x2="12" y2="17" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 2"/>
+    </g>
+
+    <!-- i-arrow -->
+    <g id="i-arrow">
+      <path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+
+    <!-- i-pin -->
+    <g id="i-pin">
+      <path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <circle cx="12" cy="9" r="2" fill="currentColor"/>
+    </g>
+
+    <!-- i-mail -->
+    <g id="i-mail">
+      <rect x="2" y="4" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M2 6l10 7 10-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </g>
+
+    <!-- i-git -->
+    <g id="i-git">
+      <path d="M9 19c-5 0-7-2-7-7s2-7 7-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M9 5v14" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M9 12c0-3 1.5-5 4-5s4 2 4 5v5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- i-link -->
+    <g id="i-link">
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </defs>
+</svg>
+
+<!-- Navigation -->
 <nav>
   <div class="inner">
-    <a href="#" class="logo">cg.</a>
-    <button class="nav-toggle" onclick="document.querySelector('nav .links').classList.toggle('open')" aria-label="Toggle menu">☰</button>
+    <a href="#" class="brand">C.GOULET</a>
     <div class="links">
-      <a href="#domains">Domains</a>
-      <a href="#projects">Projects</a>
-      <a href="#consulting">Consulting</a>
-      <a href="#about">About</a>
-      <a href="#archive">Archive</a>
-      <a href="mailto:me@christophergoulet.com" class="contact-btn">Contact</a>
+      <a href="#booking" class="book-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24"><use href="#i-link"/></svg>
+        Book a call
+      </a>
     </div>
   </div>
 </nav>
 
+<!-- Hero -->
 <section class="hero" id="top">
-  <div class="container">
-    <div class="grid">
-      <div>
-        <h1>Infrastructure,<br>Architecture &amp;<br><span>Community</span></h1>
-        <p>I build systems — technical, organizational, and cultural — that are resilient, sovereign, and built to last. From distributed AI inference clusters to cooperative governance models to community scouting troops, I work at the intersection of infrastructure and human systems.</p>
-        <div class="btns">
-          <a href="mailto:me@christophergoulet.com" class="btn-primary">Work with me</a>
-          <a href="#domains" class="btn-secondary">Explore domains →</a>
-        </div>
+  <div class="inner">
+    <h1 class="reveal">Christopher Goulet — <span class="highlight">I help people build things they actually own.</span></h1>
+    <p class="subtitle reveal">Business infrastructure. Diaspora reconnection. Sovereign technology. Community resilience.</p>
+  </div>
+</section>
+
+<!-- Doors -->
+<section class="doors-section" id="doors">
+  <div class="inner">
+    <div class="doors-grid">
+      <!-- biz -->
+      <a href="https://biz.christophergoulet.com" class="door reveal" target="_blank">
+        <div class="door-icon"><svg viewBox="0 0 24 24"><use href="#g-shop"/></svg></div>
+        <div class="door-label">biz</div>
+        <h3>Business</h3>
+        <p>Small business technology that works — and that you own.</p>
+        <span class="door-link">Go →</span>
+      </a>
+
+      <!-- tech -->
+      <a href="https://tech.christophergoulet.com" class="door reveal" target="_blank">
+        <div class="door-icon"><svg viewBox="0 0 24 24"><use href="#g-mesh"/></svg></div>
+        <div class="door-label">tech</div>
+        <h3>Technology</h3>
+        <p>Resilient sovereign infrastructure for people who know what that means.</p>
+        <span class="door-link">Go →</span>
+      </a>
+
+      <!-- canada -->
+      <a href="https://canada.christophergoulet.com" class="door reveal" target="_blank">
+        <div class="door-icon"><svg viewBox="0 0 24 24"><use href="#g-herit"/></svg></div>
+        <div class="door-label">canada</div>
+        <h3>Diaspora</h3>
+        <p>Retrouver vos racines — finding your way home.</p>
+        <span class="door-link">Go →</span>
+      </a>
+
+      <!-- civic -->
+      <a href="https://civic.christophergoulet.com" class="door reveal" target="_blank">
+        <div class="door-icon"><svg viewBox="0 0 24 24"><use href="#g-comm"/></svg></div>
+        <div class="door-label">civic</div>
+        <h3>Community</h3>
+        <p>Community resilience starts with people who show up.</p>
+        <span class="door-link">Go →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Booking -->
+<section class="booking" id="booking">
+  <div class="inner">
+    <div class="book-panel reveal">
+      <div class="book-content">
+        <div class="book-label">Let's talk</div>
+        <h2>Book a call</h2>
+        <p>Whether you need infrastructure, cooperative technology, diaspora guidance, or just want to compare notes — I make time for people who are building things that matter.</p>
       </div>
-      <div class="sidebar">
-        <h3>Projects</h3>
-        <div class="item">
-          <div class="icon">🏗️</div>
-          <div>
-            <div class="label">Building Phonon</div>
-            <div class="desc">Private distributed inference cluster — your own AI, your own hardware</div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="icon">🌲</div>
-          <div>
-            <div class="label">161st Catamounts</div>
-            <div class="desc">Founder &amp; Scoutmaster — community scouting troop chartered under Outdoor Service Guides</div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="icon">🍪</div>
-          <div>
-            <div class="label">Covered Bridge Cooperative</div>
-            <div class="desc">Led the conversion of a 30-year family bakery to a 100% worker-owned cooperative</div>
-          </div>
-        </div>
+      <div class="book-cta">
+        <a href="mailto:me@christophergoulet.com?subject=Book%20a%20call">
+          Schedule a conversation
+          <svg width="14" height="14" viewBox="0 0 24 24"><use href="#i-arrow"/></svg>
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="domains" id="domains">
-  <div class="container">
-    <div class="section-header">
-      <div class="label">Areas of depth</div>
-      <h2>Five domains, one practice</h2>
-      <p>These aren't separate careers — they're facets of a single approach: build things that last, give people ownership, and never extract more than you create.</p>
+<!-- Status bar -->
+<div class="status-bar">
+  <div class="inner">
+    <div class="status-item">
+      <span class="status-dot"></span>
+      All systems nominal
     </div>
-
-    <div class="domain-grid" id="domain-grid">
-      <!-- Cooperative Systems -->
-      <div class="domain-card coop" data-detail="d1">
-        <h3>🤝 Cooperative Systems</h3>
-        <div class="tags">
-          <span>Worker ownership</span>
-          <span>Small business</span>
-          <span>Democratic governance</span>
-        </div>
-        <p class="preview">Technology and organizational design for businesses owned by the people who run them — not the people who sell them.</p>
-        <div class="detail" id="d1">
-          <p>I design and build technology for cooperative ownership models: platform cooperatives, multi-stakeholder governance, and democratic decision-making systems that actually work at scale. I've done it — I led the conversion of my family's 30-year cookie bakery into a 100% worker-owned cooperative and tripled revenue in three years.</p>
-          <ul>
-            <li>Cooperative governance design for family businesses transitioning to worker ownership</li>
-            <li>Open-source tooling for worker-owned enterprises</li>
-            <li>Transition strategies from sole proprietorship to cooperative models</li>
-            <li>Democratic decision-making systems for small organizations</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Software Architecture -->
-      <div class="domain-card arch" data-detail="d2">
-        <h3>🏗️ Software Architecture</h3>
-        <div class="tags">
-          <span>Distributed systems</span>
-          <span>DevOps</span>
-          <span>Security</span>
-        </div>
-        <p class="preview">Resilient, sovereign infrastructure that doesn't phone home — from single-node to cluster.</p>
-        <div class="detail" id="d2">
-          <p>Full-stack systems architect specializing in distributed inference, private AI infrastructure, and security-hardened deployment. Everything I build is designed to be operated by one person or a small team.</p>
-          <ul>
-            <li>Private AI infrastructure (LLM inference clusters, model distribution)</li>
-            <li>Distributed systems design (mDNS discovery, Ed25519 pairing, health-aware routing)</li>
-            <li>Security review and hardening (OIDC, JWT, TLS, WebSocket security)</li>
-            <li>Site reliability engineering for small-scale deployments</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Community Leadership -->
-      <div class="domain-card comm" data-detail="d3">
-        <h3>🌱 Community Leadership</h3>
-        <div class="tags">
-          <span>Local government</span>
-          <span>Scouting</span>
-          <span>Mutual aid</span>
-        </div>
-        <p class="preview">Serving my community across multiple fronts — municipal governance, youth development, and crisis response.</p>
-        <div class="detail" id="d3">
-          <p>I bring an infrastructure mindset to community organizing: design systems that don't require a hero to keep running. I served on the Windsor, Vermont Selectboard from the beginning of the COVID-19 pandemic through the worst of it — 2.5 years of crisis governance at the municipal level, making decisions about public health, emergency response, and community resilience when the playbook didn't exist. I also founded the 161st Catamounts, a community scouting troop chartered under Outdoor Service Guides, and co-founded Windsor Live, a community cultural venue.</p>
-          <ul>
-            <li>2.5 years on Windsor Selectboard — COVID crisis governance from day one</li>
-            <li>Founded the 161st Catamounts (Outdoor Service Guides) — community scouting, democratic governance, de-escalation-first philosophy</li>
-            <li>Mutual aid network design and facilitation during the pandemic</li>
-            <li>Community event programming and venue operation (Windsor Live)</li>
-            <li>Emergency preparedness and resilience planning</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Privacy & Open Source -->
-      <div class="domain-card priv" data-detail="d4">
-        <h3>🔒 Privacy &amp; Open Source</h3>
-        <div class="tags">
-          <span>Data sovereignty</span>
-          <span>Self-hosting</span>
-          <span>Community tech</span>
-        </div>
-        <p class="preview">The best technology is the kind you can own — no dependencies, no phone-home, no rent-seeking.</p>
-        <div class="detail" id="d4">
-          <p>Every project I build is either fully self-hosted or designed to be. My multi-agent system (The House) and distributed inference cluster (Phonon) are expressions of a single philosophy: infrastructure that serves its operator, not the other way around. I believe technology should be a tool for liberation, not a tether.</p>
-          <ul>
-            <li>AGPL-licensed open-source infrastructure projects</li>
-            <li>Data sovereignty architecture (no cloud dependencies)</li>
-            <li>Private AI deployment on consumer hardware</li>
-            <li>Zero-trust security models for small-scale operators</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Franco-American Heritage -->
-      <div class="domain-card qc" data-detail="d5">
-        <h3>⚜️ Franco-American Heritage</h3>
-        <div class="tags">
-          <span>Found Canadian</span>
-          <span>Bill C-3</span>
-          <span>Diaspora</span>
-        </div>
-        <p class="preview">One of the first "found Canadians" — navigating diaspora reconnection, citizenship restoration, and cultural reclamation.</p>
-        <div class="detail" id="d5">
-          <p>I was among the first #5,000 people to have Canadian citizenship restored under the Bjorkquist decision and Bill C-3 — the law that finally ended Canada's sexist citizenship laws that stripped Franco-American women of their nationality when they married Americans. My great-grandfather Wilfrid Goulet came from Québec during the Grande Hémorragie, the great French Canadian exodus to New England. I'm bilingual (French/English) and bicultural, and I help other Franco-Americans navigate the same reconnection journey.</p>
-          <ul>
-            <li>Bill C-3 / Bjorkquist citizenship pathway guidance</li>
-            <li>Franco-American diaspora reconnection consulting</li>
-            <li>Bilingual and bicultural community building</li>
-            <li>Language preservation technology (Inuktitut, French)</li>
-          </ul>
-        </div>
-      </div>
+    <div class="status-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" style="opacity:0.5"><use href="#i-pin"/></svg>
+      Windsor&thinsp;·&thinsp;VT
     </div>
+    <div class="utc-clock" id="utc-clock">UTC</div>
   </div>
-</section>
+</div>
 
-<section class="projects" id="projects">
-  <div class="container">
-    <div class="section-header">
-      <div class="label">What I'm building</div>
-      <h2>Active projects</h2>
-      <p>Each of these represents years of work, not weeks. They're the systems and organizations I'm stewarding into the future.</p>
-    </div>
-
-    <div class="projects-grid">
-      <div class="project-card">
-        <div class="icon">🍪</div>
-        <h3>Covered Bridge Cooperative</h3>
-        <div class="role">Chief of Community · Board Director</div>
-        <p>My family's 30-year-old cookie bakery — I led the conversion to 100% worker ownership and tripled revenue in three years. Four worker-owners, four flagship recipes (Classic Hermits, Gingersnaps, Maple Shortbread, Classic Shortbread), zero unpronounceable ingredients. A proof case that Main Street businesses can be owned by the people who run them, not the people who sell them.</p>
-        <div class="tags">
-          <span>Worker cooperative</span>
-          <span>Windsor, VT</span>
-          <span>Family business</span>
-          <span>Revenue 3x</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="icon">🌲</div>
-        <h3>161st Catamounts</h3>
-        <div class="role">Chief Tiguidou · Founder &amp; Scoutmaster</div>
-        <p>Community scouting troop chartered under Outdoor Service Guides (OSG). All-adult, community defense-oriented, democratic governance — explicitly not a militia. Core training in de-escalation, wilderness first response, emergency communications, and community resilience. Based in Windsor, operating throughout the Upper Connecticut River Valley.</p>
-        <div class="tags">
-          <span>Scouting</span>
-          <span>Community defense</span>
-          <span>Outdoor Service Guides</span>
-          <span>De-escalation</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="icon">🏗️</div>
-        <h3>Phonon</h3>
-        <div class="role">Creator &amp; Lead Architect</div>
-        <p>Private distributed inference cluster — turn spare Android phones into a secure, private AI cluster. No cloud dependency, no data leakage. MIT-licensed, designed for data sovereignty. The project that proves you don't need a data center to run your own AI infrastructure.</p>
-        <div class="tags">
-          <span>Distributed systems</span>
-          <span>Edge AI</span>
-          <span>MIT</span>
-          <span>phononai.org</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="icon">🏛️</div>
-        <h3>The House</h3>
-        <div class="role">Architect &amp; Steward</div>
-        <p>Multi-agent system for generational sovereignty. A self-maintaining infrastructure stack — agents that observe, document, and improve the systems they run on. Built to enable one Franco-Canadian nonbinary builder in Vermont to operate at the scale of many while protecting time for his four-year-old daughter.</p>
-        <div class="tags">
-          <span>Agent systems</span>
-          <span>Self-hosting</span>
-          <span>Generational sovereignty</span>
-          <span>Ragamuffin</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="consulting" id="consulting">
-  <div class="container">
-    <div class="section-header">
-      <div class="label">How I can help</div>
-      <h2>Consulting &amp; collaboration</h2>
-      <p>Engagements range from a single operations review to full-stack architecture and implementation. Everything is priced transparently, and I don't take work I don't believe in.</p>
-    </div>
-
-    <div class="consulting-grid">
-      <div class="consult-card">
-        <div class="icon">⚙️</div>
-        <h3>Infrastructure &amp; DevOps</h3>
-        <p>Design, deployment, and hardening of production infrastructure. Docker Compose to TrueNAS, Traefik to Authentik — I build stacks that one person can operate.</p>
-      </div>
-      <div class="consult-card">
-        <div class="icon">🧠</div>
-        <h3>Private AI Infrastructure</h3>
-        <p>On-premise LLM inference, model distribution, and cluster management. Keep your data on your hardware — no cloud dependency, no data leakage.</p>
-      </div>
-      <div class="consult-card">
-        <div class="icon">🤲</div>
-        <h3>Cooperative Technology</h3>
-        <p>Platform co-op design and implementation. I help organizations transition from extractive technology models to member-owned, democratically governed systems.</p>
-      </div>
-      <div class="consult-card">
-        <div class="icon">🛡️</div>
-        <h3>Security &amp; Resilience</h3>
-        <p>Architecture-level security review, threat modeling, and hardening. I find the things that automated scanners miss — the logic errors, the design assumptions, the dead code.</p>
-      </div>
-      <div class="consult-card">
-        <div class="icon">🏛️</div>
-        <h3>Municipal &amp; Civic Technology</h3>
-        <p>Technology strategy for local government and community organizations. 2.5 years on a selectboard through a pandemic taught me what small governments actually need — and it's not enterprise software.</p>
-      </div>
-      <div class="consult-card">
-        <div class="icon">🎧</div>
-        <h3>Audio &amp; Electronics</h3>
-        <p>Studio design, signal flow, and electronics integration. From live venue sound to recording studio infrastructure — the technical side of the craft.</p>
-      </div>
-    </div>
-
-    <div class="consult-cta">
-      <a href="mailto:me@christophergoulet.com">Start a conversation →</a>
-    </div>
-  </div>
-</section>
-
-<section class="about" id="about">
-  <div class="container">
-    <div class="section-header">
-      <div class="label">Who I am</div>
-      <h2>Not just a builder — a steward</h2>
-    </div>
-
-    <div class="about-grid">
-      <div class="about-text">
-        <p>I'm a systems architect, infrastructure builder, and community organizer from Windsor, Vermont. I've spent my career at the intersection of technology and human systems: everything from designing distributed inference clusters to serving on the Windsor Selectboard through a global pandemic to founding a community scouting troop to converting my family's 30-year-old cookie bakery into a worker-owned cooperative.</p>
-        <p>I believe the best technology is the kind you can own — no dependencies, no phone-home, no rent-seeking. <strong>The House</strong> (my multi-agent system) and <strong>Phonon</strong> (my private inference cluster) are expressions of that philosophy: infrastructure that serves its operator, not the other way around.</p>
-        <p>When I'm not building, I'm playing music, running the 161st Catamounts, researching Franco-American diaspora reconnection, working on Covered Bridge operations, or spending time with my family.</p>
-      </div>
-      <div class="about-contact">
-        <a href="mailto:me@christophergoulet.com">✉️ EMAIL me@christophergoulet.com</a>
-        <a href="https://github.com/big-cookie" target="_blank">🐙 GITHUB big-cookie</a>
-        <a href="https://www.linkedin.com/in/christopher-goulet-9a441760/" target="_blank">💼 LinkedIn</a>
-        <a href="#">📍 Windsor, Vermont</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="archive" id="archive">
-  <div class="container">
-    <div class="section-header">
-      <div class="label">Previous work &amp; writing</div>
-      <h2>Selected archive</h2>
-      <p>A record of projects, writing, and community work from 2010 to present. The complete archive is preserved from the original site.</p>
-    </div>
-
-    <div class="archive-grid">
-      <div class="archive-item">
-        <h4>Selectboard — COVID Era</h4>
-        <div class="meta">2020 — 2022</div>
-        <p>2.5 years on the Windsor, Vermont Selectboard starting at the onset of COVID-19. Crisis governance, emergency response, public health decisions, and municipal process under unprecedented pressure.</p>
-        <a href="https://christophergoulet.com/2024/02/zero-to-candidate-what-I-learned-running-for-selectboard/" target="_blank">Read the essay →</a>
-      </div>
-
-      <div class="archive-item">
-        <h4>Windsor Live</h4>
-        <div class="meta">2017 — Present</div>
-        <p>Community venue, event space, and cultural hub in downtown Windsor, Vermont. Live music, art shows, and community gatherings.</p>
-        <a href="https://www.facebook.com/WindsorLiveVT/" target="_blank">Visit →</a>
-      </div>
-
-      <div class="archive-item">
-        <h4>Whatdothlife</h4>
-        <div class="meta">2015 — Present</div>
-        <p>Vermont-based music and arts collective; founding member who navigated it through 501(c)(3) status. Nonprofit formation from scratch: governance, compliance, community programming.</p>
-        <a href="https://christophergoulet.com/2024/02/zero-to-candidate-what-I-learned-running-for-selectboard/" target="_blank">Read →</a>
-      </div>
-
-      <div class="archive-item">
-        <h4>Yes — on grief and scars</h4>
-        <div class="meta">2024</div>
-        <p>A personal essay on loss, recovery, and what it means to build a life after everything falls apart. The most-read piece on the original site.</p>
-        <a href="https://christophergoulet.com/2025/01/yes-on-grief-and-scars/" target="_blank">Read →</a>
-      </div>
-
-      <div class="archive-item">
-        <h4>Pulp! From Beyond the Veil</h4>
-        <div class="meta">2023 — Present</div>
-        <p>An independently produced live horror audio drama podcast. Original music, sound design, and full cast production.</p>
-        <a href="https://pulpfrombeyond.com/" target="_blank">pulpfrombeyond.com →</a>
-      </div>
-
-      <div class="archive-item">
-        <h4>Wotown</h4>
-        <div class="meta">2015</div>
-        <p>A location-based mobile app for discovering local businesses, events, and community resources. Built for small towns, not metropolises.</p>
-        <a href="https://github.com/big-cookie/wotown" target="_blank">GitHub →</a>
-      </div>
-
-      <div class="archive-item">
-        <h4>Keyscrape</h4>
-        <div class="meta">2014</div>
-        <p>A tool for scraping and analyzing public-key infrastructure data. Research project on SSH key distribution and trust networks.</p>
-        <a href="https://github.com/big-cookie/keyscrape" target="_blank">GitHub →</a>
-      </div>
-
-      <div class="archive-item">
-        <h4>Podcast appearances</h4>
-        <div class="meta">2022 — Present</div>
-        <p>Guest appearances on podcasts discussing technology, community organizing, cooperative economics, and Franco-American diaspora.</p>
-        <a href="https://christophergoulet.com/podcast/" target="_blank">Listen →</a>
-      </div>
-
-      <div class="archive-item">
-        <h4>Music projects</h4>
-        <div class="meta">2012 — Present</div>
-        <p>Original music, studio recording, and live performance. Electronic, ambient, and experimental. The Pilgrims, The Jobz, and more — toured across New England.</p>
-        <a href="https://soundcloud.com/uprootx" target="_blank">Listen on SoundCloud →</a>
-      </div>
-
-      <div class="archive-item">
-        <h4>Press &amp; features</h4>
-        <div class="meta">2024 — Present</div>
-        <p>Press coverage: Vermont Public, The Bridge, and local media coverage of community organizing, technology projects, and the Selectboard campaign.</p>
-        <a href="https://christophergoulet.com/press/" target="_blank">Read coverage →</a>
-      </div>
-
-      <div class="archive-item">
-        <h4>Uproot Technology LLC</h4>
-        <div class="meta">2013 — Present</div>
-        <p>Independent IT services: network design, open-source solutions, web development, and technical consulting for small businesses and nonprofits.</p>
-        <a href="https://uprootx.com" target="_blank">Visit →</a>
-      </div>
-
-      <div class="archive-item">
-        <h4>Hanover Stringed Instruments</h4>
-        <div class="meta">5 Years</div>
-        <p>General Manager — full P&L, purchasing, repair scheduling, live sound production, sales strategy, team leadership, strategic planning, and lutherie.</p>
-        <a href="https://www.linkedin.com/in/christopher-goulet-9a441760/" target="_blank">LinkedIn →</a>
-      </div>
-    </div>
-
-    <div class="archive-links">
-      <a href="https://christophergoulet.com/archives/" target="_blank">View full archive →</a>
-      <a href="https://christophergoulet.com/resume/" target="_blank">Full resume →</a>
-      <a href="https://christophergoulet.com/feed.xml" target="_blank">RSS feed →</a>
-    </div>
-  </div>
-</section>
-
+<!-- Footer -->
 <footer>
-  <div class="container">
-    <div class="inner">
-      <div class="links">
-        <a href="mailto:me@christophergoulet.com">me@christophergoulet.com</a>
-        <a href="https://github.com/big-cookie" target="_blank">GitHub</a>
-        <a href="https://christophergoulet.com/feed.xml" target="_blank">RSS</a>
-      </div>
-      <p>Built by Vigilant · The House · © 2026 Christopher Goulet</p>
+  <div class="inner">
+    <div class="footer-links">
+      <a href="https://biz.christophergoulet.com" target="_blank">biz</a>
+      <a href="https://tech.christophergoulet.com" target="_blank">tech</a>
+      <a href="https://canada.christophergoulet.com" target="_blank">canada</a>
+      <a href="https://civic.christophergoulet.com" target="_blank">civic</a>
     </div>
+    <p>
+      <span>Windsor&thinsp;·&thinsp;VT</span>
+      <span class="sep">·</span>
+      <span>© 2026 Christopher Goulet</span>
+    </p>
   </div>
 </footer>
 
 <script>
-document.addEventListener('click', function(e) {
-  const card = e.target.closest('[data-detail]');
-  if (card) {
-    const id = card.getAttribute('data-detail');
-    const detail = document.getElementById(id);
-    if (detail) {
-      card.classList.toggle('open');
-    }
+// ── Scroll Reveal ──
+(function() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+})();
+
+// ── UTC Clock ──
+(function() {
+  const clock = document.getElementById('utc-clock');
+  function tick() {
+    const now = new Date();
+    clock.textContent = 'UTC ' + now.getUTCFullYear() + '-' +
+      String(now.getUTCMonth() + 1).padStart(2, '0') + '-' +
+      String(now.getUTCDate()).padStart(2, '0') + ' ' +
+      String(now.getUTCHours()).padStart(2, '0') + ':' +
+      String(now.getUTCMinutes()).padStart(2, '0') + ':' +
+      String(now.getUTCSeconds()).padStart(2, '0');
   }
-});
+  tick();
+  setInterval(tick, 1000);
+})();
 </script>
 
 </body>

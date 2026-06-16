@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christopher Goulet — Community &amp; Civic Service</title>
+<meta name="description" content="Community resilience starts with people who show up. Municipal service, community scouting, mutual aid — Windsor, Vermont.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ───── RESET ───── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ───── ROOT ───── */
+:root{
+  --bg:#0a0b0d;
+  --bg-grad:#0c0e11;
+  --panel:#101316;
+  --panel-2:#14181c;
+  --line:#22272d;
+  --line-2:#2c333a;
+  --text:#e6e8ea;
+  --text-2:#9aa1a9;
+  --text-3:#646b73;
+  --sage:#6cc49a;
+  --sage-dim:#3f6f59;
+  --sage-rgb:108,196,154;
+  --red:#e0716a;
+  --radius:10px;
+  --radius-sm:6px;
+  --max-w:1140px;
+}
+
+/* ───── BASE ───── */
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  position:relative;
+  overflow-x:hidden;
+}
+body::after{
+  content:'';
+  position:fixed;
+  top:0;left:0;width:100%;height:100%;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,.02) 2px,rgba(255,255,255,.02) 4px);
+  pointer-events:none;z-index:9999;
+}
+::selection{background:rgba(108,196,154,.3);color:#fff}
+
+/* ───── TYPOGRAPHY ───── */
+h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:600}
+.mono{font-family:'IBM Plex Mono',monospace}
+.mono-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;font-weight:500;
+  text-transform:uppercase;letter-spacing:.06em;
+  color:var(--text-3);
+}
+.mono-meta{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;color:var(--text-2);
+}
+
+/* ───── SCROLL REVEAL ───── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ───── STATUS DOT ───── */
+.dot{
+  display:inline-block;width:8px;height:8px;
+  border-radius:50%;background:var(--sage);
+  animation:pulse-dot 2s ease-in-out infinite;
+  margin-right:6px;vertical-align:middle;
+}
+@keyframes pulse-dot{
+  0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(108,196,154,.5)}
+  50%{opacity:.6;box-shadow:0 0 0 6px rgba(108,196,154,0)}
+}
+
+/* ───── WRAP ───── */
+.wrap{max-width:var(--max-w);margin:0 auto;padding:0 24px}
+
+/* ───── NAV ───── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(10,11,13,.88);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+  height:56px;
+}
+nav .wrap{
+  display:flex;align-items:center;justify-content:space-between;height:56px;
+}
+nav .brand{
+  font-family:'Fraunces',serif;font-weight:600;font-size:18px;
+  color:var(--text);text-decoration:none;letter-spacing:-.3px;
+}
+nav .brand:hover{color:var(--sage)}
+nav .links{display:flex;align-items:center;gap:20px}
+nav .links a{
+  color:var(--text-2);text-decoration:none;
+  font-size:13px;font-weight:500;transition:color .2s;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+nav .links a:hover{color:var(--text)}
+nav .cta-link{
+  display:inline-flex;align-items:center;
+  padding:6px 16px;background:var(--sage);color:#0a0b0d!important;
+  border-radius:var(--radius-sm);font-weight:600;font-size:12px;
+  transition:opacity .2s;
+}
+nav .cta-link:hover{opacity:.85;color:#0a0b0d!important}
+.nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:22px;cursor:pointer;padding:4px}
+
+/* ───── HERO ───── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding-top:56px;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  top:-40%;left:-10%;
+  width:700px;height:700px;
+  background:radial-gradient(circle,rgba(var(--sage-rgb),.04) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero::after{
+  content:'';
+  position:absolute;
+  bottom:-30%;right:-15%;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(var(--sage-rgb),.03) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero .grid{
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:48px;align-items:center;width:100%;padding:80px 0;
+}
+
+.hero h1{
+  font-size:clamp(30px,3.6vw,46px);
+  font-weight:600;line-height:1.15;letter-spacing:-.6px;
+  margin-bottom:16px;
+}
+.hero h1 .s{
+  color:var(--sage);
+}
+
+.lede{
+  font-size:16px;color:var(--text-2);
+  max-width:540px;margin-bottom:28px;line-height:1.7;
+}
+
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+
+.btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:11px 26px;border-radius:var(--radius-sm);
+  font-size:14px;font-weight:600;text-decoration:none;
+  transition:all .25s;font-family:'IBM Plex Sans',sans-serif;
+}
+.btn-primary{
+  background:var(--sage);color:#0a0b0d;
+  box-shadow:0 2px 12px rgba(var(--sage-rgb),.25);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(var(--sage-rgb),.35)}
+.btn-ghost{
+  background:transparent;color:var(--text);
+  border:1px solid var(--line);border-color:var(--line-2);
+}
+.btn-ghost:hover{border-color:var(--sage);color:var(--sage)}
+
+/* Hero Panel */
+.hero-panel{
+  background:var(--panel);
+  border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;position:relative;
+}
+.hp-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 16px;border-bottom:1px solid var(--line);
+  font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-3);
+  text-transform:uppercase;letter-spacing:.04em;
+}
+.hp-bar .dot-wrap{display:flex;align-items:center}
+.hp-bar .dot{width:6px;height:6px}
+
+.hp-stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;border-top:1px solid var(--line);
+}
+.hp-stat{
+  padding:16px;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.hp-stat:nth-child(2n){border-right:none}
+.hp-stat:nth-last-child(-n+2){border-bottom:none}
+.hp-stat .num{
+  font-family:'Fraunces',serif;
+  font-size:clamp(16px,2vw,22px);
+  font-weight:600;color:var(--sage);line-height:1.1;
+}
+.hp-stat .label{
+  font-size:11px;color:var(--text-3);margin-top:4px;
+  font-family:'IBM Plex Sans',sans-serif;
+  line-height:1.3;
+}
+
+.hp-foot{
+  padding:10px 16px;
+  display:flex;align-items:center;justify-content:space-between;
+  font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-3);
+}
+
+/* ───── SECTION ───── */
+.sec{padding:100px 0}
+
+.sec-head{margin-bottom:48px}
+.sec-head .idx{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--sage);margin-bottom:6px;position:relative;display:inline-block;
+}
+.sec-head .idx::after{
+  content:'';position:absolute;bottom:-4px;left:0;
+  width:40px;height:2px;background:var(--sage);
+}
+.sec-head h2{
+  font-size:clamp(26px,3.2vw,38px);
+  font-weight:600;letter-spacing:-.6px;margin-top:12px;
+  max-width:620px;
+}
+
+.sec-body{
+  font-size:15px;color:var(--text-2);
+  max-width:680px;line-height:1.8;
+}
+
+/* ───── SERVICE SECTION ───── */
+.service-content{
+  display:grid;grid-template-columns:1fr 1fr;gap:40px;
+  align-items:start;
+}
+
+/* ───── COMMUNITY GRID (scouting + work) ───── */
+.civ-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:20px;
+}
+.civ-card{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius);padding:28px 24px;
+  transition:border-color .25s,transform .25s;
+}
+.civ-card:hover{border-color:var(--sage-dim);transform:translateY(-2px)}
+.civ-card .civ-icon{
+  width:32px;height:32px;color:var(--sage);
+  margin-bottom:14px;
+}
+.civ-card .civ-icon svg{width:100%;height:100%}
+.civ-card .civ-tag{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;font-weight:500;text-transform:uppercase;
+  letter-spacing:.06em;color:var(--sage);
+  margin-bottom:6px;
+}
+.civ-card h3{
+  font-family:'Fraunces',serif;
+  font-size:18px;font-weight:600;margin-bottom:8px;
+  color:var(--text);
+}
+.civ-card p{
+  font-size:13px;color:var(--text-2);line-height:1.7;
+}
+
+/* ───── SERVICES GRID (what I offer) ───── */
+.serve-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.serve{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius);padding:28px 24px;
+  position:relative;transition:border-color .25s,transform .25s;
+}
+.serve::before{
+  content:'';position:absolute;top:0;left:24px;right:24px;
+  height:2px;background:var(--sage);
+  border-radius:0 0 2px 2px;
+}
+.serve:hover{border-color:var(--sage-dim);transform:translateY(-2px)}
+.serve .no{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;color:var(--text-3);margin-bottom:10px;
+}
+.serve .serve-icon{
+  width:28px;height:28px;color:var(--sage);
+  margin-bottom:10px;
+}
+.serve .serve-icon svg{width:100%;height:100%}
+.serve h3{
+  font-family:'Fraunces',serif;
+  font-size:17px;font-weight:600;margin-bottom:8px;
+  color:var(--text);
+}
+.serve p{font-size:13px;color:var(--text-2);line-height:1.6}
+
+/* ───── BOOK ───── */
+.book-sec{padding:60px 0 100px}
+.book-panel{
+  background:var(--panel);border:1px solid var(--sage-dim);
+  border-radius:var(--radius);overflow:hidden;
+}
+.book-bar{
+  display:flex;align-items:center;
+  padding:14px 20px;
+  border-bottom:1px solid rgba(63,111,89,.2);
+}
+.book-bar .bar-dots{display:flex;gap:6px}
+.book-bar .bar-dots span{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--text-3);
+}
+.book-bar .bar-dots span:nth-child(1){background:var(--red)}
+.book-bar .bar-dots span:nth-child(2){background:var(--sage)}
+.book-bar .bar-dots span:nth-child(3){background:var(--sage)}
+.book-body{padding:36px 32px;text-align:center}
+.book-body .fr{
+  font-family:'Fraunces',serif;
+  font-size:clamp(22px,2.8vw,32px);font-weight:600;
+  color:var(--sage);margin-bottom:12px;
+}
+.book-body p{font-size:15px;color:var(--text-2);margin-bottom:24px}
+.book-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
+.book-actions .btn-primary{padding:12px 30px}
+.book-actions .btn-ghost{padding:12px 24px}
+.book-note{font-size:12px;color:var(--text-3)}
+
+/* ───── FOOTER ───── */
+footer{
+  border-top:1px solid var(--line);padding:40px 0;
+  text-align:center;
+}
+footer .links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:14px}
+footer .links a{
+  color:var(--text-3);text-decoration:none;
+  font-size:12px;font-family:'IBM Plex Mono',monospace;
+  transition:color .2s;
+}
+footer .links a:hover{color:var(--sage)}
+footer p{font-size:11px;color:var(--text-3);font-family:'IBM Plex Mono',monospace}
+
+/* ───── SCROLL MARGIN ───── */
+section{scroll-margin-top:72px}
+
+/* ───── SVG ICONS INLINE HELPER ───── */
+.icon-svg{display:inline-block;width:1em;height:1em;fill:currentColor;vertical-align:middle}
+
+/* ───── RESPONSIVE ───── */
+@media(max-width:980px){
+  .hero .grid{grid-template-columns:1fr;gap:36px;padding:60px 0}
+  .hero-panel{max-width:480px}
+  .service-content{grid-template-columns:1fr;gap:24px}
+  .civ-grid{grid-template-columns:1fr}
+  .serve-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:620px){
+  nav .links{display:none}
+  nav .links.open{
+    display:flex;flex-direction:column;
+    position:absolute;top:56px;left:0;right:0;
+    background:var(--bg);border-bottom:1px solid var(--line);
+    padding:16px 24px;gap:12px;
+  }
+  .nav-toggle{display:block}
+  .hero h1{font-size:28px}
+  .lede{font-size:15px}
+  .serve-grid{grid-template-columns:1fr}
+  .civ-grid{grid-template-columns:1fr}
+  .hp-stats{grid-template-columns:1fr 1fr}
+  .sec{padding:60px 0}
+  .wrap{padding:0 16px}
+  .book-body{padding:28px 20px}
+  .service-content{grid-template-columns:1fr}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1!important;transform:none!important}
+  .dot{animation:none!important}
+  *,*::before,*::after{transition-duration:0s!important;animation-duration:0s!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ───── SVG DEFS ───── -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <symbol id="g-civic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+      <polyline points="9,22 9,12 15,12 15,22"/>
+    </symbol>
+    <symbol id="g-comm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="8" cy="8" r="3"/>
+      <circle cx="16" cy="8" r="3"/>
+      <circle cx="12" cy="17" r="3.5"/>
+      <line x1="8" y1="8" x2="12" y2="17" stroke-dasharray="2 2"/>
+      <line x1="16" y1="8" x2="12" y2="17" stroke-dasharray="2 2"/>
+    </symbol>
+    <symbol id="g-pine" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+      <path d="M16 3 L11 11 H14 L9 18 H13 L7 25 H25 L19 18 H23 L18 11 H21 Z"/>
+      <path d="M16 25 V29" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="g-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      <path d="M9 12l2 2 4-4"/>
+    </symbol>
+    <symbol id="g-coop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+      <circle cx="9" cy="7" r="4"/>
+      <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+      <path d="M16 3.13a4 4 0 010 7.75"/>
+    </symbol>
+    <symbol id="g-shop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="8" width="16" height="14" rx="2"/>
+      <path d="M4 8L6 4h12l2 4" stroke-linejoin="round"/>
+      <rect x="8" y="14" width="8" height="8" rx="1" stroke-width="1.2"/>
+      <line x1="8" y1="18" x2="16" y2="18" stroke-width="1.2"/>
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+      <polyline points="22,6 12,13 2,6"/>
+    </symbol>
+    <symbol id="i-git" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="18" cy="18" r="3"/>
+      <circle cx="6" cy="6" r="3"/>
+      <path d="M13 6h3a2 2 0 012 2v7"/>
+      <line x1="6" y1="9" x2="6" y2="21"/>
+    </symbol>
+    <symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/>
+      <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+      <circle cx="12" cy="10" r="3"/>
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12"/>
+      <polyline points="12 5 19 12 12 19"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ───── NAV ───── -->
+<nav>
+  <div class="wrap">
+    <a href="https://christophergoulet.com" class="brand">C.GOULET</a>
+    <button class="nav-toggle" onclick="document.querySelector('nav .links').classList.toggle('open')" aria-label="Toggle menu">☰</button>
+    <div class="links">
+      <a href="#service">Service</a>
+      <a href="#community">Community</a>
+      <a href="#book" class="cta-link">Book a call</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ───── HERO ───── -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <h1 class="reveal">Community resilience <span class="s">starts with people who show up.</span></h1>
+        <p class="lede reveal">Two and a half years on the Windsor Selectboard from the beginning of COVID through the worst of it. Founding a community scouting troop. Building mutual aid networks. Running a venue. This work taught me what communities actually need.</p>
+        <div class="actions reveal">
+          <a href="#book" class="btn btn-primary">Book a free call</a>
+          <a href="#community" class="btn btn-ghost">See my work</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="hero-panel">
+          <div class="hp-bar">
+            <span>// CIVIC · ACTIVE</span>
+            <span class="dot-wrap"><span class="dot"></span></span>
+          </div>
+          <div class="hp-stats">
+            <div class="hp-stat">
+              <div class="num">2.5 yrs</div>
+              <div class="label">Windsor Selectboard</div>
+            </div>
+            <div class="hp-stat">
+              <div class="num">161st</div>
+              <div class="label">Catamounts founder</div>
+            </div>
+            <div class="hp-stat">
+              <div class="num">Whatdothlife</div>
+              <div class="label">Co-founder</div>
+            </div>
+            <div class="hp-stat">
+              <div class="num">Windsor Live</div>
+              <div class="label">Co-founder</div>
+            </div>
+          </div>
+          <div class="hp-foot">
+            <span>WINDSOR·VT</span>
+            <span id="utc-clock">--:--:-- UTC</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── SECTION: MUNICIPAL SERVICE ───── -->
+<section class="sec" id="service">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="idx">01 — MUNICIPAL SERVICE</div>
+      <h2>Governing through a crisis</h2>
+    </div>
+    <div class="reveal">
+      <p class="sec-body">Two and a half years on the Windsor, Vermont Selectboard, starting at the onset of COVID-19. Crisis governance at the municipal level — public health decisions, emergency response, community resilience — when the playbook didn't exist. This experience taught me what local government actually needs from technology: not sales pitches, but things that work.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ───── SECTION: COMMUNITY SCOUTING ───── -->
+<section class="sec" id="scouting">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="idx">02 — COMMUNITY SCOUTING</div>
+      <h2>The 161st Catamounts</h2>
+    </div>
+    <div class="civ-grid">
+      <div class="civ-card reveal">
+        <div class="civ-icon"><svg viewBox="0 0 32 32"><use href="#g-pine"/></svg></div>
+        <div class="civ-tag">Founder &amp; Chief Tiguidou</div>
+        <h3>161st Catamounts</h3>
+        <p>Founder and Scoutmaster of the 161st Catamounts, a community scouting troop chartered under Outdoor Service Guides (OSG). All-adult, community defense-oriented, democratic governance — explicitly not a militia. Core training in de-escalation, wilderness first response, emergency communications, and community resilience. Based in Windsor, operating throughout the Upper Connecticut River Valley.</p>
+        <p style="margin-top:10px;font-style:italic;color:var(--text-3);font-size:13px;">"Find your path, change the world!"</p>
+      </div>
+      <div class="civ-card reveal">
+        <div class="civ-icon"><svg viewBox="0 0 32 32"><use href="#g-pine"/></svg></div>
+        <div class="civ-tag">Purpose</div>
+        <h3>Community Defense &amp; Resilience</h3>
+        <p>The 161st Catamounts is an all-adult community scouting troop focused on building resilience from the ground up. Democratic governance, wilderness skills, emergency preparedness, and de-escalation training — everything a community needs to take care of itself. We are not a militia. We are neighbors learning to be useful in a crisis.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── SECTION: COMMUNITY WORK ───── -->
+<section class="sec" id="community">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="idx">03 — COMMUNITY WORK</div>
+      <h2>More ways I serve</h2>
+    </div>
+    <div class="civ-grid">
+      <div class="civ-card reveal">
+        <div class="civ-icon"><svg viewBox="0 0 24 24"><use href="#g-comm"/></svg></div>
+        <div class="civ-tag">Collective</div>
+        <h3>Whatdothlife</h3>
+        <p>Founding member of this Vermont music and arts collective, navigated it through 501(c)(3) status. Building a platform for artists and community in the Upper Valley.</p>
+      </div>
+      <div class="civ-card reveal">
+        <div class="civ-icon"><svg viewBox="0 0 24 24"><use href="#g-shop"/></svg></div>
+        <div class="civ-tag">Venue</div>
+        <h3>Windsor Live</h3>
+        <p>Community venue, event space, and cultural hub in downtown Windsor since 2017. Hosting live music, art shows, and community gatherings that bring people together.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── SECTION: SERVICES (what I offer) ───── -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="idx">— WHAT I OFFER</div>
+      <h2>How I can help your community</h2>
+    </div>
+    <div class="serve-grid">
+      <div class="serve reveal">
+        <div class="no">001</div>
+        <div class="serve-icon"><svg viewBox="0 0 24 24"><use href="#g-civic"/></svg></div>
+        <h3>Municipal &amp; Civic Technology</h3>
+        <p>Technology strategy for local government. I've been in the room. I know what it takes to make systems that actually serve the public — not just check boxes.</p>
+      </div>
+      <div class="serve reveal">
+        <div class="no">002</div>
+        <div class="serve-icon"><svg viewBox="0 0 24 24"><use href="#g-coop"/></svg></div>
+        <h3>Cooperative Technology</h3>
+        <p>Helping community organizations move to member-owned, democratic systems. Platform co-ops, governance tools, and technology that belongs to the people who use it.</p>
+      </div>
+      <div class="serve reveal">
+        <div class="no">003</div>
+        <div class="serve-icon"><svg viewBox="0 0 24 24"><use href="#g-shield"/></svg></div>
+        <h3>Security &amp; Resilience</h3>
+        <p>For community orgs. Threat modeling at prices that make sense. Practical security for groups that can't afford enterprise consultants — but still deserve real protection.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── BOOK ───── -->
+<section class="book-sec" id="book">
+  <div class="wrap">
+    <div class="book-panel reveal">
+      <div class="book-bar">
+        <span class="bar-dots"><span></span><span></span><span></span></span>
+      </div>
+      <div class="book-body">
+        <div class="fr">Working on something for your community? Let's talk.</div>
+        <p>Free consultation. No pitch. Just a conversation about what you're trying to build.</p>
+        <div class="book-actions">
+          <a href="mailto:me@christophergoulet.com?subject=Community%20consultation%20request" class="btn btn-primary">Book a call</a>
+          <a href="mailto:me@christophergoulet.com" class="btn btn-ghost">Or email me</a>
+        </div>
+        <div class="book-note">Windsor, Vermont · Serving all of New England</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── FOOTER ───── -->
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="https://christophergoulet.com">main</a>
+      <a href="https://biz.christophergoulet.com">biz</a>
+      <a href="https://tech.christophergoulet.com">tech</a>
+      <a href="https://canada.christophergoulet.com">canada</a>
+      <a href="https://civic.christophergoulet.com">civic</a>
+    </div>
+    <p>Windsor, Vermont · © 2026 Christopher Goulet</p>
+  </div>
+</footer>
+
+<script>
+// ───── UTC CLOCK ─────
+(function(){
+  const el = document.getElementById('utc-clock');
+  if(!el) return;
+  function tick(){
+    const d = new Date();
+    el.textContent = d.toUTCString().split(' ')[4] + ' UTC';
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+
+// ───── SCROLL REVEAL ─────
+(function(){
+  const els = document.querySelectorAll('.reveal');
+  if(!els.length) return;
+  const observer = new IntersectionObserver((entries)=>{
+    for(const e of entries){
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    }
+  },{threshold:0.1});
+  for(const el of els) observer.observe(el);
+})();
+</script>
+
+</body>
+</html>
