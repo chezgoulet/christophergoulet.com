@@ -8,28 +8,33 @@ The Civic page is for neighbors, organizers, fellow selectboard members, and any
 
 ## Aesthetic Direction
 
-**Slight carnival feel — not over the top, not fully straight-laced.** 
+**Theatrical stage lighting on a dark house. Cirque du Soleil, not carnival midway.**
 
-What this means in practice:
-- Warm, human, a touch of whimsy. Think: a town fairground on a summer evening. String lights, a midway banner, the smell of popcorn and cut grass.
-- Not literal carnival theming (no clown motifs, no circus tent stripes, no carousel horses). It's the *feeling* — community gathering, shared joy, a little brightness after hard work.
-- The accent color should be warm and festive but grounded. A carnival pink or a warm coral? Something that says "this is fun but we take the work seriously."
-- Typography can loosen slightly — Fraunces serif still carries the weight, but the body copy can be less restrained. Maybe a slightly larger body size, more generous line-height, friendlier.
-- Section dividers could use a small celebratory element — a star, a sparkle, a pennant shape. Not everywhere, just enough to signal "this isn't a corporate site."
+The coral and gold are not carnival colors — they're gel over spotlights. The content is not arranged in booths — it's performed in acts. The dark background is the auditorium; the sections are where the light falls.
+
+**What this means in practice:**
+- Opulent, theatrical, slightly mysterious. Deep jewel tones on black. Warm spotlights pick out specific elements; the rest stays in shadow.
+- Nothing literal. No tent flaps, no midway banners, no striped awnings, no ticket booths. The coral and gold glow like stage lights, not carnival paint.
+- String lights become **footlights** — a warm gold gradient washing up from the bottom edge of each section. Content feels lit from below, like a performer standing at the lip of the stage.
+- The Fraunces serif works at larger, more dramatic sizes for section headers. Pull quotes feel like an actor stepping forward to address the audience directly — "I spoke truth to power and moved the needle."
+- Sections are **acts**, not chapters. Generous spacing between them — breathing room, like the pause between acts. Scroll reveals have theatrical timing: a brief pause, then content appears as if the curtain just went up.
+- The coral accent is not just a color — it's a gel over a spotlight. It has warmth and intensity that feels lit from within, not painted on. On dark background, it glows.
 
 **Counter-examples of what this is NOT:**
-- Not a carnival website (no clown imagery, no ferris wheel photos)
-- Not a government website (no official seals, no Helvetica, no beige)
-- Not a protest site (no clenched fists, no urgent red)
-- Not whimsical-for-its-own-sake (every design choice serves the content)
+- Not a literal carnival (no midway banners, no tent flaps, no ticket booth)
+- Not a government website (no official seals, no beige, no Helvetica)
+- Not tech-in-disguise (no mesh canvas, no terminal aesthetic)
+- Not minimal/restrained (this page has *presence* — it fills the room)
 
-**Color palette (draft):**
-- Background: `#0a0b0d` (existing dark is fine — warm accents carry the feel)
-- Primary accent: Warm carnival coral — `#e87a6a` or similar (rose-adjacent, festive but not pink)
-- Secondary accent: Soft gold — `#d4a84b` or similar (string-light warmth, midway glow)
+**Color palette:**
+- Background: `#0a0b0d` (existing dark — the auditorium)
+- Primary accent: Warm carnival coral — `#e87a6a` or as chosen from palette exploration (the spotlight gel)
+- Secondary accent: Soft gold — `#dfb85a` or as chosen (the footlight glow)
 - Text: warm white `#e6e8ea`
 - Muted: `#9aa1a9`
-- The coral and gold should feel like they're lit by warm lights against evening sky
+- The coral and gold must read as *illuminated*, not painted. On dark, they should feel like they're emitting light, not reflecting it.
+
+**The one animated element:** A gentle footlight glow at the bottom of sections — a CSS gradient that pulses subtly, like someone adjusted a dimmer. That's it. No mesh canvas, no boot sequence, no marquee text.
 
 ## Content Architecture
 
