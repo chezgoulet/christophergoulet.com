@@ -68,7 +68,8 @@ body::after{
 }
 
 /* Language toggles */
-.lang-en{display:block}
+body.fr-active .lang-en{display:none}
+body.fr-active .lang-fr{display:block}
 .lang-fr{display:none}
 
 /* ── Navigation ── */
@@ -122,11 +123,6 @@ nav .links a:hover{color:var(--text)}
   transition:all .2s;
 }
 .lang-toggle:hover{border-color:var(--accent);color:var(--accent)!important}
-.nav-toggle{
-  display:none;
-  background:none;border:none;cursor:pointer;
-  color:var(--text);font-size:24px;padding:4px;font-family:var(--sans)
-}
 
 /* ── Container ── */
 .container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
@@ -501,7 +497,6 @@ footer p{
     border-bottom:1px solid var(--line);
     padding:16px 24px;gap:14px;
   }
-  .nav-toggle{display:block}
   .step{grid-template-columns:1fr;gap:8px;padding:24px}
   .book-panel{padding:32px 20px}
   .container{padding:0 16px}
@@ -560,11 +555,10 @@ footer p{
 <nav>
   <div class="inner">
     <a href="https://christophergoulet.com" class="brand">C.GOULET</a>
-    <button class="nav-toggle" onclick="document.querySelector('nav .links').classList.toggle('open')" aria-label="Toggle menu">☰</button>
+    <button class="lang-toggle" id="langToggle" title="Switch to French">🍁</button>
     <div class="links">
       <a href="#story">The story</a>
       <a href="#how">How it works</a>
-      <button class="lang-toggle" id="langToggle" title="Toggle language">EN</button>
       <a href="#book" class="cta-link" style="display:inline-flex;align-items:center;padding:6px 16px;background:var(--accent);color:#000!important;border-radius:6px;font-weight:600;font-size:12px;text-decoration:none;font-family:var(--mono);transition:opacity .2s">Book a call</a>
     </div>
   </div>
@@ -910,39 +904,36 @@ footer p{
 </footer>
 
 <script>
-// ── BILINGUAL TOGGLE ──
+// ── LANGUAGE TOGGLE ──
 (function(){
   const btn = document.getElementById('langToggle');
   const root = document.documentElement;
   if(!btn) return;
 
-  const enBlocks = document.querySelectorAll('.lang-en');
-  const frBlocks = document.querySelectorAll('.lang-fr');
-
   function setLang(lang){
     if(lang === 'fr'){
-      enBlocks.forEach(el => el.style.display = 'none');
-      frBlocks.forEach(el => el.style.display = 'block');
+      document.body.classList.add('fr-active');
       root.style.setProperty('--accent', 'var(--fr-blue)');
       root.style.setProperty('--accent-rgb', 'var(--fr-blue-rgb)');
-      btn.textContent = 'FR';
+      btn.textContent = '⚜';
+      btn.title = 'Passer en anglais';
       localStorage.setItem('canada-lang', 'fr');
     } else {
-      enBlocks.forEach(el => el.style.display = 'block');
-      frBlocks.forEach(el => el.style.display = 'none');
+      document.body.classList.remove('fr-active');
       root.style.setProperty('--accent', 'var(--en-red)');
       root.style.setProperty('--accent-rgb', 'var(--en-red-rgb)');
-      btn.textContent = 'EN';
+      btn.textContent = '🍁';
+      btn.title = 'Switch to French';
       localStorage.setItem('canada-lang', 'en');
     }
   }
 
   btn.addEventListener('click', function(){
-    const current = localStorage.getItem('canada-lang') || 'en';
-    setLang(current === 'en' ? 'fr' : 'en');
+    const currentLang = document.body.classList.contains('fr-active') ? 'fr' : 'en';
+    setLang(currentLang === 'en' ? 'fr' : 'en');
   });
 
-  // Restore preference
+  // Restore preference on load
   const saved = localStorage.getItem('canada-lang');
   if(saved === 'fr') setLang('fr');
 })();
@@ -976,20 +967,6 @@ footer p{
   els.forEach(el => obs.observe(el));
 })();
 
-// ── MOBILE NAV ──
-(function(){
-  const toggle = document.querySelector('.nav-toggle');
-  const links = document.querySelector('nav .links');
-  if(!toggle || !links) return;
-  toggle.addEventListener('click', function(){
-    links.classList.toggle('open');
-  });
-  links.querySelectorAll('a').forEach(function(link){
-    link.addEventListener('click', function(){
-      links.classList.remove('open');
-    });
-  });
-})();
 </script>
 
 </body>

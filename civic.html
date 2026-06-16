@@ -71,23 +71,62 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:600}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
-/* ───── FOOTLIGHT GLOW ───── */
-.footlight-glow{
-  position:relative;
+/* ───── CARNIVAL LIGHTING — multi-angle glow system ───── */
+.light-wrap{position:relative}
+.light-wrap::before{
+  content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+  pointer-events:none;border-radius:inherit;z-index:0;
 }
-.footlight-glow::after{
-  content:'';
-  position:absolute;
-  bottom:0;left:0;right:0;
-  height:100%;
-  pointer-events:none;
-  background:linear-gradient(0deg,rgba(var(--gold-rgb),0.06) 0%,transparent 40%);
-  animation:footlight-pulse 4s ease-in-out infinite;
-  border-radius:inherit;
+
+/* HERO — warm gold from right (stage-right sunset) */
+.hero{position:relative}
+.hero .light-right::before{
+  content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+  pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse at 100% 50%,rgba(var(--gold-rgb),0.08) 0%,transparent 60%);
 }
-@keyframes footlight-pulse{
-  0%,100%{opacity:0.3}
-  50%{opacity:0.5}
+
+/* SECTION 01 — coral spotlight from top-left */
+.sec-service{position:relative}
+.sec-service::before{
+  content:'';position:absolute;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse at 0% 0%,rgba(var(--coral-rgb),0.07) 0%,transparent 50%);
+}
+
+/* SECTION 02 — gold campfire glow from bottom-right */
+.sec-catamounts{position:relative}
+.sec-catamounts::before{
+  content:'';position:absolute;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse at 100% 100%,rgba(var(--gold-rgb),0.07) 0%,transparent 50%);
+}
+
+/* SECTION 03 — dual source: coral bottom-left + gold top-right */
+.sec-community{position:relative}
+.sec-community::before{
+  content:'';position:absolute;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse at 0% 100%,rgba(var(--coral-rgb),0.07) 0%,transparent 50%),
+    radial-gradient(ellipse at 100% 0%,rgba(var(--gold-rgb),0.06) 0%,transparent 50%);
+}
+
+/* SECTION 04 — warm wash from top (footlights + top lights) */
+.sec-offerings{position:relative}
+.sec-offerings::before{
+  content:'';position:absolute;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:0;
+  background:linear-gradient(180deg,rgba(var(--gold-rgb),0.04) 0%,transparent 30%);
+}
+
+/* BOOKING PANEL — glow from all sides */
+.book-panel{
+  box-shadow:
+    0 0 30px rgba(var(--coral-rgb),0.06),
+    0 0 15px rgba(var(--coral-rgb),0.04),
+    inset 0 0 30px rgba(var(--coral-rgb),0.03),
+    inset 0 0 15px rgba(var(--coral-rgb),0.02);
 }
 
 /* ───── STATUS DOT ───── */
@@ -232,7 +271,6 @@ nav .cta-link:hover{opacity:.85;color:#0a0b0d!important}
   height:60%;
   background:linear-gradient(0deg,rgba(var(--gold-rgb),0.04) 0%,transparent 40%);
   pointer-events:none;
-  animation:footlight-pulse 4s ease-in-out infinite;
 }
 .hp-stat .num{
   font-family:'Fraunces',serif;
@@ -300,7 +338,6 @@ nav .cta-link:hover{opacity:.85;color:#0a0b0d!important}
   height:60%;
   background:linear-gradient(0deg,rgba(var(--gold-rgb),0.06) 0%,transparent 40%);
   pointer-events:none;
-  animation:footlight-pulse 4s ease-in-out infinite;
   border-radius:inherit;
 }
 .civ-card:hover{border-color:rgba(var(--coral-rgb),.3);transform:translateY(-2px)}
@@ -350,7 +387,6 @@ nav .cta-link:hover{opacity:.85;color:#0a0b0d!important}
   height:60%;
   background:linear-gradient(0deg,rgba(var(--gold-rgb),0.06) 0%,transparent 40%);
   pointer-events:none;
-  animation:footlight-pulse 4s ease-in-out infinite;
   border-radius:inherit;
 }
 .serve::before{
@@ -377,15 +413,11 @@ nav .cta-link:hover{opacity:.85;color:#0a0b0d!important}
   background:var(--panel);border:1px solid rgba(var(--coral-rgb),.25);
   border-radius:var(--radius);overflow:hidden;
   position:relative;
-}
-.book-panel::after{
-  content:'';
-  position:absolute;
-  bottom:0;left:0;right:0;
-  height:80%;
-  background:linear-gradient(0deg,rgba(var(--gold-rgb),0.05) 0%,transparent 40%);
-  pointer-events:none;
-  animation:footlight-pulse 4s ease-in-out infinite;
+  box-shadow:
+    0 0 30px rgba(var(--coral-rgb),0.06),
+    0 0 15px rgba(var(--coral-rgb),0.04),
+    inset 0 0 30px rgba(var(--coral-rgb),0.03),
+    inset 0 0 15px rgba(var(--coral-rgb),0.02);
 }
 .book-body{padding:40px 32px;text-align:center;position:relative;z-index:1}
 .book-body .fr{
@@ -451,7 +483,6 @@ section{scroll-margin-top:72px}
 @media(prefers-reduced-motion:reduce){
   .reveal{opacity:1!important;transform:none!important}
   .dot{animation:none!important}
-  .footlight-glow::after,.hp-stat::after,.civ-card::after,.serve::after,.book-panel::after{animation:none!important;opacity:0.4!important}
   *,*::before,*::after{transition-duration:0s!important;animation-duration:0s!important}
 }
 </style>
@@ -533,8 +564,9 @@ section{scroll-margin-top:72px}
 
 <!-- ───── HERO ───── -->
 <section class="hero" id="top">
-  <div class="wrap">
-    <div class="grid">
+  <div class="light-right" style="position:relative;z-index:0">
+    <div class="wrap">
+      <div class="grid">
       <div>
         <h1 class="reveal">Community resilience <span class="s">starts with people who show up.</span></h1>
         <p class="lede reveal">Two and a half years on the Windsor Selectboard from the beginning of COVID through the worst of it. Founding a community scouting troop. Building mutual aid networks. Running a venue. This work taught me what communities actually need — and it's not enterprise software.</p>
@@ -574,11 +606,12 @@ section{scroll-margin-top:72px}
         </div>
       </div>
     </div>
-  </div>
+    </div>
+    </div><!-- /light-right -->
 </section>
 
 <!-- ───── SECTION 01 — SELECTBOARD ───── -->
-<section class="sec" id="service">
+<section class="sec sec-service" id="service">
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="idx">01 — MUNICIPAL SERVICE</div>
@@ -598,7 +631,7 @@ section{scroll-margin-top:72px}
 </section>
 
 <!-- ───── SECTION 02 — 161st CATAMOUNTS ───── -->
-<section class="sec" id="community">
+<section class="sec sec-catamounts" id="community">
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="idx">02 — COMMUNITY SCOUTING</div>
@@ -625,7 +658,7 @@ section{scroll-margin-top:72px}
 </section>
 
 <!-- ───── SECTION 03 — COMMUNITY WORK ───── -->
-<section class="sec" id="community-work">
+<section class="sec sec-community" id="community-work">
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="idx">03 — COMMUNITY WORK</div>
@@ -649,7 +682,7 @@ section{scroll-margin-top:72px}
 </section>
 
 <!-- ───── SECTION 04 — WHAT I OFFER ───── -->
-<section class="sec" id="offerings">
+<section class="sec sec-offerings" id="offerings">
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="idx">WHAT I OFFER</div>
