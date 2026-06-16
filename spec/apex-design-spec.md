@@ -84,6 +84,8 @@ Each door is a card with: SVG icon, subdomain label, one-sentence description, "
 
 **Reference:** heydonworks.com — simplicity with attitude conveyed in few words.
 
+**OLED-friendly:** Background should use true black (`#000000`) where possible, not near-black (`#0a0b0d`). The apex has minimal visual chrome — no mesh canvas, no gradient panels — so there's no reason not to hit true black. This saves battery on OLED screens and makes the doors pop.
+
 **What makes this page feel like itself:**
 - Minimal. No hero animation, no scroll reveal, no stats, no canvas
 - The four doors ARE the page. Each one previews its subdomain's color
