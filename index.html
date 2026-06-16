@@ -7,536 +7,405 @@
 <meta name="description" content="Christopher Goulet — I help people build things they actually own. Business infrastructure. Diaspora reconnection. Sovereign technology. Community resilience.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-:root {
-  --bg: #0a0b0d;
-  --bg2: #0e1014;
-  --bg3: #14171c;
-  --card: #191c22;
-  --card-hover: #1f2228;
-  --border: #282b30;
-  --text: #e2e4e8;
-  --text2: #9a9ca2;
-  --text3: #686a70;
-  --amber: #e8b14f;
-  --amber-dim: rgba(232,177,79,0.12);
-  --amber-glow: rgba(232,177,79,0.08);
-  --amber-rgb: 232,177,79;
-  --radius: 14px;
-  --radius-sm: 8px;
-  --max-w: 1120px;
+:root{
+  --bg:#000000;
+  --bg-grad:#050506;
+  --panel:#0a0a0c;
+  --panel-2:#0e0e11;
+  --line:#1a1a1e;
+  --line-2:#22222a;
+  --text:#e6e8ea;
+  --text-2:#9aa1a9;
+  --text-3:#646b73;
+  --amber:#e8b14f;
+  --sage:#6cc49a;
+  --red:#e0716a;
+  --amber-rgb:232,177,79;
+  --max-w:1140px;
+  --radius:12px;
 }
 
-html { scroll-behavior: smooth; }
+::selection{background:rgba(232,177,79,0.28)}
 
-body {
-  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale
 }
 
 /* ── Scanline overlay ── */
-body::after {
-  content: '';
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: repeating-linear-gradient(
+body::after{
+  content:'';
+  position:fixed;
+  top:0;left:0;right:0;bottom:0;
+  background:repeating-linear-gradient(
     0deg,
-    transparent,
-    transparent 2px,
-    rgba(0,0,0,0.03) 2px,
-    rgba(0,0,0,0.03) 4px
+    rgba(255,255,255,0.012) 0px 1px,
+    transparent 1px 3px
   );
-  pointer-events: none;
-  z-index: 9999;
+  pointer-events:none;
+  z-index:9999
 }
+
+/* ── Utility ── */
+.wrap{max-width:var(--max-w);margin:0 auto;padding:0 24px}
 
 /* ── Navigation ── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0;
-  z-index: 100;
-  background: rgba(10,11,13,0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;height:60px;
+  background:rgba(0,0,0,0.88);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line)
+}
+nav .inner{
+  max-width:var(--max-w);margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;height:60px
+}
+nav .brand{
+  display:flex;align-items:center;gap:10px;
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:600;font-size:14px;
+  letter-spacing:1px;
+  color:var(--text);
+  text-decoration:none
+}
+nav .brand .sq{
+  display:inline-block;
+  width:13px;height:13px;
+  border:1.5px solid var(--amber);
+  background:rgba(232,177,79,0.25);
+  transform:rotate(45deg);
+  flex-shrink:0
+}
+nav .brand:hover{opacity:.85}
+nav .links{display:flex;align-items:center;gap:20px}
+
+nav .book-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 20px;
+  background:transparent;
+  color:var(--text)!important;
+  border:1px solid var(--line-2);
+  border-radius:6px;
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:500;font-size:13px;
+  text-decoration:none;
+  transition:all .2s;
+  cursor:pointer
+}
+nav .book-btn:hover{
+  border-color:var(--amber);
+  color:var(--amber)!important
 }
 
-nav .inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 24px;
-  height: 60px;
+/* ── Mobile nav toggle ── */
+.nav-toggle{
+  display:none;
+  background:none;border:none;cursor:pointer;
+  width:28px;height:28px;
+  position:relative;
+  color:var(--text-2)
 }
-
-nav .brand {
-  font-family: 'Fraunces', serif;
-  font-weight: 700;
-  font-size: 20px;
-  color: var(--amber);
-  text-decoration: none;
-  letter-spacing: 0.5px;
+.nav-toggle span{
+  display:block;
+  width:22px;height:2px;
+  background:currentColor;
+  border-radius:2px;
+  position:absolute;left:3px;
+  transition:all .3s
 }
-
-nav .brand:hover { opacity: 0.85; }
-
-nav .links { display: flex; align-items: center; gap: 20px; }
-
-nav .book-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 20px;
-  background: var(--amber);
-  color: #0a0b0d !important;
-  border-radius: 6px;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 600;
-  font-size: 13px;
-  text-decoration: none;
-  transition: all 0.2s;
-  border: none;
-  cursor: pointer;
-}
-
-nav .book-btn:hover {
-  opacity: 0.88;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(var(--amber-rgb),0.25);
-}
+.nav-toggle span:nth-child(1){top:7px}
+.nav-toggle span:nth-child(2){top:13px;width:16px}
+.nav-toggle span:nth-child(3){top:19px}
+.nav-toggle.open span:nth-child(1){transform:rotate(45deg);top:13px}
+.nav-toggle.open span:nth-child(2){opacity:0;width:0}
+.nav-toggle.open span:nth-child(3){transform:rotate(-45deg);top:13px}
 
 /* ── Hero ── */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding-top: 60px;
-  position: relative;
-  overflow: hidden;
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding-top:60px;
+  position:relative;overflow:hidden
+}
+.hero .inner{
+  width:100%;
+  max-width:var(--max-w);
+  margin:0 auto;padding:0 24px;
+  text-align:center;
+  position:relative;z-index:1
+}
+.hero h1{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:clamp(32px,4vw,52px);
+  line-height:1.15;
+  letter-spacing:-.02em;
+  color:var(--text);
+  margin-bottom:12px
+}
+.hero h1 .name{
+  display:block;
+  font-weight:300;
+  font-size:.65em;
+  color:var(--text-3);
+  letter-spacing:2px;
+  margin-bottom:8px
+}
+.hero h1 .italic-amber{
+  font-style:italic;
+  color:var(--amber)
+}
+.hero .subtitle{
+  font-size:clamp(14px,1.1vw,17px);
+  color:var(--text-2);
+  max-width:620px;
+  margin:0 auto;
+  line-height:1.7;
+  font-weight:400
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -40%;
-  left: -10%;
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, rgba(var(--amber-rgb),0.04) 0%, transparent 70%);
-  pointer-events: none;
+/* ── Doors Section ── */
+.doors-section{padding:0 0 100px}
+.doors-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px
 }
 
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -30%;
-  right: -15%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(var(--amber-rgb),0.03) 0%, transparent 70%);
-  pointer-events: none;
+.door{
+  position:relative;
+  display:flex;flex-direction:column;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:28px 26px;
+  text-decoration:none;
+  color:inherit;
+  transition:all .3s ease;
+  overflow:hidden
 }
+.door::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:2px;
+  background:var(--accent,var(--amber));
+  transform:scaleX(0);
+  transform-origin:left center;
+  transition:transform .3s ease
+}
+.door:hover{
+  transform:translateY(-3px);
+  border-color:var(--line-2)
+}
+.door:hover::before{transform:scaleX(1)}
 
-.hero .inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 24px;
-  width: 100%;
-  text-align: center;
-  position: relative;
-  z-index: 1;
+.door .glyph{
+  width:36px;height:36px;
+  margin-bottom:20px;
+  color:var(--accent,var(--amber))
 }
+.door .glyph svg{width:100%;height:100%}
 
-.hero h1 {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(28px, 3.8vw, 48px);
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  color: var(--text);
-  margin-bottom: 16px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+.door-k{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10.5px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--text-3);
+  margin-bottom:8px
 }
-
-.hero h1 .highlight {
-  color: var(--amber);
+.door h3{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:21px;
+  letter-spacing:-.4px;
+  color:var(--text);
+  margin-bottom:8px
 }
-
-.hero .subtitle {
-  font-size: clamp(14px, 1.2vw, 17px);
-  color: var(--text2);
-  max-width: 620px;
-  margin: 0 auto 64px;
-  line-height: 1.7;
-  font-weight: 400;
+.door p{
+  font-size:14px;
+  color:var(--text-2);
+  font-weight:300;
+  line-height:1.6;
+  flex-grow:1;
+  margin-bottom:16px
 }
-
-/* ── Doors Grid ── */
-.doors-section {
-  padding: 0 0 100px;
-  position: relative;
+.door-go{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  letter-spacing:.5px;
+  color:var(--accent,var(--amber));
+  text-decoration:none;
+  transition:gap .2s
 }
-
-.doors-section .inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.doors-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.door {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 32px;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.door::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--amber);
-  opacity: 0.4;
-  transition: opacity 0.3s ease;
-}
-
-.door:hover {
-  border-color: rgba(var(--amber-rgb),0.3);
-  background: var(--card);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-}
-
-.door:hover::before {
-  opacity: 1;
-}
-
-.door-icon {
-  width: 48px;
-  height: 48px;
-  margin-bottom: 16px;
-  color: var(--amber);
-}
-
-.door-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.door h3 {
-  font-family: 'Fraunces', serif;
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 6px;
-}
-
-.door .door-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--amber);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-}
-
-.door p {
-  font-size: 14px;
-  color: var(--text2);
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.door .door-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--amber);
-  text-decoration: none;
-  transition: gap 0.2s;
-}
-
-.door .door-link:hover {
-  gap: 10px;
-}
-
-.door .door-link svg {
-  width: 14px;
-  height: 14px;
-  fill: currentColor;
-}
+.door:hover .door-go{gap:10px}
+.door-go svg{width:14px;height:14px;fill:currentColor}
 
 /* ── Booking Section ── */
-.booking {
-  padding: 80px 0 100px;
+.booking{padding:80px 0 100px}
+.book-panel{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-left:3px solid var(--amber);
+  border-radius:var(--radius);
+  padding:40px 44px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:40px;
+  position:relative;
+  overflow:hidden
 }
-
-.booking .inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 24px;
+.book-content{flex:1;position:relative;z-index:1}
+.book-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  color:var(--amber);
+  margin-bottom:6px
 }
-
-.book-panel {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-  position: relative;
-  overflow: hidden;
+.book-panel h2{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:clamp(22px,2.2vw,30px);
+  color:var(--text);
+  margin-bottom:6px;
+  letter-spacing:-.01em
 }
-
-.book-panel::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(ellipse at 80% 50%, rgba(var(--amber-rgb),0.05) 0%, transparent 60%);
-  pointer-events: none;
+.book-panel p{
+  font-size:15px;
+  color:var(--text-2);
+  max-width:480px;
+  line-height:1.6
 }
-
-.book-panel .book-content {
-  flex: 1;
-  position: relative;
-  z-index: 1;
+.book-panel .book-cta{position:relative;z-index:1;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.book-panel .book-cta .cta-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 32px;
+  background:var(--amber);
+  color:#000;
+  border-radius:8px;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-weight:600;
+  font-size:14px;
+  text-decoration:none;
+  transition:all .2s
 }
-
-.book-panel .book-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--amber);
-  margin-bottom: 8px;
+.book-panel .book-cta .cta-primary:hover{
+  opacity:.88;
+  transform:translateY(-2px);
+  box-shadow:0 6px 24px rgba(var(--amber-rgb),.3)
 }
-
-.book-panel h2 {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(24px, 2.5vw, 32px);
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 8px;
-  letter-spacing: -0.01em;
+.book-panel .book-cta .cta-secondary{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  color:var(--text-3);
+  text-decoration:none;
+  transition:color .2s
 }
+.book-panel .book-cta .cta-secondary:hover{color:var(--amber)}
 
-.book-panel p {
-  font-size: 15px;
-  color: var(--text2);
-  max-width: 480px;
-  line-height: 1.6;
+/* ── UTC Clock ── */
+.utc-bar{
+  padding:0 0 40px;
+  text-align:center
 }
-
-.book-panel .book-cta {
-  position: relative;
-  z-index: 1;
-  flex-shrink: 0;
-}
-
-.book-panel .book-cta a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 32px;
-  background: var(--amber);
-  color: #0a0b0d;
-  border-radius: var(--radius-sm);
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  text-decoration: none;
-  transition: all 0.2s;
-}
-
-.book-panel .book-cta a:hover {
-  opacity: 0.88;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(var(--amber-rgb),0.3);
-}
-
-.book-panel .book-cta a svg {
-  width: 14px;
-  height: 14px;
-  fill: currentColor;
-}
-
-/* ── Status bar ── */
-.status-bar {
-  padding: 0 0 60px;
-}
-
-.status-bar .inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.status-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
-  color: var(--text3);
-}
-
-.status-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #4ade80;
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(74,222,128,0.5); }
-  50% { opacity: 0.6; box-shadow: 0 0 0 6px rgba(74,222,128,0); }
-}
-
-.utc-clock {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
-  color: var(--text3);
+.utc-clock{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  color:var(--text-3)
 }
 
 /* ── Footer ── */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 48px 0;
+footer{
+  border-top:1px solid var(--line);
+  padding:48px 0
 }
-
-footer .inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+footer .inner{
+  max-width:var(--max-w);
+  margin:0 auto;
+  padding:0 24px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px
 }
-
-footer .footer-links {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  justify-content: center;
+footer .footer-links{
+  display:flex;gap:20px;flex-wrap:wrap;justify-content:center
 }
-
-footer .footer-links a {
-  color: var(--text3);
-  text-decoration: none;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 13px;
-  transition: color 0.2s;
+footer .footer-links a{
+  color:var(--text-3);
+  text-decoration:none;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  letter-spacing:.3px;
+  transition:color .2s
 }
-
-footer .footer-links a:hover { color: var(--amber); }
-
-footer p {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 12px;
-  color: var(--text3);
-  text-align: center;
-  line-height: 1.6;
+footer .footer-links a:hover{color:var(--amber)}
+footer p{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:12px;
+  color:var(--text-3);
+  text-align:center;
+  line-height:1.6
 }
-
-footer p .sep {
-  margin: 0 8px;
-  color: var(--border);
-}
-
-/* ── Scroll reveal ── */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+footer p .sep{margin:0 8px;color:var(--line-2)}
 
 /* ── Responsive ── */
-@media (max-width: 860px) {
-  .doors-grid {
-    grid-template-columns: 1fr;
+@media(max-width:620px){
+  nav .inner{padding:0 18px}
+  .nav-toggle{display:block}
+  nav .links{
+    position:fixed;
+    top:60px;left:0;right:0;
+    flex-direction:column;
+    background:rgba(0,0,0,.95);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+    padding:16px 24px 20px;
+    gap:14px;
+    transform:translateY(-100%);
+    opacity:0;
+    pointer-events:none;
+    transition:all .3s ease
   }
-  .book-panel {
-    flex-direction: column;
-    text-align: center;
-    padding: 36px 28px;
+  nav .links.open{
+    transform:translateY(0);
+    opacity:1;
+    pointer-events:auto
   }
-  .book-panel p {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .hero h1 {
-    font-size: clamp(24px, 5vw, 34px);
-  }
+  nav .book-btn{width:100%;justify-content:center}
+  .doors-grid{grid-template-columns:1fr}
+  .hero .inner,.doors-section .inner,.booking .inner,footer .inner{padding:0 18px}
+  .book-panel{flex-direction:column;text-align:center;padding:32px 24px}
+  .book-panel p{margin-left:auto;margin-right:auto}
+  .book-panel .book-cta{align-items:stretch}
+  .book-panel .book-cta .cta-primary{justify-content:center}
+  .door{padding:24px 22px}
 }
 
-@media (max-width: 600px) {
-  nav .inner {
-    padding: 0 16px;
-    height: 54px;
-  }
-  nav .brand {
-    font-size: 18px;
-  }
-  nav .book-btn {
-    padding: 6px 14px;
-    font-size: 12px;
-  }
-  .hero .inner,
-  .doors-section .inner,
-  .booking .inner,
-  .status-bar .inner,
-  footer .inner {
-    padding: 0 16px;
-  }
-  .door {
-    padding: 24px;
-  }
-  .book-panel {
-    padding: 28px 20px;
-  }
-  .book-panel .book-cta a {
-    width: 100%;
-    justify-content: center;
+@media(prefers-reduced-motion:reduce){
+  *,.door,.door::before,.door-go,.nav-toggle span,nav .links,.book-panel .book-cta .cta-primary{
+    transition-duration:.01ms!important;
+    animation-duration:.01ms!important;
+    transform:none!important
   }
 }
 </style>
@@ -546,7 +415,7 @@ footer p .sep {
 <!-- SVG Defs -->
 <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
   <defs>
-    <!-- g-shop: shop/store icon → biz -->
+    <!-- g-shop: storefront → biz -->
     <g id="g-shop">
       <rect x="4" y="8" width="16" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
       <path d="M4 8L6 4h12l2 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
@@ -554,24 +423,21 @@ footer p .sep {
       <line x1="8" y1="18" x2="16" y2="18" stroke="currentColor" stroke-width="1.2"/>
     </g>
 
-    <!-- g-mesh: mesh/network icon → tech -->
-    <g id="g-mesh">
-      <circle cx="12" cy="6" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
-      <circle cx="5" cy="20" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
-      <circle cx="19" cy="20" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
-      <line x1="12" y1="6" x2="5" y2="20" stroke="currentColor" stroke-width="1.3"/>
-      <line x1="12" y1="6" x2="19" y2="20" stroke="currentColor" stroke-width="1.3"/>
-      <line x1="5" y1="20" x2="19" y2="20" stroke="currentColor" stroke-width="1.3" stroke-dasharray="2 2"/>
+    <!-- g-arch: stacked layers → tech -->
+    <g id="g-arch">
+      <rect x="4" y="4" width="16" height="5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <rect x="6" y="10" width="12" height="5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <rect x="8" y="16" width="8" height="5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
     </g>
 
-    <!-- g-herit: heritage/roots icon → canada -->
+    <!-- g-herit: fleur-de-lis abstracted → canada -->
     <g id="g-herit">
       <path d="M12 2C9 2 6 6 6 10c0 4 6 12 6 12s6-8 6-12c0-4-3-8-6-8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
       <circle cx="12" cy="9" r="2.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
-      <path d="M10 16c0 0 1 0.5 2 0.5s2 -0.5 2 -0.5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M10 16c0 0 1 0.5 2 0.5s2-0.5 2-0.5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
     </g>
 
-    <!-- g-comm: community/people icon → civic -->
+    <!-- g-comm: radiating people → civic -->
     <g id="g-comm">
       <circle cx="8" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
       <circle cx="16" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
@@ -583,12 +449,6 @@ footer p .sep {
     <!-- i-arrow -->
     <g id="i-arrow">
       <path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </g>
-
-    <!-- i-pin -->
-    <g id="i-pin">
-      <path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-      <circle cx="12" cy="9" r="2" fill="currentColor"/>
     </g>
 
     <!-- i-mail -->
@@ -609,18 +469,27 @@ footer p .sep {
       <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </g>
+
+    <!-- i-pin -->
+    <g id="i-pin">
+      <path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <circle cx="12" cy="9" r="2" fill="currentColor"/>
+    </g>
   </defs>
 </svg>
 
 <!-- Navigation -->
 <nav>
   <div class="inner">
-    <a href="#" class="brand">C.GOULET</a>
-    <div class="links">
-      <a href="#booking" class="book-btn">
-        <svg width="14" height="14" viewBox="0 0 24 24"><use href="#i-link"/></svg>
-        Book a call
-      </a>
+    <a href="#top" class="brand">
+      <span class="sq"></span>
+      C.GOULET
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="links" id="navLinks">
+      <a href="#booking" class="book-btn">Book a call</a>
     </div>
   </div>
 </nav>
@@ -628,85 +497,95 @@ footer p .sep {
 <!-- Hero -->
 <section class="hero" id="top">
   <div class="inner">
-    <h1 class="reveal">Christopher Goulet — <span class="highlight">I help people build things they actually own.</span></h1>
-    <p class="subtitle reveal">Business infrastructure. Diaspora reconnection. Sovereign technology. Community resilience.</p>
+    <h1>
+      <span class="name">Christopher Goulet</span>
+      I help people build things they <span class="italic-amber">actually</span> own.
+    </h1>
+    <p class="subtitle">Business infrastructure. Diaspora reconnection. Sovereign technology. Community resilience.</p>
   </div>
 </section>
 
 <!-- Doors -->
 <section class="doors-section" id="doors">
-  <div class="inner">
+  <div class="wrap">
     <div class="doors-grid">
+
       <!-- biz -->
-      <a href="https://biz.christophergoulet.com" class="door reveal" target="_blank">
-        <div class="door-icon"><svg viewBox="0 0 24 24"><use href="#g-shop"/></svg></div>
-        <div class="door-label">biz</div>
-        <h3>Business</h3>
-        <p>Small business technology that works — and that you own.</p>
-        <span class="door-link">Go →</span>
+      <a href="https://biz.christophergoulet.com" class="door" style="--accent:#e8b14f" target="_blank">
+        <div class="glyph"><svg viewBox="0 0 24 24"><use href="#g-shop"/></svg></div>
+        <div class="door-k">biz</div>
+        <h3>Small business technology that works — and that you own.</h3>
+        <p>Business infrastructure built for independence, not lock-in. Systems you can actually run.</p>
+        <span class="door-go">
+          Go
+          <svg viewBox="0 0 14 14"><use href="#i-arrow"/></svg>
+        </span>
       </a>
 
       <!-- tech -->
-      <a href="https://tech.christophergoulet.com" class="door reveal" target="_blank">
-        <div class="door-icon"><svg viewBox="0 0 24 24"><use href="#g-mesh"/></svg></div>
-        <div class="door-label">tech</div>
-        <h3>Technology</h3>
-        <p>Resilient sovereign infrastructure for people who know what that means.</p>
-        <span class="door-link">Go →</span>
+      <a href="https://tech.christophergoulet.com" class="door" style="--accent:#d4895a" target="_blank">
+        <div class="glyph"><svg viewBox="0 0 24 24"><use href="#g-arch"/></svg></div>
+        <div class="door-k">tech</div>
+        <h3>Resilient sovereign infrastructure for people who know what that means.</h3>
+        <p>Sovereign infrastructure that doesn't borrow from tomorrow to run today.</p>
+        <span class="door-go">
+          Go
+          <svg viewBox="0 0 14 14"><use href="#i-arrow"/></svg>
+        </span>
       </a>
 
       <!-- canada -->
-      <a href="https://canada.christophergoulet.com" class="door reveal" target="_blank">
-        <div class="door-icon"><svg viewBox="0 0 24 24"><use href="#g-herit"/></svg></div>
-        <div class="door-label">canada</div>
-        <h3>Diaspora</h3>
-        <p>Retrouver vos racines — finding your way home.</p>
-        <span class="door-link">Go →</span>
+      <a href="https://canada.christophergoulet.com" class="door" style="--accent:#e04545" target="_blank">
+        <div class="glyph"><svg viewBox="0 0 24 24"><use href="#g-herit"/></svg></div>
+        <div class="door-k">canada</div>
+        <h3>Retrouver vos racines — finding your way home.</h3>
+        <p>Diaspora reconnection for those who know where they came from but need help finding the way back.</p>
+        <span class="door-go">
+          Go
+          <svg viewBox="0 0 14 14"><use href="#i-arrow"/></svg>
+        </span>
       </a>
 
       <!-- civic -->
-      <a href="https://civic.christophergoulet.com" class="door reveal" target="_blank">
-        <div class="door-icon"><svg viewBox="0 0 24 24"><use href="#g-comm"/></svg></div>
-        <div class="door-label">civic</div>
-        <h3>Community</h3>
-        <p>Community resilience starts with people who show up.</p>
-        <span class="door-link">Go →</span>
+      <a href="https://civic.christophergoulet.com" class="door" style="--accent:#e87a6a" target="_blank">
+        <div class="glyph"><svg viewBox="0 0 24 24"><use href="#g-comm"/></svg></div>
+        <div class="door-k">civic</div>
+        <h3>Community resilience starts with people who show up.</h3>
+        <p>Building the kind of community that doesn't need saving — because it was never broken.</p>
+        <span class="door-go">
+          Go
+          <svg viewBox="0 0 14 14"><use href="#i-arrow"/></svg>
+        </span>
       </a>
+
     </div>
   </div>
 </section>
 
 <!-- Booking -->
 <section class="booking" id="booking">
-  <div class="inner">
-    <div class="book-panel reveal">
+  <div class="wrap">
+    <div class="book-panel">
       <div class="book-content">
         <div class="book-label">Let's talk</div>
-        <h2>Book a call</h2>
-        <p>Whether you need infrastructure, cooperative technology, diaspora guidance, or just want to compare notes — I make time for people who are building things that matter.</p>
+        <h2>The first call is free.</h2>
+        <p>Not sure which door is yours? A 20-minute conversation is all it takes to find out.</p>
       </div>
       <div class="book-cta">
-        <a href="mailto:me@christophergoulet.com?subject=Book%20a%20call">
-          Schedule a conversation
+        <a href="https://cal.com/christophergoulet" class="cta-primary" target="_blank">
+          Book a free call
           <svg width="14" height="14" viewBox="0 0 24 24"><use href="#i-arrow"/></svg>
         </a>
+        <a href="mailto:me@christophergoulet.com" class="cta-secondary">me@christophergoulet.com</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Status bar -->
-<div class="status-bar">
-  <div class="inner">
-    <div class="status-item">
-      <span class="status-dot"></span>
-      All systems nominal
-    </div>
-    <div class="status-item">
-      <svg width="14" height="14" viewBox="0 0 24 24" style="opacity:0.5"><use href="#i-pin"/></svg>
-      Windsor&thinsp;·&thinsp;VT
-    </div>
-    <div class="utc-clock" id="utc-clock">UTC</div>
+<!-- UTC Clock -->
+<div class="utc-bar">
+  <div class="wrap">
+    <span class="utc-clock" id="utc-clock">UTC</span>
   </div>
 </div>
 
@@ -720,41 +599,51 @@ footer p .sep {
       <a href="https://civic.christophergoulet.com" target="_blank">civic</a>
     </div>
     <p>
-      <span>Windsor&thinsp;·&thinsp;VT</span>
+      <span>Windsor, Vermont</span>
       <span class="sep">·</span>
-      <span>© 2026 Christopher Goulet</span>
+      <span>EN</span>
+      <span class="sep">·</span>
+      <span>FR</span>
+      <span class="sep">·</span>
+      <span>© 2026</span>
     </p>
   </div>
 </footer>
 
 <script>
-// ── Scroll Reveal ──
-(function() {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+// ── Mobile Nav Toggle ──
+(function(){
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  if(!toggle||!links)return;
+  toggle.addEventListener('click',function(){
+    this.classList.toggle('open');
+    links.classList.toggle('open');
+  });
+  document.querySelectorAll('#navLinks a').forEach(function(link){
+    link.addEventListener('click',function(){
+      toggle.classList.remove('open');
+      links.classList.remove('open');
     });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  });
 })();
 
 // ── UTC Clock ──
-(function() {
+(function(){
   const clock = document.getElementById('utc-clock');
-  function tick() {
-    const now = new Date();
-    clock.textContent = 'UTC ' + now.getUTCFullYear() + '-' +
-      String(now.getUTCMonth() + 1).padStart(2, '0') + '-' +
-      String(now.getUTCDate()).padStart(2, '0') + ' ' +
-      String(now.getUTCHours()).padStart(2, '0') + ':' +
-      String(now.getUTCMinutes()).padStart(2, '0') + ':' +
-      String(now.getUTCSeconds()).padStart(2, '0');
+  if(!clock)return;
+  function tick(){
+    const now=new Date();
+    clock.textContent='UTC '+
+      now.getUTCFullYear()+'-'+
+      String(now.getUTCMonth()+1).padStart(2,'0')+'-'+
+      String(now.getUTCDate()).padStart(2,'0')+' '+
+      String(now.getUTCHours()).padStart(2,'0')+':'+
+      String(now.getUTCMinutes()).padStart(2,'0')+':'+
+      String(now.getUTCSeconds()).padStart(2,'0');
   }
   tick();
-  setInterval(tick, 1000);
+  setInterval(tick,1000);
 })();
 </script>
 

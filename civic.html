@@ -15,18 +15,19 @@
 /* ───── ROOT ───── */
 :root{
   --bg:#0a0b0d;
-  --bg-grad:#0c0e11;
-  --panel:#101316;
-  --panel-2:#14181c;
-  --line:#22272d;
-  --line-2:#2c333a;
+  --panel:#0e1014;
+  --panel-2:#12151a;
+  --line:#1e2126;
+  --line-2:#262a30;
   --text:#e6e8ea;
   --text-2:#9aa1a9;
   --text-3:#646b73;
-  --sage:#6cc49a;
-  --sage-dim:#3f6f59;
-  --sage-rgb:108,196,154;
-  --red:#e0716a;
+  --coral:#e87a6a;
+  --coral-rgb:232,122,106;
+  --coral-dim:#c06456;
+  --gold:#dfb85a;
+  --gold-rgb:223,184,90;
+  --gold-dim:#b89444;
   --radius:10px;
   --radius-sm:6px;
   --max-w:1140px;
@@ -47,10 +48,10 @@ body::after{
   content:'';
   position:fixed;
   top:0;left:0;width:100%;height:100%;
-  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,.02) 2px,rgba(255,255,255,.02) 4px);
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,.015) 2px,rgba(255,255,255,.015) 4px);
   pointer-events:none;z-index:9999;
 }
-::selection{background:rgba(108,196,154,.3);color:#fff}
+::selection{background:rgba(var(--coral-rgb),.3);color:#fff}
 
 /* ───── TYPOGRAPHY ───── */
 h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:600}
@@ -70,16 +71,35 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:600}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
+/* ───── FOOTLIGHT GLOW ───── */
+.footlight-glow{
+  position:relative;
+}
+.footlight-glow::after{
+  content:'';
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:100%;
+  pointer-events:none;
+  background:linear-gradient(0deg,rgba(var(--gold-rgb),0.06) 0%,transparent 40%);
+  animation:footlight-pulse 4s ease-in-out infinite;
+  border-radius:inherit;
+}
+@keyframes footlight-pulse{
+  0%,100%{opacity:0.3}
+  50%{opacity:0.5}
+}
+
 /* ───── STATUS DOT ───── */
 .dot{
   display:inline-block;width:8px;height:8px;
-  border-radius:50%;background:var(--sage);
+  border-radius:50%;background:var(--coral);
   animation:pulse-dot 2s ease-in-out infinite;
   margin-right:6px;vertical-align:middle;
 }
 @keyframes pulse-dot{
-  0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(108,196,154,.5)}
-  50%{opacity:.6;box-shadow:0 0 0 6px rgba(108,196,154,0)}
+  0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(var(--coral-rgb),.5)}
+  50%{opacity:.6;box-shadow:0 0 0 6px rgba(var(--coral-rgb),0)}
 }
 
 /* ───── WRAP ───── */
@@ -97,10 +117,10 @@ nav .wrap{
   display:flex;align-items:center;justify-content:space-between;height:56px;
 }
 nav .brand{
-  font-family:'Fraunces',serif;font-weight:600;font-size:18px;
-  color:var(--text);text-decoration:none;letter-spacing:-.3px;
+  font-family:'Fraunces',serif;font-weight:700;font-size:18px;
+  color:var(--text);text-decoration:none;letter-spacing:.5px;
 }
-nav .brand:hover{color:var(--sage)}
+nav .brand:hover{color:var(--coral)}
 nav .links{display:flex;align-items:center;gap:20px}
 nav .links a{
   color:var(--text-2);text-decoration:none;
@@ -110,7 +130,7 @@ nav .links a{
 nav .links a:hover{color:var(--text)}
 nav .cta-link{
   display:inline-flex;align-items:center;
-  padding:6px 16px;background:var(--sage);color:#0a0b0d!important;
+  padding:6px 16px;background:var(--coral);color:#0a0b0d!important;
   border-radius:var(--radius-sm);font-weight:600;font-size:12px;
   transition:opacity .2s;
 }
@@ -127,7 +147,7 @@ nav .cta-link:hover{opacity:.85;color:#0a0b0d!important}
   position:absolute;
   top:-40%;left:-10%;
   width:700px;height:700px;
-  background:radial-gradient(circle,rgba(var(--sage-rgb),.04) 0%,transparent 70%);
+  background:radial-gradient(circle,rgba(var(--coral-rgb),.04) 0%,transparent 70%);
   pointer-events:none;
 }
 .hero::after{
@@ -135,7 +155,7 @@ nav .cta-link:hover{opacity:.85;color:#0a0b0d!important}
   position:absolute;
   bottom:-30%;right:-15%;
   width:500px;height:500px;
-  background:radial-gradient(circle,rgba(var(--sage-rgb),.03) 0%,transparent 70%);
+  background:radial-gradient(circle,rgba(var(--gold-rgb),.03) 0%,transparent 70%);
   pointer-events:none;
 }
 .hero .grid{
@@ -150,7 +170,7 @@ nav .cta-link:hover{opacity:.85;color:#0a0b0d!important}
   margin-bottom:16px;
 }
 .hero h1 .s{
-  color:var(--sage);
+  color:var(--coral);
 }
 
 .lede{
@@ -167,72 +187,83 @@ nav .cta-link:hover{opacity:.85;color:#0a0b0d!important}
   transition:all .25s;font-family:'IBM Plex Sans',sans-serif;
 }
 .btn-primary{
-  background:var(--sage);color:#0a0b0d;
-  box-shadow:0 2px 12px rgba(var(--sage-rgb),.25);
+  background:var(--coral);color:#0a0b0d;
+  box-shadow:0 2px 12px rgba(var(--coral-rgb),.25);
 }
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(var(--sage-rgb),.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(var(--coral-rgb),.35)}
 .btn-ghost{
   background:transparent;color:var(--text);
   border:1px solid var(--line);border-color:var(--line-2);
 }
-.btn-ghost:hover{border-color:var(--sage);color:var(--sage)}
+.btn-ghost:hover{border-color:var(--coral);color:var(--coral)}
 
-/* Hero Panel */
+/* Hero Panel — simple stats, no terminal chrome */
 .hero-panel{
   background:var(--panel);
   border:1px solid var(--line);border-radius:var(--radius);
-  overflow:hidden;position:relative;
+  padding:24px;
 }
-.hp-bar{
+.hp-header{
   display:flex;align-items:center;justify-content:space-between;
-  padding:10px 16px;border-bottom:1px solid var(--line);
-  font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-3);
-  text-transform:uppercase;letter-spacing:.04em;
+  margin-bottom:18px;padding-bottom:14px;
+  border-bottom:1px solid var(--line);
 }
-.hp-bar .dot-wrap{display:flex;align-items:center}
-.hp-bar .dot{width:6px;height:6px}
-
+.hp-header .tag{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;font-weight:500;text-transform:uppercase;
+  letter-spacing:.04em;color:var(--text-3);
+}
 .hp-stats{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:0;border-top:1px solid var(--line);
+  gap:12px;
 }
 .hp-stat{
-  padding:16px;
-  border-right:1px solid var(--line);
-  border-bottom:1px solid var(--line);
+  padding:14px 12px;
+  background:var(--panel-2);
+  border-radius:var(--radius-sm);
+  position:relative;
+  overflow:hidden;
 }
-.hp-stat:nth-child(2n){border-right:none}
-.hp-stat:nth-last-child(-n+2){border-bottom:none}
+.hp-stat::after{
+  content:'';
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:60%;
+  background:linear-gradient(0deg,rgba(var(--gold-rgb),0.04) 0%,transparent 40%);
+  pointer-events:none;
+  animation:footlight-pulse 4s ease-in-out infinite;
+}
 .hp-stat .num{
   font-family:'Fraunces',serif;
-  font-size:clamp(16px,2vw,22px);
-  font-weight:600;color:var(--sage);line-height:1.1;
+  font-size:clamp(15px,1.8vw,20px);
+  font-weight:600;color:var(--coral);line-height:1.2;
 }
 .hp-stat .label{
   font-size:11px;color:var(--text-3);margin-top:4px;
   font-family:'IBM Plex Sans',sans-serif;
   line-height:1.3;
 }
-
 .hp-foot{
-  padding:10px 16px;
+  margin-top:16px;padding-top:14px;
+  border-top:1px solid var(--line);
   display:flex;align-items:center;justify-content:space-between;
   font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-3);
+  text-transform:uppercase;letter-spacing:.04em;
 }
 
 /* ───── SECTION ───── */
 .sec{padding:100px 0}
 
-.sec-head{margin-bottom:48px}
+.sec-head{margin-bottom:36px}
 .sec-head .idx{
   font-family:'IBM Plex Mono',monospace;
   font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;
-  color:var(--sage);margin-bottom:6px;position:relative;display:inline-block;
+  color:var(--coral);margin-bottom:6px;position:relative;display:inline-block;
 }
 .sec-head .idx::after{
   content:'';position:absolute;bottom:-4px;left:0;
-  width:40px;height:2px;background:var(--sage);
+  width:40px;height:2px;background:var(--coral);
 }
 .sec-head h2{
   font-size:clamp(26px,3.2vw,38px);
@@ -240,18 +271,19 @@ nav .cta-link:hover{opacity:.85;color:#0a0b0d!important}
   max-width:620px;
 }
 
+/* ───── SECTION BODY ───── */
 .sec-body{
   font-size:15px;color:var(--text-2);
   max-width:680px;line-height:1.8;
 }
 
-/* ───── SERVICE SECTION ───── */
-.service-content{
+/* ───── SELECTBOARD CONTENT ───── */
+.selectboard-content{
   display:grid;grid-template-columns:1fr 1fr;gap:40px;
   align-items:start;
 }
 
-/* ───── COMMUNITY GRID (scouting + work) ───── */
+/* ───── CIVIC GRID (scouting + community) ───── */
 .civ-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:20px;
 }
@@ -259,29 +291,47 @@ nav .cta-link:hover{opacity:.85;color:#0a0b0d!important}
   background:var(--panel);border:1px solid var(--line);
   border-radius:var(--radius);padding:28px 24px;
   transition:border-color .25s,transform .25s;
+  position:relative;overflow:hidden;
 }
-.civ-card:hover{border-color:var(--sage-dim);transform:translateY(-2px)}
+.civ-card::after{
+  content:'';
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:60%;
+  background:linear-gradient(0deg,rgba(var(--gold-rgb),0.06) 0%,transparent 40%);
+  pointer-events:none;
+  animation:footlight-pulse 4s ease-in-out infinite;
+  border-radius:inherit;
+}
+.civ-card:hover{border-color:rgba(var(--coral-rgb),.3);transform:translateY(-2px)}
 .civ-card .civ-icon{
-  width:32px;height:32px;color:var(--sage);
-  margin-bottom:14px;
+  width:32px;height:32px;color:var(--coral);
+  margin-bottom:14px;position:relative;z-index:1;
 }
 .civ-card .civ-icon svg{width:100%;height:100%}
 .civ-card .civ-tag{
   font-family:'IBM Plex Mono',monospace;
   font-size:10px;font-weight:500;text-transform:uppercase;
-  letter-spacing:.06em;color:var(--sage);
-  margin-bottom:6px;
+  letter-spacing:.06em;color:var(--coral);
+  margin-bottom:6px;position:relative;z-index:1;
 }
 .civ-card h3{
   font-family:'Fraunces',serif;
   font-size:18px;font-weight:600;margin-bottom:8px;
-  color:var(--text);
+  color:var(--text);position:relative;z-index:1;
 }
 .civ-card p{
   font-size:13px;color:var(--text-2);line-height:1.7;
+  position:relative;z-index:1;
+}
+.civ-card .civ-note{
+  margin-top:12px;font-size:12px;color:var(--text-3);
+  font-style:italic;line-height:1.6;
+  border-top:1px solid var(--line);padding-top:12px;
+  position:relative;z-index:1;
 }
 
-/* ───── SERVICES GRID (what I offer) ───── */
+/* ───── OFFERINGS GRID ───── */
 .serve-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -290,55 +340,60 @@ nav .cta-link:hover{opacity:.85;color:#0a0b0d!important}
 .serve{
   background:var(--panel);border:1px solid var(--line);
   border-radius:var(--radius);padding:28px 24px;
-  position:relative;transition:border-color .25s,transform .25s;
+  position:relative;overflow:hidden;
+  transition:border-color .25s,transform .25s;
+}
+.serve::after{
+  content:'';
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:60%;
+  background:linear-gradient(0deg,rgba(var(--gold-rgb),0.06) 0%,transparent 40%);
+  pointer-events:none;
+  animation:footlight-pulse 4s ease-in-out infinite;
+  border-radius:inherit;
 }
 .serve::before{
   content:'';position:absolute;top:0;left:24px;right:24px;
-  height:2px;background:var(--sage);
-  border-radius:0 0 2px 2px;
+  height:2px;background:var(--coral);
+  border-radius:0 0 2px 2px;z-index:1;
 }
-.serve:hover{border-color:var(--sage-dim);transform:translateY(-2px)}
-.serve .no{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:11px;color:var(--text-3);margin-bottom:10px;
-}
+.serve:hover{border-color:rgba(var(--coral-rgb),.3);transform:translateY(-2px)}
 .serve .serve-icon{
-  width:28px;height:28px;color:var(--sage);
-  margin-bottom:10px;
+  width:28px;height:28px;color:var(--coral);
+  margin-bottom:10px;position:relative;z-index:1;
 }
 .serve .serve-icon svg{width:100%;height:100%}
 .serve h3{
   font-family:'Fraunces',serif;
   font-size:17px;font-weight:600;margin-bottom:8px;
-  color:var(--text);
+  color:var(--text);position:relative;z-index:1;
 }
-.serve p{font-size:13px;color:var(--text-2);line-height:1.6}
+.serve p{font-size:13px;color:var(--text-2);line-height:1.6;position:relative;z-index:1}
 
 /* ───── BOOK ───── */
 .book-sec{padding:60px 0 100px}
 .book-panel{
-  background:var(--panel);border:1px solid var(--sage-dim);
+  background:var(--panel);border:1px solid rgba(var(--coral-rgb),.25);
   border-radius:var(--radius);overflow:hidden;
+  position:relative;
 }
-.book-bar{
-  display:flex;align-items:center;
-  padding:14px 20px;
-  border-bottom:1px solid rgba(63,111,89,.2);
+.book-panel::after{
+  content:'';
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:80%;
+  background:linear-gradient(0deg,rgba(var(--gold-rgb),0.05) 0%,transparent 40%);
+  pointer-events:none;
+  animation:footlight-pulse 4s ease-in-out infinite;
 }
-.book-bar .bar-dots{display:flex;gap:6px}
-.book-bar .bar-dots span{
-  width:8px;height:8px;border-radius:50%;
-  background:var(--text-3);
-}
-.book-bar .bar-dots span:nth-child(1){background:var(--red)}
-.book-bar .bar-dots span:nth-child(2){background:var(--sage)}
-.book-bar .bar-dots span:nth-child(3){background:var(--sage)}
-.book-body{padding:36px 32px;text-align:center}
+.book-body{padding:40px 32px;text-align:center;position:relative;z-index:1}
 .book-body .fr{
   font-family:'Fraunces',serif;
   font-size:clamp(22px,2.8vw,32px);font-weight:600;
-  color:var(--sage);margin-bottom:12px;
+  color:var(--text);margin-bottom:12px;
 }
+.book-body .fr .hl{color:var(--coral)}
 .book-body p{font-size:15px;color:var(--text-2);margin-bottom:24px}
 .book-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
 .book-actions .btn-primary{padding:12px 30px}
@@ -356,7 +411,7 @@ footer .links a{
   font-size:12px;font-family:'IBM Plex Mono',monospace;
   transition:color .2s;
 }
-footer .links a:hover{color:var(--sage)}
+footer .links a:hover{color:var(--coral)}
 footer p{font-size:11px;color:var(--text-3);font-family:'IBM Plex Mono',monospace}
 
 /* ───── SCROLL MARGIN ───── */
@@ -369,7 +424,7 @@ section{scroll-margin-top:72px}
 @media(max-width:980px){
   .hero .grid{grid-template-columns:1fr;gap:36px;padding:60px 0}
   .hero-panel{max-width:480px}
-  .service-content{grid-template-columns:1fr;gap:24px}
+  .selectboard-content{grid-template-columns:1fr;gap:24px}
   .civ-grid{grid-template-columns:1fr}
   .serve-grid{grid-template-columns:repeat(2,1fr)}
 }
@@ -390,12 +445,13 @@ section{scroll-margin-top:72px}
   .sec{padding:60px 0}
   .wrap{padding:0 16px}
   .book-body{padding:28px 20px}
-  .service-content{grid-template-columns:1fr}
+  .selectboard-content{grid-template-columns:1fr}
 }
 
 @media(prefers-reduced-motion:reduce){
   .reveal{opacity:1!important;transform:none!important}
   .dot{animation:none!important}
+  .footlight-glow::after,.hp-stat::after,.civ-card::after,.serve::after,.book-panel::after{animation:none!important;opacity:0.4!important}
   *,*::before,*::after{transition-duration:0s!important;animation-duration:0s!important}
 }
 </style>
@@ -469,6 +525,7 @@ section{scroll-margin-top:72px}
     <div class="links">
       <a href="#service">Service</a>
       <a href="#community">Community</a>
+      <a href="#offerings">Offerings</a>
       <a href="#book" class="cta-link">Book a call</a>
     </div>
   </div>
@@ -480,38 +537,38 @@ section{scroll-margin-top:72px}
     <div class="grid">
       <div>
         <h1 class="reveal">Community resilience <span class="s">starts with people who show up.</span></h1>
-        <p class="lede reveal">Two and a half years on the Windsor Selectboard from the beginning of COVID through the worst of it. Founding a community scouting troop. Building mutual aid networks. Running a venue. This work taught me what communities actually need.</p>
+        <p class="lede reveal">Two and a half years on the Windsor Selectboard from the beginning of COVID through the worst of it. Founding a community scouting troop. Building mutual aid networks. Running a venue. This work taught me what communities actually need — and it's not enterprise software.</p>
         <div class="actions reveal">
           <a href="#book" class="btn btn-primary">Book a free call</a>
-          <a href="#community" class="btn btn-ghost">See my work</a>
+          <a href="#service" class="btn btn-ghost">See my work</a>
         </div>
       </div>
       <div class="reveal">
         <div class="hero-panel">
-          <div class="hp-bar">
-            <span>// CIVIC · ACTIVE</span>
-            <span class="dot-wrap"><span class="dot"></span></span>
+          <div class="hp-header">
+            <span class="tag">CIVIC · LIGHT ON</span>
+            <span><span class="dot"></span></span>
           </div>
           <div class="hp-stats">
             <div class="hp-stat">
               <div class="num">2.5 yrs</div>
-              <div class="label">Windsor Selectboard</div>
+              <div class="label">Selectboard (COVID onset)</div>
             </div>
             <div class="hp-stat">
-              <div class="num">161st</div>
-              <div class="label">Catamounts founder</div>
+              <div class="num">Founder</div>
+              <div class="label">161st Catamounts (OSG)</div>
             </div>
             <div class="hp-stat">
-              <div class="num">Whatdothlife</div>
-              <div class="label">Co-founder</div>
+              <div class="num">Co-founder</div>
+              <div class="label">Whatdothlife (501c3)</div>
             </div>
             <div class="hp-stat">
-              <div class="num">Windsor Live</div>
-              <div class="label">Co-founder</div>
+              <div class="num">Co-founder</div>
+              <div class="label">Windsor Live (2017)</div>
             </div>
           </div>
           <div class="hp-foot">
-            <span>WINDSOR·VT</span>
+            <span>Windsor·VT</span>
             <span id="utc-clock">--:--:-- UTC</span>
           </div>
         </div>
@@ -520,93 +577,99 @@ section{scroll-margin-top:72px}
   </div>
 </section>
 
-<!-- ───── SECTION: MUNICIPAL SERVICE ───── -->
+<!-- ───── SECTION 01 — SELECTBOARD ───── -->
 <section class="sec" id="service">
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="idx">01 — MUNICIPAL SERVICE</div>
-      <h2>Governing through a crisis</h2>
+      <h2>Governing through a crisis.</h2>
     </div>
-    <div class="reveal">
-      <p class="sec-body">Two and a half years on the Windsor, Vermont Selectboard, starting at the onset of COVID-19. Crisis governance at the municipal level — public health decisions, emergency response, community resilience — when the playbook didn't exist. This experience taught me what local government actually needs from technology: not sales pitches, but things that work.</p>
+    <div class="selectboard-content">
+      <div class="sec-body reveal">
+        <p>Sworn in about two weeks before lockdowns began. Very hard choices at almost every meeting through the worst of the pandemic. I did my best to act in a manner that would let me sleep at night.</p>
+        <p style="margin-top:16px">Permanent wins: a Pride flag permanently raised over town hall during Pride month. Retail cannabis passed in town limits. Taxes kept low during the worst economic upheaval in memory. Historic investments in infrastructure. Funds found for more playgrounds.</p>
+      </div>
+      <div class="sec-body reveal" style="max-width:100%">
+        <p>I spoke truth to power and moved the needle.</p>
+        <p style="margin-top:16px">I learned how a municipality works — the layers and dynamics of power, market, and people and how they all interact.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ───── SECTION: COMMUNITY SCOUTING ───── -->
-<section class="sec" id="scouting">
+<!-- ───── SECTION 02 — 161st CATAMOUNTS ───── -->
+<section class="sec" id="community">
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="idx">02 — COMMUNITY SCOUTING</div>
-      <h2>The 161st Catamounts</h2>
+      <h2>The 161st Catamounts.</h2>
     </div>
     <div class="civ-grid">
       <div class="civ-card reveal">
         <div class="civ-icon"><svg viewBox="0 0 32 32"><use href="#g-pine"/></svg></div>
         <div class="civ-tag">Founder &amp; Chief Tiguidou</div>
-        <h3>161st Catamounts</h3>
-        <p>Founder and Scoutmaster of the 161st Catamounts, a community scouting troop chartered under Outdoor Service Guides (OSG). All-adult, community defense-oriented, democratic governance — explicitly not a militia. Core training in de-escalation, wilderness first response, emergency communications, and community resilience. Based in Windsor, operating throughout the Upper Connecticut River Valley.</p>
-        <p style="margin-top:10px;font-style:italic;color:var(--text-3);font-size:13px;">"Find your path, change the world!"</p>
+        <h3>Adventure, Skills, Community</h3>
+        <p>A community project based on getting together, getting really good at skills, and going on adventures.</p>
+        <p style="margin-top:10px">Founder and Scoutmaster (Chief Tiguidou). Chartered under Outdoor Service Guides (OSG). All-adult, community defense-oriented, democratic governance.</p>
+        <p style="margin-top:10px;font-style:italic;color:var(--text-3);font-size:13px;position:relative;z-index:1">"Find your path, change the world!"</p>
       </div>
       <div class="civ-card reveal">
-        <div class="civ-icon"><svg viewBox="0 0 32 32"><use href="#g-pine"/></svg></div>
-        <div class="civ-tag">Purpose</div>
-        <h3>Community Defense &amp; Resilience</h3>
-        <p>The 161st Catamounts is an all-adult community scouting troop focused on building resilience from the ground up. Democratic governance, wilderness skills, emergency preparedness, and de-escalation training — everything a community needs to take care of itself. We are not a militia. We are neighbors learning to be useful in a crisis.</p>
+        <div class="civ-icon"><svg viewBox="0 0 32 32"><use href="#g-shield"/></svg></div>
+        <div class="civ-tag">Core Training</div>
+        <h3>Skills That Matter</h3>
+        <p>De-escalation and crisis communication. Wilderness First Responder. Emergency preparedness. HAM radio / emergency communications. Backcountry navigation. Community safety.</p>
+        <div class="civ-note">A note on framing: the 161st Catamounts are explicitly not a militia. We operate with democratic governance, mandatory background checks, JEDI principles, community accountability, and a de-escalation-first philosophy. The distinction matters and the distinguishing factors are obvious to anyone who engages with us.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ───── SECTION: COMMUNITY WORK ───── -->
-<section class="sec" id="community">
+<!-- ───── SECTION 03 — COMMUNITY WORK ───── -->
+<section class="sec" id="community-work">
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="idx">03 — COMMUNITY WORK</div>
-      <h2>More ways I serve</h2>
+      <h2>More ways I serve.</h2>
     </div>
     <div class="civ-grid">
       <div class="civ-card reveal">
         <div class="civ-icon"><svg viewBox="0 0 24 24"><use href="#g-comm"/></svg></div>
-        <div class="civ-tag">Collective</div>
+        <div class="civ-tag">Founding Member</div>
         <h3>Whatdothlife</h3>
-        <p>Founding member of this Vermont music and arts collective, navigated it through 501(c)(3) status. Building a platform for artists and community in the Upper Valley.</p>
+        <p>Founding member of this Vermont music and arts collective. Navigated it through 501(c)(3) status — governance, compliance, and community programming built from scratch.</p>
       </div>
       <div class="civ-card reveal">
         <div class="civ-icon"><svg viewBox="0 0 24 24"><use href="#g-shop"/></svg></div>
-        <div class="civ-tag">Venue</div>
+        <div class="civ-tag">Since 2017</div>
         <h3>Windsor Live</h3>
-        <p>Community venue, event space, and cultural hub in downtown Windsor since 2017. Hosting live music, art shows, and community gatherings that bring people together.</p>
+        <p>Community venue, event space, and cultural hub in downtown Windsor since 2017. Live music, art shows, community gatherings — a place where people come together.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ───── SECTION: SERVICES (what I offer) ───── -->
-<section class="sec" id="services">
+<!-- ───── SECTION 04 — WHAT I OFFER ───── -->
+<section class="sec" id="offerings">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="idx">— WHAT I OFFER</div>
-      <h2>How I can help your community</h2>
+      <div class="idx">WHAT I OFFER</div>
+      <h2>How I can help your community.</h2>
     </div>
     <div class="serve-grid">
       <div class="serve reveal">
-        <div class="no">001</div>
         <div class="serve-icon"><svg viewBox="0 0 24 24"><use href="#g-civic"/></svg></div>
         <h3>Municipal &amp; Civic Technology</h3>
-        <p>Technology strategy for local government. I've been in the room. I know what it takes to make systems that actually serve the public — not just check boxes.</p>
+        <p>Technology strategy for local government. I've been in the room — I know what small governments actually need, and it's not enterprise software.</p>
       </div>
       <div class="serve reveal">
-        <div class="no">002</div>
         <div class="serve-icon"><svg viewBox="0 0 24 24"><use href="#g-coop"/></svg></div>
         <h3>Cooperative Technology</h3>
-        <p>Helping community organizations move to member-owned, democratic systems. Platform co-ops, governance tools, and technology that belongs to the people who use it.</p>
+        <p>Helping community organizations move to member-owned, democratic systems. Platform co-op design and implementation for the people who do the work.</p>
       </div>
       <div class="serve reveal">
-        <div class="no">003</div>
         <div class="serve-icon"><svg viewBox="0 0 24 24"><use href="#g-shield"/></svg></div>
         <h3>Security &amp; Resilience</h3>
-        <p>For community orgs. Threat modeling at prices that make sense. Practical security for groups that can't afford enterprise consultants — but still deserve real protection.</p>
+        <p>For community organizations and nonprofits at prices that make sense. Threat modeling, hardening, and continuity planning grounded in real experience.</p>
       </div>
     </div>
   </div>
@@ -616,15 +679,12 @@ section{scroll-margin-top:72px}
 <section class="book-sec" id="book">
   <div class="wrap">
     <div class="book-panel reveal">
-      <div class="book-bar">
-        <span class="bar-dots"><span></span><span></span><span></span></span>
-      </div>
       <div class="book-body">
-        <div class="fr">Working on something for your community? Let's talk.</div>
+        <div class="fr">Working on something for <span class="hl">your community?</span> Let's talk.</div>
         <p>Free consultation. No pitch. Just a conversation about what you're trying to build.</p>
         <div class="book-actions">
-          <a href="mailto:me@christophergoulet.com?subject=Community%20consultation%20request" class="btn btn-primary">Book a call</a>
-          <a href="mailto:me@christophergoulet.com" class="btn btn-ghost">Or email me</a>
+          <a href="mailto:me@christophergoulet.com?subject=Community%20consultation" class="btn btn-primary">Book a call</a>
+          <a href="mailto:me@christophergoulet.com" class="btn btn-ghost">Email me</a>
         </div>
         <div class="book-note">Windsor, Vermont · Serving all of New England</div>
       </div>

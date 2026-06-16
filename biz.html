@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Christopher Goulet — Small Business Technology Consulting</title>
+<title>Christopher Goulet — Small Business Technology</title>
 <meta name="description" content="Small business technology that works — and that you own. Infrastructure, private AI, and cooperative technology for New England businesses.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,0..100&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ───── RESET ───── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -15,21 +15,22 @@
 /* ───── ROOT ───── */
 :root{
   --bg:#0a0b0d;
-  --bg-grad:#0c0e11;
-  --panel:#101316;
-  --panel-2:#14181c;
-  --line:#22272d;
-  --line-2:#2c333a;
-  --text:#e6e8ea;
-  --text-2:#9aa1a9;
-  --text-3:#646b73;
+  --bg2:#0e1014;
+  --bg3:#14171c;
+  --card:#191c22;
+  --card-hover:#1f2228;
+  --border:#282b30;
+  --text:#e2e4e8;
+  --text2:#9a9ca2;
+  --text3:#686a70;
   --amber:#e8b14f;
   --amber-dim:#b88a3c;
+  --amber-rgb:232,177,79;
+  --amber-dim-rgb:184,138,60;
   --sage:#6cc49a;
-  --red:#e0716a;
-  --radius:10px;
-  --radius-sm:6px;
-  --max-w:1140px;
+  --radius:14px;
+  --radius-sm:8px;
+  --max-w:1120px;
 }
 
 /* ───── BASE ───── */
@@ -47,7 +48,7 @@ body::after{
   content:'';
   position:fixed;
   top:0;left:0;width:100%;height:100%;
-  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,.02) 2px,rgba(255,255,255,.02) 4px);
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);
   pointer-events:none;z-index:9999;
 }
 ::selection{background:rgba(232,177,79,.3);color:#fff}
@@ -59,11 +60,7 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:600}
   font-family:'IBM Plex Mono',monospace;
   font-size:11px;font-weight:500;
   text-transform:uppercase;letter-spacing:.06em;
-  color:var(--text-3);
-}
-.mono-meta{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:12px;color:var(--text-2);
+  color:var(--text3);
 }
 
 /* ───── SCROLL REVEAL ───── */
@@ -75,7 +72,7 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:600}
   display:inline-block;width:8px;height:8px;
   border-radius:50%;background:var(--sage);
   animation:pulse-dot 2s ease-in-out infinite;
-  margin-right:6px;vertical-align:middle;
+  vertical-align:middle;
 }
 @keyframes pulse-dot{
   0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(108,196,154,.5)}
@@ -90,135 +87,128 @@ nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   background:rgba(10,11,13,.88);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--line);
-  height:56px;
+  border-bottom:1px solid var(--border);
 }
 nav .wrap{
-  display:flex;align-items:center;justify-content:space-between;height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+  max-width:var(--max-w);margin:0 auto;padding:0 24px;height:60px;
 }
 nav .brand{
-  font-family:'Fraunces',serif;font-weight:600;font-size:18px;
-  color:var(--text);text-decoration:none;letter-spacing:-.3px;
+  font-family:'Fraunces',serif;font-weight:700;font-size:20px;
+  color:var(--amber);text-decoration:none;letter-spacing:0.5px;
 }
-nav .brand:hover{color:var(--amber)}
+nav .brand:hover{opacity:0.85}
 nav .links{display:flex;align-items:center;gap:20px}
 nav .links a{
-  color:var(--text-2);text-decoration:none;
+  color:var(--text2);text-decoration:none;
   font-size:13px;font-weight:500;transition:color .2s;
   font-family:'IBM Plex Sans',sans-serif;
 }
 nav .links a:hover{color:var(--text)}
 nav .cta-link{
   display:inline-flex;align-items:center;
-  padding:6px 16px;background:var(--amber);color:#0a0b0d!important;
-  border-radius:var(--radius-sm);font-weight:600;font-size:12px;
-  transition:opacity .2s;
+  padding:8px 20px;background:var(--amber);color:#0a0b0d!important;
+  border-radius:6px;font-weight:600;font-size:13px;
+  transition:all .2s;
 }
-nav .cta-link:hover{opacity:.85;color:#0a0b0d!important}
-.nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:22px;cursor:pointer;padding:4px}
+nav .cta-link:hover{opacity:.88;transform:translateY(-1px);box-shadow:0 4px 20px rgba(var(--amber-rgb),.25);color:#0a0b0d!important}
+.nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:24px;cursor:pointer;padding:4px;line-height:1}
 
 /* ───── HERO ───── */
 .hero{
   min-height:100vh;display:flex;align-items:center;
-  padding-top:56px;position:relative;overflow:hidden;
+  padding-top:60px;position:relative;overflow:hidden;
 }
 .hero .grid{
   display:grid;
-  grid-template-columns:1.15fr 0.85fr;
+  grid-template-columns:1.2fr 0.8fr;
   gap:48px;align-items:center;width:100%;padding:80px 0;
 }
 
-/* Boot */
-.boot{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:11px;color:var(--text-3);
-  margin-bottom:20px;line-height:1.8;
-}
-.boot span{display:block}
-.boot .ok{color:var(--sage)}
-.boot .amber{color:var(--amber)}
-
 .hero h1{
-  font-size:clamp(34px,4.2vw,52px);
-  font-weight:600;line-height:1.12;letter-spacing:-.8px;
-  margin-bottom:16px;
-}
-.hero h1 em{
-  font-style:normal;
-  background:linear-gradient(135deg,var(--amber),var(--amber-dim));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;
+  font-family:'Fraunces',serif;
+  font-size:clamp(28px,3.8vw,48px);
+  font-weight:600;line-height:1.2;letter-spacing:-.02em;
+  color:var(--text);margin-bottom:16px;
 }
 
 .lede{
-  font-size:16px;color:var(--text-2);
-  max-width:520px;margin-bottom:28px;line-height:1.7;
+  font-size:clamp(14px,1.2vw,17px);color:var(--text2);
+  max-width:560px;margin-bottom:28px;line-height:1.7;
 }
 
 .actions{display:flex;gap:12px;flex-wrap:wrap}
 
 .btn{
   display:inline-flex;align-items:center;gap:6px;
-  padding:11px 26px;border-radius:var(--radius-sm);
+  padding:12px 28px;border-radius:var(--radius-sm);
   font-size:14px;font-weight:600;text-decoration:none;
   transition:all .25s;font-family:'IBM Plex Sans',sans-serif;
 }
 .btn-primary{
   background:var(--amber);color:#0a0b0d;
-  box-shadow:0 2px 12px rgba(232,177,79,.25);
+  box-shadow:0 2px 12px rgba(var(--amber-rgb),.25);
 }
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(232,177,79,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(var(--amber-rgb),.35)}
 .btn-ghost{
   background:transparent;color:var(--text);
-  border:1px solid var(--line);border-color:var(--line-2);
+  border:1px solid var(--border);
 }
 .btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
 
-/* Hero Panel */
+/* Hero Panel (Stats) */
 .hero-panel{
-  background:var(--panel);
-  border:1px solid var(--line);border-radius:var(--radius);
-  overflow:hidden;position:relative;
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+  aspect-ratio:4/3;
+  display:flex;flex-direction:column;
 }
-.hp-bar{
+.hero-panel .hp-header{
   display:flex;align-items:center;justify-content:space-between;
-  padding:10px 16px;border-bottom:1px solid var(--line);
-  font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-3);
-  text-transform:uppercase;letter-spacing:.04em;
+  padding:14px 18px;border-bottom:1px solid var(--border);
 }
-.hp-bar .dot-wrap{display:flex;align-items:center}
-.hp-bar .dot{width:6px;height:6px}
+.hero-panel .hp-header .hp-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;font-weight:500;color:var(--text3);
+  text-transform:uppercase;letter-spacing:.08em;
+}
+.hero-panel .hp-header .hp-indicator{
+  display:flex;align-items:center;gap:6px;
+  font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--sage);
+}
+.hero-panel .hp-header .hp-indicator .dot{width:6px;height:6px;margin:0}
 
-.hp-mesh{position:relative;aspect-ratio:16/10;background:var(--bg-grad)}
-#mesh{display:block;width:100%;height:100%}
-
-.hp-stats{
+.hero-panel .hp-stats{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:0;border-top:1px solid var(--line);
+  flex:1;
 }
-.hp-stat{
-  padding:14px 16px;
-  border-right:1px solid var(--line);
-  border-bottom:1px solid var(--line);
+.hero-panel .hp-stat{
+  display:flex;flex-direction:column;justify-content:center;
+  align-items:center;
+  padding:16px;
+  border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  text-align:center;
 }
-.hp-stat:nth-child(2n){border-right:none}
-.hp-stat:nth-last-child(-n+2){border-bottom:none}
-.hp-stat .num{
+.hero-panel .hp-stat:nth-child(2n){border-right:none}
+.hero-panel .hp-stat:nth-last-child(-n+2){border-bottom:none}
+.hero-panel .hp-stat .num{
   font-family:'Fraunces',serif;
-  font-size:clamp(22px,2.8vw,30px);
-  font-weight:600;color:var(--amber);line-height:1;
+  font-size:clamp(28px,3.5vw,40px);
+  font-weight:600;color:var(--amber);line-height:1;margin-bottom:2px;
 }
-.hp-stat .num .s{color:var(--sage)}
-.hp-stat .label{
-  font-size:11px;color:var(--text-3);margin-top:2px;
-  font-family:'IBM Plex Sans',sans-serif;
+.hero-panel .hp-stat .label{
+  font-size:11px;color:var(--text3);font-family:'IBM Plex Sans',sans-serif;
+  text-align:center;max-width:100px;
 }
 
-.hp-foot{
-  padding:10px 16px;
+.hero-panel .hp-foot{
+  padding:10px 18px;border-top:1px solid var(--border);
   display:flex;align-items:center;justify-content:space-between;
-  font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-3);
+  font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);
 }
 
 /* ───── SECTION ───── */
@@ -228,181 +218,264 @@ nav .cta-link:hover{opacity:.85;color:#0a0b0d!important}
 .sec-head .idx{
   font-family:'IBM Plex Mono',monospace;
   font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;
-  color:var(--amber);margin-bottom:6px;position:relative;display:inline-block;
+  color:var(--amber);margin-bottom:6px;
+  display:inline-block;position:relative;
 }
 .sec-head .idx::after{
   content:'';position:absolute;bottom:-4px;left:0;
   width:40px;height:2px;background:var(--amber);
 }
 .sec-head h2{
-  font-size:clamp(26px,3.2vw,38px);
-  font-weight:600;letter-spacing:-.6px;margin-top:12px;
-  max-width:620px;
+  font-family:'Fraunces',serif;
+  font-size:clamp(24px,2.8vw,36px);
+  font-weight:600;letter-spacing:-.02em;margin-top:14px;
+  max-width:620px;color:var(--text);
 }
 
 /* ───── PAIN GRID ───── */
 .pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .pain{
-  background:var(--panel);border:1px solid var(--line);
-  border-radius:var(--radius);padding:24px;
-  transition:border-color .25s,transform .25s;
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--radius);padding:28px 24px;
+  transition:all .3s ease;position:relative;overflow:hidden;
 }
-.pain:hover{border-color:var(--amber-dim);transform:translateY(-2px)}
+.pain::before{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:3px;background:var(--amber);opacity:0.4;transition:opacity .3s ease;
+}
+.pain:hover{border-color:rgba(var(--amber-rgb),.3);background:var(--card);transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.pain:hover::before{opacity:1}
 .pain-q{
   font-family:'Fraunces',serif;font-weight:500;
-  font-size:17px;color:var(--text);margin-bottom:10px;
+  font-size:18px;color:var(--text);margin-bottom:10px;
   line-height:1.4;
 }
-.pain p{font-size:14px;color:var(--text-2);line-height:1.6}
+.pain p{font-size:14px;color:var(--text2);line-height:1.6}
 
 /* ───── PROOF ───── */
 .proof{
-  background:var(--panel);
+  background:var(--bg2);
   border:1px solid var(--amber-dim);
   border-radius:var(--radius);
-  padding:32px;
+  padding:36px;
 }
 .proof-tag{
-  display:inline-flex;align-items:center;
+  display:inline-flex;align-items:center;gap:6px;
   font-family:'IBM Plex Mono',monospace;font-size:10px;
-  text-transform:uppercase;letter-spacing:.08em;
-  background:rgba(232,177,79,.12);color:var(--amber);
-  padding:4px 10px;border-radius:4px;margin-bottom:14px;
+  font-weight:500;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--amber);margin-bottom:14px;
 }
+.proof-tag .dot{width:6px;height:6px;margin:0;background:var(--sage)}
 .proof-body{
   display:grid;grid-template-columns:1.4fr 1fr;
-  gap:32px;align-items:start;
+  gap:36px;align-items:start;
 }
 .proof-body h3{
-  font-size:clamp(18px,2.2vw,24px);
+  font-family:'Fraunces',serif;
+  font-size:clamp(20px,2.4vw,28px);
   font-weight:600;line-height:1.3;
-  color:var(--text);margin-bottom:10px;
+  color:var(--text);margin-bottom:12px;
 }
-.proof-body p{font-size:14px;color:var(--text-2);line-height:1.7}
+.proof-body p{
+  font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:12px;
+}
+.proof-body p:last-of-type{
+  font-style:italic;
+  color:var(--text);
+  font-size:13px;
+  border-left:2px solid var(--amber-dim);
+  padding-left:14px;
+}
 .proof-stats{
-  display:flex;flex-direction:column;gap:12px;
-  padding:16px;background:rgba(10,11,13,.4);
-  border-radius:var(--radius-sm);
+  display:flex;flex-direction:column;gap:16px;
+  padding:20px;background:rgba(10,11,13,.5);
+  border-radius:var(--radius-sm);border:1px solid var(--border);
 }
 .proof-stat{text-align:center}
 .proof-stat .num{
-  font-family:'Fraunces',serif;font-size:28px;font-weight:600;
-  color:var(--amber);line-height:1;
+  font-family:'Fraunces',serif;font-size:clamp(22px,2.6vw,30px);
+  font-weight:600;color:var(--amber);line-height:1;
 }
-.proof-stat .label{font-size:12px;color:var(--text-3);margin-top:2px}
+.proof-stat .label{font-size:12px;color:var(--text3);margin-top:2px}
 
 /* ───── SERVICES ───── */
 .serve-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:1fr 1fr 1fr;
   gap:20px;
 }
 .serve{
-  background:var(--panel);border:1px solid var(--line);
+  background:var(--bg2);border:1px solid var(--border);
   border-radius:var(--radius);padding:28px 24px;
-  position:relative;transition:border-color .25s,transform .25s;
+  position:relative;transition:all .3s ease;overflow:hidden;
 }
 .serve::before{
-  content:'';position:absolute;top:0;left:24px;right:24px;
-  height:2px;background:var(--amber);
-  border-radius:0 0 2px 2px;
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:3px;background:var(--amber);opacity:0.4;transition:opacity .3s ease;
 }
-.serve:hover{border-color:var(--amber-dim);transform:translateY(-2px)}
-.serve .no{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:11px;color:var(--text-3);margin-bottom:10px;
-}
+.serve:hover{border-color:rgba(var(--amber-rgb),.3);background:var(--card);transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.serve:hover::before{opacity:1}
 .serve h3{
   font-family:'Fraunces',serif;
   font-size:17px;font-weight:600;margin-bottom:8px;
-  color:var(--text);
+  color:var(--text);display:flex;align-items:center;gap:6px;
 }
-.serve p{font-size:13px;color:var(--text-2);line-height:1.6}
+.serve h3 svg{width:18px;height:18px;fill:currentColor;flex-shrink:0}
+.serve p{font-size:13px;color:var(--text2);line-height:1.6}
+
+/* ───── PROVERB ───── */
+.proverb-sec{padding:40px 0 20px}
+.proverb-panel{
+  text-align:center;
+  padding:48px 32px;
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  position:relative;
+  overflow:hidden;
+}
+.proverb-panel::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  background:radial-gradient(ellipse at 50% 50%,rgba(var(--amber-rgb),.04) 0%,transparent 60%);
+  pointer-events:none;
+}
+.proverb-panel blockquote{
+  font-family:'Fraunces',serif;
+  font-size:clamp(18px,2vw,26px);
+  font-weight:500;
+  font-style:italic;
+  color:var(--text);
+  line-height:1.4;
+  position:relative;
+  z-index:1;
+  max-width:600px;
+  margin:0 auto;
+}
+.proverb-panel .proverb-attrib{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  color:var(--amber);
+  margin-top:14px;
+  letter-spacing:.04em;
+  position:relative;
+  z-index:1;
+}
 
 /* ───── BOOK ───── */
-.book-sec{padding:60px 0 100px}
+.book-sec{padding:80px 0 100px}
 .book-panel{
-  background:var(--panel);border:1px solid var(--amber-dim);
-  border-radius:var(--radius);overflow:hidden;
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--radius);padding:48px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:40px;position:relative;overflow:hidden;
 }
-.book-bar{
-  display:flex;align-items:center;
-  padding:14px 20px;
-  border-bottom:1px solid rgba(184,138,60,.2);
+.book-panel::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  background:radial-gradient(ellipse at 80% 50%,rgba(var(--amber-rgb),.05) 0%,transparent 60%);
+  pointer-events:none;
 }
-.book-bar .bar-dots{display:flex;gap:6px}
-.book-bar .bar-dots span{
-  width:8px;height:8px;border-radius:50%;
-  background:var(--text-3);
+.book-panel .book-content{flex:1;position:relative;z-index:1}
+.book-panel .book-label{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  font-weight:500;text-transform:uppercase;letter-spacing:1.5px;
+  color:var(--amber);margin-bottom:8px;
 }
-.book-bar .bar-dots span:nth-child(1){background:var(--red)}
-.book-bar .bar-dots span:nth-child(2){background:var(--amber)}
-.book-bar .bar-dots span:nth-child(3){background:var(--sage)}
-.book-body{padding:36px 32px;text-align:center}
-.book-body .fr{
-  font-family:'Fraunces',serif;
-  font-size:clamp(22px,2.8vw,32px);font-weight:600;
-  color:var(--amber);margin-bottom:12px;
+.book-panel h2{
+  font-family:'Fraunces',serif;font-size:clamp(24px,2.5vw,32px);
+  font-weight:600;color:var(--text);margin-bottom:8px;letter-spacing:-.01em;
 }
-.book-body p{font-size:15px;color:var(--text-2);margin-bottom:24px}
-.book-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
-.book-actions .btn-primary{padding:12px 30px}
-.book-actions .btn-ghost{padding:12px 24px}
-.book-note{font-size:12px;color:var(--text-3)}
+.book-panel p{
+  font-size:15px;color:var(--text2);max-width:480px;line-height:1.6;
+}
+.book-panel .book-cta{position:relative;z-index:1;flex-shrink:0}
+.book-panel .book-cta a{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 32px;background:var(--amber);color:#0a0b0d;
+  border-radius:var(--radius-sm);font-weight:600;font-size:14px;
+  text-decoration:none;transition:all .2s;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+.book-panel .book-cta a:hover{
+  opacity:.88;transform:translateY(-2px);
+  box-shadow:0 6px 24px rgba(var(--amber-rgb),.3);
+}
+.book-panel .book-cta a svg{width:14px;height:14px;fill:currentColor}
+
+/* ───── STATUS BAR ───── */
+.status-bar{padding:0 0 60px}
+.status-bar .wrap{
+  display:flex;align-items:center;justify-content:center;
+  gap:24px;flex-wrap:wrap;
+}
+.status-item{
+  display:flex;align-items:center;gap:8px;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text3);
+}
+.utc-clock{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text3);
+}
 
 /* ───── FOOTER ───── */
 footer{
-  border-top:1px solid var(--line);padding:40px 0;
-  text-align:center;
+  border-top:1px solid var(--border);padding:48px 0;
 }
-footer .links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:14px}
-footer .links a{
-  color:var(--text-3);text-decoration:none;
-  font-size:12px;font-family:'IBM Plex Mono',monospace;
-  transition:color .2s;
+footer .wrap{
+  display:flex;flex-direction:column;align-items:center;gap:20px;
+  max-width:var(--max-w);margin:0 auto;padding:0 24px;
 }
-footer .links a:hover{color:var(--amber)}
-footer p{font-size:11px;color:var(--text-3);font-family:'IBM Plex Mono',monospace}
-
-/* ───── SEARCH / FILTER ───── */
-.search-box{display:none}
-.filter-bar{display:none}
+footer .footer-links{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+footer .footer-links a{
+  color:var(--text3);text-decoration:none;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;transition:color .2s;
+}
+footer .footer-links a:hover{color:var(--amber)}
+footer p{
+  font-family:'IBM Plex Sans',sans-serif;font-size:12px;
+  color:var(--text3);text-align:center;line-height:1.6;
+}
+footer p .sep{margin:0 8px;color:var(--border)}
 
 /* ───── SCROLL MARGIN ───── */
-section{scroll-margin-top:72px}
-
-/* ───── SVG ICONS INLINE HELPER ───── */
-.icon-svg{display:inline-block;width:1em;height:1em;fill:currentColor;vertical-align:middle}
+section{scroll-margin-top:76px}
 
 /* ───── RESPONSIVE ───── */
 @media(max-width:980px){
   .hero .grid{grid-template-columns:1fr;gap:36px;padding:60px 0}
-  .hero-panel{max-width:480px}
-  .pain-grid{grid-template-columns:1fr}
+  .hero-panel{max-width:440px;justify-self:center}
   .serve-grid{grid-template-columns:repeat(2,1fr)}
 }
-@media(max-width:900px){
+@media(max-width:860px){
   .hero .grid{grid-template-columns:1fr;gap:36px;padding:60px 0}
+  .hero-panel{max-width:400px;justify-self:center}
+  .pain-grid{grid-template-columns:1fr}
   .proof-body{grid-template-columns:1fr;gap:20px}
   .serve-grid{grid-template-columns:repeat(2,1fr)}
+  .book-panel{flex-direction:column;text-align:center;padding:36px 28px}
+  .book-panel p{margin-left:auto;margin-right:auto}
 }
 @media(max-width:620px){
+  nav .wrap{padding:0 16px;height:54px}
+  nav .brand{font-size:18px}
   nav .links{display:none}
   nav .links.open{
     display:flex;flex-direction:column;
-    position:absolute;top:56px;left:0;right:0;
-    background:var(--bg);border-bottom:1px solid var(--line);
+    position:absolute;top:54px;left:0;right:0;
+    background:var(--bg);border-bottom:1px solid var(--border);
     padding:16px 24px;gap:12px;
   }
   .nav-toggle{display:block}
-  .hero h1{font-size:28px}
+  .hero h1{font-size:26px}
   .lede{font-size:15px}
   .pain-grid{grid-template-columns:1fr}
   .serve-grid{grid-template-columns:1fr}
-  .hp-stats{grid-template-columns:1fr 1fr}
-  .sec{padding:60px 0}
   .wrap{padding:0 16px}
-  .book-body{padding:28px 20px}
+  .sec{padding:60px 0}
+  .book-panel{padding:28px 20px}
+  .book-panel .book-cta a{width:100%;justify-content:center}
+  footer .wrap{padding:0 16px}
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -415,60 +488,84 @@ section{scroll-margin-top:72px}
 <body>
 
 <!-- ───── SVG DEFS ───── -->
-<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
   <defs>
-    <symbol id="g-shop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-      <polyline points="9,22 9,12 15,12 15,22"/>
-    </symbol>
-    <symbol id="g-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="3"/>
-      <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
-    </symbol>
-    <symbol id="g-ai" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="16 3 21 3 21 8"/>
-      <line x1="4" y1="20" x2="21" y2="3"/>
-      <polyline points="21 16 21 21 16 21"/>
-      <line x1="15" y1="15" x2="21" y2="21"/>
-      <line x1="4" y1="4" x2="9" y2="9"/>
-    </symbol>
-    <symbol id="g-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-      <path d="M9 12l2 2 4-4"/>
-    </symbol>
-    <symbol id="g-coop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
-      <circle cx="9" cy="7" r="4"/>
-      <path d="M23 21v-2a4 4 0 00-3-3.87"/>
-      <path d="M16 3.13a4 4 0 010 7.75"/>
-    </symbol>
-    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-      <polyline points="22,6 12,13 2,6"/>
-    </symbol>
-    <symbol id="i-git" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="18" cy="18" r="3"/>
-      <circle cx="6" cy="6" r="3"/>
-      <path d="M13 6h3a2 2 0 012 2v7"/>
-      <line x1="6" y1="9" x2="6" y2="21"/>
-    </symbol>
-    <symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/>
-      <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
-    </symbol>
-    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-      <circle cx="12" cy="10" r="3"/>
-    </symbol>
-    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <line x1="5" y1="12" x2="19" y2="12"/>
-      <polyline points="12 5 19 12 12 19"/>
-    </symbol>
-    <symbol id="g-mesh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="10"/>
-      <path d="M2 12h20"/>
-      <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
-    </symbol>
+    <!-- g-shop: shop/store icon -->
+    <g id="g-shop">
+      <rect x="4" y="8" width="16" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M4 8L6 4h12l2 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <rect x="8" y="14" width="8" height="8" rx="1" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="8" y1="18" x2="16" y2="18" stroke="currentColor" stroke-width="1.2"/>
+    </g>
+
+    <!-- g-gear: gear/mechanics icon -->
+    <g id="g-gear">
+      <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" fill="none" stroke="currentColor" stroke-width="1.3"/>
+    </g>
+
+    <!-- g-ai: AI/spark icon -->
+    <g id="g-ai">
+      <polyline points="16 3 21 3 21 8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="4" y1="20" x2="21" y2="3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <polyline points="21 16 21 21 16 21" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="15" y1="15" x2="21" y2="21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="4" y1="4" x2="9" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- g-shield: shield icon -->
+    <g id="g-shield">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </g>
+
+    <!-- g-coop: community/people icon -->
+    <g id="g-coop">
+      <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <circle cx="9" cy="7" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M23 21v-2a4 4 0 00-3-3.87" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M16 3.13a4 4 0 010 7.75" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </g>
+
+    <!-- i-arrow -->
+    <g id="i-arrow">
+      <path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+
+    <!-- i-pin -->
+    <g id="i-pin">
+      <path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <circle cx="12" cy="9" r="2" fill="currentColor"/>
+    </g>
+
+    <!-- i-mail -->
+    <g id="i-mail">
+      <rect x="2" y="4" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M2 6l10 7 10-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </g>
+
+    <!-- i-git -->
+    <g id="i-git">
+      <path d="M9 19c-5 0-7-2-7-7s2-7 7-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M9 5v14" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M9 12c0-3 1.5-5 4-5s4 2 4 5v5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- i-link -->
+    <g id="i-link">
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+
+    <!-- g-mesh -->
+    <g id="g-mesh">
+      <circle cx="12" cy="6" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="5" cy="20" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="19" cy="20" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="12" y1="6" x2="5" y2="20" stroke="currentColor" stroke-width="1.3"/>
+      <line x1="12" y1="6" x2="19" y2="20" stroke="currentColor" stroke-width="1.3"/>
+      <line x1="5" y1="20" x2="19" y2="20" stroke="currentColor" stroke-width="1.3" stroke-dasharray="2 2"/>
+    </g>
   </defs>
 </svg>
 
@@ -490,52 +587,40 @@ section{scroll-margin-top:72px}
 <section class="hero" id="top">
   <div class="wrap">
     <div class="grid">
-      <div>
-        <div class="boot" id="boot">
-          <span>> boot sequence initiated...</span>
-          <span>> mDNS service discovery active</span>
-          <span>> ed25519 key pair generated</span>
-          <span class="amber">> health-aware routing engaged</span>
-          <span class="ok">> all nodes nominal</span>
-        </div>
-        <h1>Small business technology <em>that works</em> — and that you own.</h1>
+      <div class="hero-main reveal">
+        <h1>Small business technology that works — and that you own.</h1>
         <p class="lede">I help small businesses, family businesses, and nonprofits across New England get technology that stays out of the way — and keep ownership where it belongs: with you. I've done this for my own family's business and I can do it for yours.</p>
         <div class="actions">
           <a href="#book" class="btn btn-primary">Book a free call</a>
           <a href="#how" class="btn btn-ghost">See how I help</a>
         </div>
       </div>
-      <div>
-        <div class="hero-panel">
-          <div class="hp-bar">
-            <span>// HOW I HELP</span>
-            <span class="dot-wrap"><span class="dot"></span>AVAILABLE</span>
+      <div class="hero-panel reveal">
+        <div class="hp-header">
+          <span class="hp-label">// AT A GLANCE</span>
+          <span class="hp-indicator"><span class="dot"></span>AVAILABLE</span>
+        </div>
+        <div class="hp-stats">
+          <div class="hp-stat">
+            <div class="num">3×</div>
+            <div class="label">grew our bakery</div>
           </div>
-          <div class="hp-mesh">
-            <canvas id="mesh"></canvas>
+          <div class="hp-stat">
+            <div class="num">100%</div>
+            <div class="label">worker-owned</div>
           </div>
-          <div class="hp-stats">
-            <div class="hp-stat">
-              <div class="num">3<span class="s">×</span></div>
-              <div class="label">grew our bakery</div>
-            </div>
-            <div class="hp-stat">
-              <div class="num">100<span class="s">%</span></div>
-              <div class="label">worker-owned</div>
-            </div>
-            <div class="hp-stat">
-              <div class="num">15<span class="s">+</span></div>
-              <div class="label">yrs helping</div>
-            </div>
-            <div class="hp-stat">
-              <div class="num">2</div>
-              <div class="label">EN·FR</div>
-            </div>
+          <div class="hp-stat">
+            <div class="num">30 yrs</div>
+            <div class="label">family legacy kept</div>
           </div>
-          <div class="hp-foot">
-            <span>WINDSOR·VT</span>
-            <span id="utc-clock">--:--:--</span>
+          <div class="hp-stat">
+            <div class="num">EN·FR</div>
+            <div class="label">bilingual</div>
           </div>
+        </div>
+        <div class="hp-foot">
+          <span>WINDSOR·VT</span>
+          <span id="utc-clock">--:--:--</span>
         </div>
       </div>
     </div>
@@ -547,24 +632,24 @@ section{scroll-margin-top:72px}
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="idx">01 — HOW I HELP</div>
-      <h2>It shouldn't be this hard to run your business</h2>
+      <h2>It shouldn't be this hard to run your business.</h2>
     </div>
     <div class="pain-grid">
       <div class="pain reveal">
         <div class="pain-q">"My systems keep breaking and no one can fix them."</div>
-        <p>I build simple, stable, documented setups that don't need a hero to keep running. When something breaks, you know exactly who to call — and how to fix it yourself.</p>
+        <p>I build simple, documented, stable setups that one person can run.</p>
       </div>
       <div class="pain reveal">
         <div class="pain-q">"I'm drowning in monthly subscriptions."</div>
-        <p>The SaaS tax is real. I help you move to owned tools — self-hosted infrastructure you control, with predictable costs and no surprise price hikes.</p>
+        <p>Where it makes sense, I move you onto tools you own outright.</p>
       </div>
       <div class="pain reveal">
         <div class="pain-q">"I want to pass this on — not sell to a stranger."</div>
-        <p>Your life's work shouldn't end in a fire sale. I design worker ownership paths so your business can outlive you, controlled by the people who built it.</p>
+        <p>Worker ownership and cooperative models. I've done it.</p>
       </div>
       <div class="pain reveal">
         <div class="pain-q">"The big software treats me like a corporation."</div>
-        <p>Enterprise software is built for enterprises. I give you right-sized technology that matches what you actually need, with nothing you don't.</p>
+        <p>I right-size technology for real small businesses.</p>
       </div>
     </div>
   </div>
@@ -574,24 +659,26 @@ section{scroll-margin-top:72px}
 <section class="sec" id="proof">
   <div class="wrap">
     <div class="proof reveal">
-      <div class="proof-tag">I'VE DONE THIS MYSELF</div>
+      <div class="proof-tag"><span class="dot"></span> I'VE DONE THIS MYSELF</div>
       <div class="proof-body">
         <div>
           <h3>I turned my family's cookie bakery into a worker-owned business — and tripled its revenue.</h3>
-          <p>Covered Bridge is a 30-year Vermont bakery that makes the best hermits, gingersnaps, maple shortbread, and classic shortbread you've ever had. I led the conversion to 100% worker-ownership — four owners, four recipes, zero unpronounceable ingredients. In three years, we tripled revenue. This isn't theory. This is what I do.</p>
+          <p>There's actually a lot of shared DNA between baking cookies and shipping software. Both take source code, put it through a pipeline, package it, and deploy it.</p>
+          <p>Covered Bridge is a 30-year-old Vermont bakery. 100% worker-owned. 4 owners, 4 honest recipes, no unpronounceable ingredients. Tripled revenue in 3 years.</p>
+          <p>It's hard. Collaborating with people as equals is hard. It is worth it. But it's not a switch you can flip. It is an active engagement process you must choose to do every day.</p>
         </div>
         <div class="proof-stats">
           <div class="proof-stat">
             <div class="num">100%</div>
-            <div class="label">Worker-owned</div>
+            <div class="label">worker-owned</div>
           </div>
           <div class="proof-stat">
             <div class="num">3×</div>
-            <div class="label">in 3 yrs</div>
+            <div class="label">revenue in 3 yrs</div>
           </div>
           <div class="proof-stat">
             <div class="num">30 yrs</div>
-            <div class="label">Legacy</div>
+            <div class="label">family legacy</div>
           </div>
         </div>
       </div>
@@ -604,29 +691,35 @@ section{scroll-margin-top:72px}
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="idx">02 — SERVICES</div>
-      <h2>What I deliver</h2>
+      <h2>What I deliver.</h2>
     </div>
     <div class="serve-grid">
       <div class="serve reveal">
-        <div class="no">001</div>
-        <h3><svg class="icon-svg" style="width:18px;height:18px;margin-right:4px"><use href="#g-gear"/></svg> Infrastructure &amp; DevOps</h3>
-        <p>Design, deployment, and hardening of production infrastructure. Docker Compose to TrueNAS, Traefik to Authentik — stacks one person can operate.</p>
+        <h3><svg viewBox="0 0 24 24"><use href="#g-gear"/></svg> Infrastructure &amp; DevOps</h3>
+        <p>Design, deployment, and hardening of production infrastructure — stacks one person can operate.</p>
       </div>
       <div class="serve reveal">
-        <div class="no">002</div>
-        <h3><svg class="icon-svg" style="width:18px;height:18px;margin-right:4px"><use href="#g-ai"/></svg> Private AI Infrastructure</h3>
-        <p>On-premise LLM inference, model distribution, and cluster management. Keep your data on your hardware — no cloud dependency, no data leakage.</p>
+        <h3><svg viewBox="0 0 24 24"><use href="#g-ai"/></svg> Private AI Infrastructure</h3>
+        <p>On-premise LLM inference and model management. Keep your data on your hardware.</p>
       </div>
       <div class="serve reveal">
-        <div class="no">003</div>
-        <h3><svg class="icon-svg" style="width:18px;height:18px;margin-right:4px"><use href="#g-shield"/></svg> Security &amp; Resilience</h3>
-        <p>Architecture-level security review, threat modeling, and hardening. I find what scanners miss — the logic errors, design assumptions, and dead code.</p>
+        <h3><svg viewBox="0 0 24 24"><use href="#g-shield"/></svg> Security &amp; Resilience</h3>
+        <p>Architecture-level security review, threat modeling, and hardening for real threats.</p>
       </div>
       <div class="serve reveal">
-        <div class="no">004</div>
-        <h3><svg class="icon-svg" style="width:18px;height:18px;margin-right:4px"><use href="#g-coop"/></svg> Cooperative Technology</h3>
-        <p>Platform co-op design and implementation. Transition from extractive technology models to member-owned, democratically governed systems.</p>
+        <h3><svg viewBox="0 0 24 24"><use href="#g-coop"/></svg> Cooperative Technology</h3>
+        <p>Platform co-op design and transition from extractive models to member-governed systems.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── PROVERB ───── -->
+<section class="proverb-sec" id="proverb">
+  <div class="wrap">
+    <div class="proverb-panel reveal">
+      <blockquote>"If you want to go fast, go alone. If you want to go far, go together. Covered Bridge proves it."</blockquote>
+      <div class="proverb-attrib">— PROVEN · 30 YRS</div>
     </div>
   </div>
 </section>
@@ -635,126 +728,65 @@ section{scroll-margin-top:72px}
 <section class="book-sec" id="book">
   <div class="wrap">
     <div class="book-panel reveal">
-      <div class="book-bar">
-        <span class="bar-dots"><span></span><span></span><span></span></span>
-      </div>
-      <div class="book-body">
-        <div class="fr">The first call is free.</div>
+      <div class="book-content">
+        <div class="book-label">Let's talk</div>
+        <h2>The first call is free.</h2>
         <p>Tell me what you're trying to build, keep, or pass on.</p>
-        <div class="book-actions">
-          <a href="mailto:me@christophergoulet.com?subject=Free%20consultation%20request" class="btn btn-primary">Book a free call</a>
-          <a href="mailto:me@christophergoulet.com" class="btn btn-ghost">Or email me</a>
-        </div>
-        <div class="book-note">Windsor, Vermont · Serving all of New England</div>
+      </div>
+      <div class="book-cta">
+        <a href="mailto:me@christophergoulet.com?subject=Free%20consultation%20request">
+          Book a free call
+          <svg width="14" height="14" viewBox="0 0 24 24"><use href="#i-arrow"/></svg>
+        </a>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ───── STATUS BAR ───── -->
+<div class="status-bar">
+  <div class="wrap">
+    <div class="status-item">
+      <span class="status-dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--sage);animation:pulse-dot 2s ease-in-out infinite"></span>
+      All systems nominal
+    </div>
+    <div class="status-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" style="opacity:.5;fill:none;stroke:currentColor"><use href="#i-pin"/></svg>
+      Windsor&thinsp;·&thinsp;VT
+    </div>
+    <div class="utc-clock" id="utc-clock2">UTC</div>
+  </div>
+</div>
+
 <!-- ───── FOOTER ───── -->
 <footer>
   <div class="wrap">
-    <div class="links">
+    <div class="footer-links">
       <a href="https://christophergoulet.com">main</a>
       <a href="https://biz.christophergoulet.com">biz</a>
       <a href="https://tech.christophergoulet.com">tech</a>
       <a href="https://canada.christophergoulet.com">canada</a>
       <a href="https://civic.christophergoulet.com">civic</a>
     </div>
-    <p>Windsor, Vermont · © 2026 Christopher Goulet</p>
+    <p>
+      <span>Windsor, Vermont</span>
+      <span class="sep">·</span>
+      <span>EN · FR</span>
+      <span class="sep">·</span>
+      <span>© 2026</span>
+    </p>
   </div>
 </footer>
 
 <script>
-// ───── MESH CANVAS ─────
+// ───── NAV TOGGLE ─────
 (function(){
-  const c = document.getElementById('mesh');
-  if(!c) return;
-  const ctx = c.getContext('2d');
-  function resize(){
-    const r = c.parentElement.getBoundingClientRect();
-    c.width = r.width;
-    c.height = r.height;
+  const toggle = document.querySelector('.nav-toggle');
+  if(toggle){
+    toggle.addEventListener('click', function(){
+      document.querySelector('nav .links').classList.toggle('open');
+    });
   }
-  resize();
-  window.addEventListener('resize', resize);
-
-  let nodes = [];
-  const NODE_COUNT = 18;
-  const CONN_DIST = 120;
-
-  function initNodes(){
-    nodes = [];
-    for(let i=0;i<NODE_COUNT;i++){
-      nodes.push({
-        x: Math.random() * c.width,
-        y: Math.random() * c.height,
-        vx: (Math.random()-0.5)*0.4,
-        vy: (Math.random()-0.5)*0.4,
-      });
-    }
-  }
-  initNodes();
-
-  function draw(){
-    ctx.clearRect(0,0,c.width,c.height);
-
-    // connections
-    for(let i=0;i<nodes.length;i++){
-      for(let j=i+1;j<nodes.length;j++){
-        const dx = nodes[i].x - nodes[j].x;
-        const dy = nodes[i].y - nodes[j].y;
-        const dist = Math.sqrt(dx*dx + dy*dy);
-        if(dist < CONN_DIST){
-          const alpha = 1 - dist/CONN_DIST;
-          ctx.strokeStyle = 'rgba(232,177,79,'+(alpha*0.25)+')';
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(nodes[i].x, nodes[i].y);
-          ctx.lineTo(nodes[j].x, nodes[j].y);
-          ctx.stroke();
-        }
-      }
-    }
-
-    // nodes
-    for(const n of nodes){
-      ctx.fillStyle = 'rgba(232,177,79,0.6)';
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, 2.5, 0, Math.PI*2);
-      ctx.fill();
-    }
-
-    // animate
-    for(const n of nodes){
-      n.x += n.vx;
-      n.y += n.vy;
-      if(n.x < 0 || n.x > c.width) n.vx *= -1;
-      if(n.y < 0 || n.y > c.height) n.vy *= -1;
-      n.x = Math.max(0, Math.min(c.width, n.x));
-      n.y = Math.max(0, Math.min(c.height, n.y));
-    }
-
-    requestAnimationFrame(draw);
-  }
-  draw();
-
-  window.addEventListener('resize', ()=>{
-    resize();
-    initNodes();
-  });
-})();
-
-// ───── UTC CLOCK ─────
-(function(){
-  const el = document.getElementById('utc-clock');
-  if(!el) return;
-  function tick(){
-    const d = new Date();
-    el.textContent = d.toUTCString().split(' ')[4] + ' UTC';
-  }
-  tick();
-  setInterval(tick, 1000);
 })();
 
 // ───── SCROLL REVEAL ─────
@@ -768,8 +800,27 @@ section{scroll-margin-top:72px}
         observer.unobserve(e.target);
       }
     }
-  },{threshold:0.1});
+  },{threshold:0.12});
   for(const el of els) observer.observe(el);
+})();
+
+// ───── UTC CLOCK ─────
+(function(){
+  const clock = document.getElementById('utc-clock');
+  const clock2 = document.getElementById('utc-clock2');
+  function tick(){
+    const now = new Date();
+    const t = now.getUTCFullYear() + '-' +
+      String(now.getUTCMonth()+1).padStart(2,'0') + '-' +
+      String(now.getUTCDate()).padStart(2,'0') + ' ' +
+      String(now.getUTCHours()).padStart(2,'0') + ':' +
+      String(now.getUTCMinutes()).padStart(2,'0') + ':' +
+      String(now.getUTCSeconds()).padStart(2,'0');
+    if(clock) clock.textContent = 'UTC ' + t;
+    if(clock2) clock2.textContent = 'UTC ' + t;
+  }
+  tick();
+  setInterval(tick, 1000);
 })();
 </script>
 
