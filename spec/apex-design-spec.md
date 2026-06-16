@@ -38,28 +38,31 @@ Each door is a card with: SVG icon, subdomain label, one-sentence description, "
 - Icon: `#g-shop` (storefront)
 - Label: "biz"
 - Title: "Small business technology that works — and that you own."
-- Hover: amber accent
+- Hover: amber accent (#e8b14f)
 - Link: `https://biz.christophergoulet.com`
 
 **Door 2 — tech**
 - Icon: `#g-arch` (stacked layers)
 - Label: "tech"
 - Title: "Resilient sovereign infrastructure for people who know what that means."
-- Hover: cool blue accent
+- Aesthetic: solarpunk retro-futurism — warm copper/teal, organic-meets-technical
+- Hover: copper/teal accent (tbd in color spec)
 - Link: `https://tech.christophergoulet.com`
 
 **Door 3 — canada**
 - Icon: `#g-herit` (fleur-de-lis abstracted)
 - Label: "canada"
 - Title: "Retrouver vos racines — finding your way home."
-- Hover: muted clay accent
+- Aesthetic: flag-responsive. English view uses Canadian red + white on dark. French (Québécois) view uses blue + white on dark. Both must work on dark background — no heavy white dependence.
+- Hover: red accent (English) / blue accent (French)
 - Link: `https://canada.christophergoulet.com`
 
 **Door 4 — civic**
 - Icon: `#g-comm` (radiating people)
 - Label: "civic"
 - Title: "Community resilience starts with people who show up."
-- Hover: sage green accent
+- Aesthetic: slight carnival feel — not over the top, not fully straight-laced. Warm, human, a touch of whimsy.
+- Hover: warm carnival accent (tbd in color spec)
 - Link: `https://civic.christophergoulet.com`
 
 **Door behavior:** Each door's accent color is a preview of the subdomain's color scheme. No shared widget chrome — the doors themselves carry the visual identity of what's behind them.
