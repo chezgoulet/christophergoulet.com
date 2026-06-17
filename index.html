@@ -3,8 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="dns-prefetch" href="https://cal.com">
 <title>Christopher Goulet</title>
 <meta name="description" content="Cookie maker who builds infrastructure. Worker-owned bakery, private AI systems, Selectboard, scouting, Canadian citizenship reconnection. Windsor, Vermont.">
+<meta property="og:title" content="Christopher Goulet — Cookie maker who builds infrastructure">
+<meta property="og:description" content="Worker-owned bakery, private AI systems, Selectboard, scouting, Canadian citizenship reconnection. Windsor, Vermont.">
+<meta property="og:url" content="https://christophergoulet.com/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://christophergoulet.com/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Christopher Goulet — Cookie maker who builds infrastructure">
+<meta name="twitter:description" content="Worker-owned bakery, private AI systems, Selectboard, scouting, Canadian citizenship reconnection. Windsor, Vermont.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Christopher Goulet",
+  "jobTitle": "Founder, Covered Bridge Cooperative Corporation",
+  "description": "Cookie maker who builds infrastructure. Worker-owned bakery, private AI systems, community organizing.",
+  "url": "https://christophergoulet.com",
+  "knowsLanguage": ["en", "fr"],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Windsor",
+    "addressRegion": "Vermont"
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -86,6 +114,17 @@ nav .inner{height:100%;display:flex;align-items:center;justify-content:space-bet
 .btn-ghost{border:1px solid var(--line-2);color:var(--text)}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
 
+/* blog */
+.blog-sec{border-top:1px solid var(--line);padding:80px 0}
+.blog-head{text-align:center;margin-bottom:44px}
+.blog-kicker{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--text-3);display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:18px}
+.blog-head h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(28px,4vw,42px);line-height:1.06}
+.blog-head h2 em{font-style:italic;color:var(--accent)}
+.blog-sub{margin-top:14px;font-size:16px;color:var(--text-2);font-weight:300}
+.blog-grid{max-width:760px;margin:0 auto}
+.blog-empty{padding:60px 30px;text-align:center;border:1px dashed var(--line-2);border-radius:12px;color:var(--text-3);font-family:'IBM Plex Mono',monospace;font-size:13px}
+.blog-empty a{color:var(--accent);border-bottom:1px solid var(--accent)}
+
 /* footer */
 footer{border-top:1px solid var(--line);padding:40px 0 56px}
 footer .frow{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;align-items:center}
@@ -132,6 +171,7 @@ footer .frow{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;
     <button class="nav-toggle" id="navToggle" aria-label="Menu">MENU</button>
     <div class="nav-links" id="navLinks">
       <a class="cta" href="https://cal.com/christophergoulet" target="_blank" rel="noopener">Book a call</a>
+      <a href="#blog" style="font-size:12.5px;color:var(--text-2);letter-spacing:.5px;transition:color .2s">Writing</a>
     </div>
   </div>
 </nav>
@@ -177,6 +217,21 @@ footer .frow{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;
         <p>Selectboard through COVID. A community scouting troop. Mutual aid networks. Boots on the ground.</p>
         <span class="door-go">Go <svg viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span>
       </a>
+    </div>
+  </section>
+
+  <section class="blog-sec">
+    <div class="wrap">
+      <div class="blog-head">
+        <div class="blog-kicker"><span class="dot"></span>WRITING</div>
+        <h2>Thoughts on building things that <em>last</em>.</h2>
+        <p class="blog-sub">Case studies, reflections, and notes from the intersection of cookies, code, and community.</p>
+      </div>
+      <div class="blog-grid">
+        <div class="blog-empty">
+          <p>Nothing here yet — <a href="mailto:me@christophergoulet.com">first post coming soon</a>.</p>
+        </div>
+      </div>
     </div>
   </section>
 
