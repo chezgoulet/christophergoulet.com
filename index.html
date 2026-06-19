@@ -124,11 +124,12 @@ nav .inner{height:100%;display:flex;align-items:center;justify-content:space-bet
 .blog-grid{max-width:760px;margin:0 auto}
 .blog-empty{padding:60px 30px;text-align:center;border:1px dashed var(--line-2);border-radius:12px;color:var(--text-3);font-family:'IBM Plex Mono',monospace;font-size:13px}
 .blog-empty a{color:var(--accent);border-bottom:1px solid var(--accent)}
-.blog-post{padding:0 0 10px}
-.blog-date{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1px;color:var(--text-3);display:block;margin-bottom:8px}
-.blog-title{font-family:'Fraunces',serif;font-weight:600;font-size:22px;line-height:1.2;margin-bottom:16px}
-.blog-body p{font-size:15px;font-weight:300;color:var(--text-2);line-height:1.7;margin-bottom:16px}
-.blog-body p:last-child{margin-bottom:0}
+.blog-tease{padding:0 0 10px}
+.blog-tease .blog-date{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1px;color:var(--text-3);display:block;margin-bottom:6px}
+.blog-tease .blog-title{font-family:'Fraunces',serif;font-weight:600;font-size:20px;line-height:1.2;margin-bottom:8px}
+.blog-tease .blog-title a{color:var(--text);text-decoration:none;transition:color .2s}
+.blog-tease .blog-title a:hover{color:var(--accent)}
+.blog-tease .blog-excerpt{font-size:14px;font-weight:300;color:var(--text-2);line-height:1.5;max-width:62ch}
 
 /* footer */
 footer{border-top:1px solid var(--line);padding:40px 0 56px}
@@ -233,27 +234,10 @@ footer .frow{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;
         <p class="blog-sub">Case studies, reflections, and notes from the intersection of cookies, code, and community.</p>
       </div>
       <div class="blog-grid">
-        <article class="blog-post">
+        <article class="blog-tease">
           <time class="blog-date" datetime="2026-06-19">June 19, 2026</time>
-          <h3 class="blog-title">Open Sourced Organizing</h3>
-          <div class="blog-body">
-            <p>You know how a town works. Once a year, or when something big comes up, folks gather in the hall. You argue, you vote, you decide the budget for the roads and the school. It's messy, it's slow sometimes, but it's yours. The power to decide starts in that room.</p>
-            <p>Now imagine if that was the rule for everything in your life. Not just the roads, but the place you work, the group you volunteer with, the way your community handles a crisis. Imagine if all those things answered, first and foremost, to a gathering of people who are personally invested in its success.</p>
-            <p>That's the heart of it. That gathering, that council, that circle of people who show up—that's the sovereign thing. It's the unincorporated association, the club, the union local, the neighborhood assembly. It can't be bought or sold because it's not a piece of property. It's just people who have agreed to be responsible to each other.</p>
-            <p>But here's the old problem: that group can't easily buy a piece of land. It can't get a large grant from a foundation. It can't pay someone a wage or sign a complex contract without turning into a corporation or a nonprofit—and those things come with rulebooks written by lawyers and the state, rulebooks that often have little to do with the values you started with.</p>
-            <p>So you face a choice. Stay small, pure, and poor, or incorporate, compromise, and risk becoming just another brick in the system.</p>
-            <p>Constellationism proposes a third way. It says, keep your book club. Keep that independent, messy, collaborative core. That's your first star. Then, around it, you spin off or partner with other legal entities that serve it, like planets around a sun. Constellationism is a way to organize so that your community stays in charge, even when it needs money, property, or legal status. It keeps decision-making where the people are, while spinning off specialized entities to handle practical tasks — all bound together by shared values, tools, and clear agreements and boundaries.</p>
-            <p>Need to hold money and get grants? Form a small, traditional nonprofit. Its legal job is to serve the mission of the core group. Need to run a business or pay people for skilled work? Form a worker-owned cooperative. Its mission is to generate livelihoods while adhering to the community's values. Need to own land permanently for the community? Form a community land trust.</p>
-            <p>These supporting organizations are legally separate. This is crucial. It means if one gets sued or goes off the rails, it doesn't sink the whole community. But they are bound to the core by a solidarity pact—a formal promise that they exist to serve the community's will, not their own.</p>
-            <p>The glue that holds this constellation together isn't a boss or a board of directors. It's an open-source library of rules and customs that everyone agrees to follow. Think of it like a shared recipe book for how to be a community. How to resolve a conflict. How to make a decision. How to hold leaders accountable. Any group in the constellation can use these recipes, improve them, and offer the improvements back to the commons.</p>
-            <p>To enable communities to build power where they are, using existing legal tools without being controlled by them. Constellationism is a "social technology" for creating dual power — functional, democratic alternatives that meet needs now while modeling a more just society.</p>
-            <p>And the study groups, town meetings, book clubs, unincorporated associations… whomever makes up the community cores, always holds the right of severance. If one of those supporting planets starts ignoring the community's North Star, the community can cut it loose and find or create a new one. The power never leaves the room where the people gather.</p>
-            <p>This isn't about starting a revolution to seize power somewhere else. It's about building power where you already are. It's using the legal tools that exist—nonprofits, co-ops, trusts—but subverting their usual purpose. Instead of them owning you, you arrange them around you, in your service.</p>
-            <p>It's how a scout troop can also run a disaster response network. It's how a tenant union can also own apartment buildings. It's how a small-town cookie bakery, owned by its workers, can become the first node in a whole network of businesses that support community resilience.</p>
-            <p>The goal isn't to build one giant organization. It's to create a repeatable pattern—a social technology—so that any group of people who trust each other enough to meet and make decisions can build a durable, capable community around themselves. They can build a constellation.</p>
-            <p>One town meeting, one cooperative, one land trust at a time, you build a different kind of world right inside the old one. You stop asking for permission and start building what you need, with the people beside you.</p>
-            <p>You don't have to conquer the system. You just have to learn to arrange its pieces around your own fire.</p>
-          </div>
+          <h3 class="blog-title"><a href="/blog/open-sourced-organizing/">Open Sourced Organizing</a></h3>
+          <p class="blog-excerpt">Constellationism is a way to organize so that your community stays in charge, even when it needs money, property, or legal status. It keeps decision-making where the people are, while spinning off specialized entities to handle practical tasks.</p>
         </article>
       </div>
     </div>
