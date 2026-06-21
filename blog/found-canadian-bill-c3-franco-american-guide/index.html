@@ -14,6 +14,8 @@
 <meta property="og:url" content="https://christophergoulet.com/blog/found-canadian-bill-c3-franco-american-guide/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Christopher Goulet">
+<meta property="og:locale" content="en_CA">
+<meta property="og:locale:alternate" content="fr_CA">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Am I a 'Found Canadian'? A Franco-American's Guide to Bill C-3 and Citizenship by Descent">
 <meta name="twitter:description" content="If your family left Québec for the New England mills, you may have a claim to Canadian citizenship you never knew about.">
@@ -35,7 +37,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#000000;--bg-grad:#060606;--panel:#0c0d0f;--panel-2:#111316;--line:#1c1f24;--line-2:#2c333a;--text:#e6e8ea;--text-2:#9aa1a9;--text-3:#646b73;--sage:#6cc49a;--red:#e0716a;--accent:#e8b14f;--accent-rgb:232,177,79;--max-w:760px}
+:root{--bg:#000000;--bg-grad:#060606;--panel:#0c0d0f;--panel-2:#111316;--line:#1c1f24;--line-2:#2c333a;--text:#e6e8ea;--text-2:#9aa1a9;--text-3:#646b73;--sage:#6cc49a;--red:#e0716a;--accent:#e8b14f;--accent-rgb:232,177,79;--max-w:760px;--fr-blue:#3366bb}
 html{scroll-behavior:smooth}
 body{font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;background:#000;color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 ::selection{background:rgba(var(--accent-rgb),0.28)}
@@ -50,6 +52,11 @@ nav .inner{height:100%;display:flex;align-items:center;justify-content:space-bet
 .nav-links{display:flex;align-items:center;gap:26px}
 .nav-links a{font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.5px;color:var(--text-2);transition:color .2s;text-decoration:none}
 .nav-links a:hover{color:var(--accent)}
+.lang-toggle{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid var(--line-2);border-radius:6px;background:transparent;cursor:pointer;font-size:16px;transition:border-color .2s,color .2s;font-family:'IBM Plex Mono',monospace;color:var(--text-2)}
+.lang-toggle:hover{border-color:var(--accent);color:var(--accent)!important}
+body.fr-active .lang-en{display:none}
+body.fr-active .lang-fr{display:block}
+.lang-fr{display:none}
 main{padding-top:100px}
 .post-header{padding:40px 0 20px}
 .post-date{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:1.5px;color:var(--text-3);margin-bottom:12px}
@@ -80,18 +87,22 @@ footer .frow{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;
     <a class="brand" href="https://christophergoulet.com"><span class="sq"></span>C.GOULET</a>
     <div class="nav-links">
       <a href="https://christophergoulet.com/#blog">Writing</a>
+      <button class="lang-toggle" id="langToggle" title="Switch to French">🍁</button>
     </div>
   </div>
 </nav>
 
 <main>
   <article class="wrap">
-    <header class="post-header">
-      <div class="post-date">June 19, 2026</div>
-      <h1>Am I a "Found Canadian"? A Franco-American's Guide to Bill C-3 and Citizenship by Descent</h1>
-      <p class="post-desc">If your family left Québec for the New England mills, you may have a claim to Canadian citizenship you never knew about. Here's what "found Canadian," the Bjorkquist decision, and Bill C-3 actually mean — from someone who was among the first 5,000.</p>
-    </header>
-    <div class="post-body">
+
+    <!-- ===== ENGLISH ===== -->
+    <div class="lang-en">
+      <header class="post-header">
+        <div class="post-date">June 19, 2026</div>
+        <h1>Am I a "Found Canadian"? A Franco-American's Guide to Bill C-3 and Citizenship by Descent</h1>
+        <p class="post-desc">If your family left Québec for the New England mills, you may have a claim to Canadian citizenship you never knew about. Here's what "found Canadian," the Bjorkquist decision, and Bill C-3 actually mean — from someone who was among the first 5,000.</p>
+      </header>
+      <div class="post-body">
 
 <p>If you grew up in New England with a French last name — Goulet, Thibodeau, Ouellette, Bélanger, Lavoie — and a grandparent who said the rosary in French, this post is for you. There is a reasonable chance you have a claim to Canadian citizenship, and until recently, almost no one knew it existed.</p>
 
@@ -147,11 +158,83 @@ footer .frow{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;
 
 <p><em>Bienvenue chez vous.</em></p>
 
-    </div>
+      </div>
 
-    <footer class="post-footer">
-      <p><em>Christopher Goulet was among the first roughly 5,000 "found Canadians" under the Bjorkquist decision and was featured on Vermont Public's Vermont Edition in April 2026. He is not a lawyer; this article is general information, not legal advice. The situation is still in motion — confirm all details against current IRCC guidance before relying on anything in this post.</em></p>
-    </footer>
+      <footer class="post-footer">
+        <p><em>Christopher Goulet was among the first roughly 5,000 "found Canadians" under the Bjorkquist decision and was featured on Vermont Public's Vermont Edition in April 2026. He is not a lawyer; this article is general information, not legal advice. The situation is still in motion — confirm all details against current IRCC guidance before relying on anything in this post.</em></p>
+      </footer>
+    </div><!-- /.lang-en -->
+
+    <!-- ===== FRANÇAIS ===== -->
+    <div class="lang-fr">
+      <header class="post-header">
+        <div class="post-date">19 juin 2026</div>
+        <h1>Suis-je un «&nbsp;Canadien retrouvé&nbsp;»? Guide franco-américain du projet de loi C-3 et de la citoyenneté par filiation</h1>
+        <p class="post-desc">Si votre famille a quitté le Québec pour les moulins de la Nouvelle-Angleterre, il se peut que vous ayez un droit à la citoyenneté canadienne dont vous n'avez jamais entendu parler. Voici ce que signifient réellement «&nbsp;Canadien retrouvé&nbsp;», la décision Bjorkquist et le projet de loi C-3 — raconté par quelqu'un qui faisait partie des 5&nbsp;000 premiers.</p>
+      </header>
+      <div class="post-body">
+
+<p>Si vous avez grandi en Nouvelle-Angleterre avec un nom de famille français — Goulet, Thibodeau, Ouellette, Bélanger, Lavoie — et un grand-parent qui récitait le chapelet en français, cet article est pour vous. Il y a de bonnes chances que vous ayez un droit à la citoyenneté canadienne, et jusqu'à tout récemment, presque personne ne savait que cela existait.</p>
+
+<p>J'ai découvert que c'était mon cas. En 2023, j'ai été parmi les premiers — environ 5&nbsp;000 personnes — à voir ma citoyenneté canadienne rétablie en vertu de ce qu'on appelle maintenant la décision Bjorkquist. Je ne suis pas avocat. Je suis un Franco-Américain de Windsor, au Vermont, qui a traversé le processus tôt, qui l'a appris à la dure, et qui aide maintenant d'autres personnes à déterminer si la même porte leur est ouverte.</p>
+
+<p>Voici la version simple de ce qui a changé et comment savoir si cela s'applique à vous.</p>
+
+<h2>Ce que «&nbsp;Canadien retrouvé&nbsp;» signifie vraiment</h2>
+
+<p>Pendant des décennies, la loi canadienne sur la citoyenneté contenait ce qu'on appelle souvent la «&nbsp;limite de la première génération&nbsp;». En bref : si vous étiez citoyen canadien né à l'étranger, vous ne pouviez <em>pas</em> transmettre automatiquement la citoyenneté à un enfant que vous aviez également à l'étranger. La lignée s'arrêtait après une génération née hors du Canada.</p>
+
+<p>Cette règle a exclu un nombre énorme de personnes dont les familles avaient des racines canadiennes légitimes — les fameux «&nbsp;Canadiens perdus&nbsp;». L'envers de cette expression est porteur d'espoir : lorsque la loi change et que ces personnes peuvent réclamer ce qui leur a été enlevé, elles deviennent des Canadiens <em>retrouvés</em>.</p>
+
+<h2>La décision Bjorkquist et le projet de loi C-3, en bref</h2>
+
+<p>En décembre 2023, la Cour supérieure de l'Ontario a statué dans <em>Bjorkquist et al. c. Procureur général du Canada</em> que la limite de la première génération était inconstitutionnelle. Cette décision a ouvert une voie — d'abord par des mesures provisoires — permettant à des personnes auparavant exclues de présenter une demande.</p>
+
+<p>Le Parlement a ensuite entrepris de réécrire la loi elle-même. Cette correction législative est ce qu'on appelle le projet de loi C-3. Les mécanismes ont évolué au fur et à mesure que le projet de loi cheminait au Parlement et qu'IRCC ajustait ses procédures. La chose la plus importante à comprendre est celle-ci : la situation est encore en mouvement. Ce qui était vrai il y a un an pourrait ne plus correspondre au processus actuel.</p>
+
+<h2>Le lien avec le Québec</h2>
+
+<p>Entre environ 1840 et 1930, près d'un million de Canadiens français ont quitté le Québec pour les villes textiles et forestières de la Nouvelle-Angleterre. En français, on appelle parfois cela <em>la Grande Hémorragie</em>. Mon arrière-grand-père, Wilfrid Goulet, en faisait partie.</p>
+
+<p>Ces familles ont bâti Lowell, Manchester, Woonsocket, Lewiston et des centaines de villages industriels du Vermont. Elles ont gardé leur langue et leur foi pendant une génération ou deux, puis — comme le font les familles immigrantes — elles se sont assimilées. Le français s'est estompé. Les recettes et les noms de famille sont restés.</p>
+
+<p>Si c'est l'histoire de votre famille, la question pertinente n'est pas «&nbsp;mes ancêtres viennent-ils du Québec&nbsp;». C'est : «&nbsp;où, exactement, la lignée franchit-elle la frontière vers le Canada, et un droit à la citoyenneté survit-il à ce passage en vertu de la loi actuelle&nbsp;». C'est une question factuelle et traçable.</p>
+
+<h2>Est-ce que cela vous concerne? Un test rapide</h2>
+
+<p>Vous devriez vous pencher là-dessus si :</p>
+<ul>
+  <li>Vous avez un parent, un grand-parent ou un arrière-grand-parent né au Canada.</li>
+  <li>Votre famille est descendue du Québec et vous pouvez nommer (même approximativement) la génération qui a traversé.</li>
+  <li>Vous avez entendu le terme «&nbsp;Canadien perdu&nbsp;» ou «&nbsp;Canadien retrouvé&nbsp;» et vous avez ressenti un tiraillement.</li>
+  <li>Vous avez présumé il y a des années que vous n'étiez pas admissible — parce qu'en vertu de l'<em>ancienne</em> loi, c'était peut-être vrai, et c'est exactement ce qui a changé.</li>
+</ul>
+
+<p>Aucun de ces points n'est une garantie. Ce sont tous des raisons de tracer la lignée.</p>
+
+<h2>Qu'en est-il des délais?</h2>
+
+<p>La réponse honnête : cela varie. Les délais de traitement ont beaucoup fluctué alors qu'IRCC passait des mesures provisoires au traitement du projet de loi C-3. Certaines demandes simples ont obtenu une réponse en quelques mois; d'autres ont pris plus d'un an. La plus grande variable est votre documentation — la rapidité avec laquelle vous pouvez obtenir les actes de naissance, mariage et décès des provinces ou États concernés. Je vous donnerai un portrait réaliste de votre situation lors de notre premier appel.</p>
+
+<h2>Ce que je peux faire — et ne pas faire</h2>
+
+<p>Je vais être direct, parce que ce domaine attire des gens qui ne le sont pas. Je ne suis pas avocat et je ne fournis pas de conseils juridiques. Ce que j'offre, c'est une expérience vécue et une orientation : vous aider à retracer votre lignée familiale vers le Québec, comprendre à quelle voie votre situation pourrait correspondre, et décider si vous avez besoin d'un avocat. Beaucoup de cas simples n'en nécessitent pas. Les cas complexes — adoptions, historique de garde, casiers judiciaires — en nécessitent, et je vous le dirai franchement quand je pense que vous avez atteint cette limite.</p>
+
+<p>Je travaille aussi en anglais et en français, ce qui compte plus que vous ne le pensez quand vous demandez des registres aux paroisses et archives provinciales du Québec.</p>
+
+<h2>Par où commencer</h2>
+
+<p>Si vous voulez le faire entièrement par vous-même, commencez par les pages officielles d'IRCC sur la citoyenneté par filiation et lisez l'état actuel du projet de loi C-3 directement à la source. Si vous préférez en parler avec quelqu'un qui a vécu le processus, <a href="https://book.christophergoulet.com">le premier appel est gratuit</a> — en français ou en anglais. Nous déterminerons si votre famille a un droit qui vaut la peine d'être poursuivi.</p>
+
+<p><em>Bienvenue chez vous.</em></p>
+
+      </div>
+
+      <footer class="post-footer">
+        <p><em>Christopher Goulet a été parmi les quelque 5 000 premiers «&nbsp;Canadiens retrouvés&nbsp;» en vertu de la décision Bjorkquist et a été présenté à l'émission Vermont Edition de Vermont Public en avril 2026. Il n'est pas avocat; cet article est une information générale, non un avis juridique. La situation est encore en mouvement — vérifiez tous les détails auprès des directives actuelles d'IRCC avant de vous fier à quoi que ce soit dans cet article.</em></p>
+      </footer>
+    </div><!-- /.lang-fr -->
+
   </article>
 </main>
 
@@ -167,6 +250,28 @@ footer .frow{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;
     <div class="foot-meta">Windsor, Vermont · EN · FR · © 2026</div>
   </div>
 </footer>
+
+<script>
+// ── LANGUAGE TOGGLE ──
+const btn = document.getElementById('langToggle');
+const root = document.documentElement;
+function setLang(lang){
+  if(lang === 'fr'){
+    document.body.classList.add('fr-active');
+    btn.title = 'Switch to English';
+  } else {
+    document.body.classList.remove('fr-active');
+    btn.title = 'Switch to French';
+  }
+  localStorage.setItem('c3-lang', lang);
+}
+btn.addEventListener('click', function(){
+  const currentLang = document.body.classList.contains('fr-active') ? 'fr' : 'en';
+  setLang(currentLang === 'en' ? 'fr' : 'en');
+});
+const saved = localStorage.getItem('c3-lang');
+if(saved === 'fr') setLang('fr');
+</script>
 
 </body>
 </html>
